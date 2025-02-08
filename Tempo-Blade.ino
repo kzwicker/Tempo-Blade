@@ -114,8 +114,25 @@ void setup() {
     lcd.write(screen[i+16]);
   }
 
+  pinMode(4, OUTPUT);
+  pinMode(3, OUTPUT);
+  Serial.begin(115200);
 }
 
+// good wrong buzzer sound: 4ms high, 4ms low
 void loop() {
+  static long int lastMicros = 0;
+  int pitch = 5000;
+
   // put your main code here, to run repeatedly:
+  if(micros() - lastMicros % (1000000/pitch) < 500000/pitch) {
+    digitalWrite(4, HIGH);
+    digitalWrite(3, LOW);
+  } else {
+    digitalWrite(4, LOW);
+    digitalWrite(3, HIGH);
+  }
+  if(micros() - lastMicros == 1000000/pitch) {
+    lastMicros = micros();
+  }
 }
