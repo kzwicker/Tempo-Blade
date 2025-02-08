@@ -125,7 +125,7 @@ void loop() {
   int pitch = 5000;
 
   // put your main code here, to run repeatedly:
-  if(micros() - lastMicros % (1000000/pitch) < 500000/pitch) {
+  if((micros() - lastMicros) % (1000000/pitch) < 500000/pitch) {
     digitalWrite(4, HIGH);
     digitalWrite(3, LOW);
   } else {
