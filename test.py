@@ -44,9 +44,6 @@ if fileParsed == True:
     for url in parsedFile["_notes"]:
         direction = url["_cutDirection"]
         if direction >= 4:
-            direction = direction - 4 - (direction // 8)
+            direction = direction // 4
         notesList.append(Note(url["_time"], url["_type"], direction))
-
-    for doofus in notesList:
-        print("Time: ", doofus.getTime(), ", Color: ", doofus.getColor(), ", Direction: ", doofus.getDirection(), "\n")
 
