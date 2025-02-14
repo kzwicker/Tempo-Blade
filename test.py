@@ -1,6 +1,5 @@
 import json
 import os
-import csv
 
 class Note: 
     def __init__(self, time, color, direction):
@@ -21,7 +20,6 @@ class Note:
 cwd = os.getcwd()
 fileName = None
 fileParsed = False
-data = [];
 
 for root, dirs, files in os.walk(cwd):
     for name in files:
@@ -46,4 +44,8 @@ if fileParsed == True:
         if direction >= 4:
             direction = direction // 4
         notesList.append(Note(url["_time"], url["_type"], direction))
+    data = open(cwd + "\\data.csv", "w")
+    for notes in notesList:
+        data.write(f"{notes.getTime()}, {notes.getColor()}, {notes.getDirection()}\n")
+    data.close()
 
