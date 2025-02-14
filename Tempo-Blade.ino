@@ -167,8 +167,8 @@ void loop() {
 
   static int pitches[] = {A4,A4,A4,A4,A4,A4,A4,A4,A4,A4,A4,A4,A4,};
   static int pitch;
-
-
+  int lastMicros = 0;
+/*
   if(millis() < sizeof(pitches)/sizeof(int) * 91) {
     pitch = pitches[millis() / 91];
   } else {
@@ -176,7 +176,7 @@ void loop() {
   }
 
 
-
+*/
 
 
 
@@ -192,5 +192,6 @@ void loop() {
   } else {
     digitalWrite(4, LOW);
     digitalWrite(3, HIGH);
+    lastMicros = micros();
   }
 }
