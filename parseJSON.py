@@ -39,10 +39,8 @@ if fileParsed == True:
     notesList = []
     direction = 0
 
-    for url in parsedFile["_notes"]:
-        direction = url["_cutDirection"]
-        if direction >= 4:
-            direction = direction // 4
+    for note in parsedFile["_notes"]:
+        direction = note["_cutDirection"] % 4
         notesList.append(Note(url["_time"], url["_type"], direction))
     data = open(cwd + "\\data.csv", "w")
     for notes in notesList:
