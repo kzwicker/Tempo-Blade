@@ -127,6 +127,7 @@ void setup() {
 
 // good wrong buzzer sound: 4ms high, 4ms low
 void loop() {
+  static long int lastMicros = 0;
   /*
   static int pitches[] = {Gb5,Gb5,Gb5,Gb5,D5 ,D5 ,D5 ,D5 ,
                           B4 ,B4 ,B4 ,B4 ,G4 ,G4 ,G4 ,Bb4,
@@ -186,11 +187,14 @@ void loop() {
     digitalWrite(3, LOW);
     return;
   }
-  if(micros() % (1000000/pitch) < 500000/pitch) {
+  if(micros() - lastMicros < 500000/pitch) {
     digitalWrite(4, HIGH);
     digitalWrite(3, LOW);
   } else {
     digitalWrite(4, LOW);
     digitalWrite(3, HIGH);
+  }
+  if(micros() - lastMicros >= 1000000/pitch) {
+    lastMicros = micros();
   }
 }
