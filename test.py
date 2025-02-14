@@ -1,5 +1,6 @@
 import json
 import os
+import csv
 
 class Note: 
     def __init__(self, time, color, direction):
@@ -20,6 +21,7 @@ class Note:
 cwd = os.getcwd()
 fileName = None
 fileParsed = False
+data = [];
 
 for root, dirs, files in os.walk(cwd):
     for name in files:
