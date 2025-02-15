@@ -1,5 +1,8 @@
+#!/bin/python
 import json
-import os
+import sys
+import time
+import subprocess
 
 class Note: 
     def __init__(self, time, color, direction):
@@ -17,33 +20,48 @@ class Note:
         return self.direction
 
 
-cwd = os.getcwd()
 fileName = None
 fileParsed = False
 
-for root, dirs, files in os.walk(cwd):
-    for name in files:
-        if name.endswith((".dat")):
-            fileName = os.path.join(cwd, name)
-            print(fileName)
+bpm = 0
 
-if fileName != None:
-    with open(fileName) as data:
-        parsedFile = json.load(data)
-        print("parsed the file!")
-        fileParsed = True
-else:
-    print("file not found!")
+if len(sys.argv) < 4:
+    print("Bad arguments")
+    print("usage: ./parseJSON.py <Info.dat> <Beatmap.dat> <Song.egg>")
+    quit()
 
-if fileParsed == True:
-    notesList = []
-    direction = 0
+with open(sys.argv[1]) as infoFile:
+    info = json.load(infoFile)
+    if info["_version"] != "2.0.0":
+        print("beatmap not version 2.0.0")
+        quit()
+    bpm = info["_beatsPerMinute"]
+    fileParsed = True
+if not fileParsed:
+    print(f"Failed to parse {sys.argv[1]}")
+    quit()
 
-    for note in parsedFile["_notes"]:
+notesList = []
+direction = 0
+
+fileParsed = False
+with open(sys.argv[2]) as notesFile:
+    notesJSON = json.load(notesFile)
+    if notesJSON["_BPMChanges"] != []:
+        print("beatmap contains BPM changes")
+        quit()
+    for note in notesJSON["_notes"]:
         direction = note["_cutDirection"] % 4
-        notesList.append(Note(url["_time"], url["_type"], direction))
-    data = open(cwd + "\\data.csv", "w")
-    for notes in notesList:
-        data.write(f"{notes.getTime()}, {notes.getColor()}, {notes.getDirection()}\n")
-    data.close()
+        notesList.append(Note(note["_time"], note["_type"], direction))
+    fileParsed = True
+if not fileParsed:
+    print(f"Failed to parse {sys.argv[2]}")
+    quit()
 
+
+subprocess.Popen(["ffplay", "-autoexit", "-nodisp", "-loglevel", "error", sys.argv[3]])
+startTime = time.time()
+for note in notesList:
+    while (time.time() - startTime) * bpm/60 < note.time:
+        continue
+    print(f"{note.color} {note.direction}")
