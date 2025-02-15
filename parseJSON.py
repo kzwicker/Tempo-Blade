@@ -47,11 +47,15 @@ direction = 0
 fileParsed = False
 with open(sys.argv[2]) as notesFile:
     notesJSON = json.load(notesFile)
-    if notesJSON["_BPMChanges"] != []:
+    if "_BPMChanges" in notesJSON and notesJSON["_BPMChanges"] != []:
         print("beatmap contains BPM changes")
         quit()
     for note in notesJSON["_notes"]:
-        direction = note["_cutDirection"] % 4
+        direction = 8
+        if "_cutDirection" in note:
+            direction = note["_cutDirection"]
+        elif "_value" in note:
+            direction = note["_value"]
         notesList.append(Note(note["_time"], note["_type"], direction))
     fileParsed = True
 if not fileParsed:
@@ -61,7 +65,8 @@ if not fileParsed:
 
 subprocess.Popen(["ffplay", "-autoexit", "-nodisp", "-loglevel", "error", sys.argv[3]])
 startTime = time.time()
+print(f"BPM: {bpm}")
 for note in notesList:
     while (time.time() - startTime) * bpm/60 < note.time:
         continue
-    print(f"{note.color} {note.direction}")
+    print(f"{note.getColor()}, {note.getDirection()}")
