@@ -1,6 +1,5 @@
 #include <LiquidCrystal.h>
 #include "notes.h"
-
 const int rs = 7;
 const int e  = 8;
 const int d4 = 9;
@@ -10,6 +9,7 @@ const int d7 = 12;
 
 const int columns = 16;
 const int rows = 2;
+unsigned long lastMicros = 0;
 
 #define C3  131
 #define Db3 139
@@ -120,14 +120,12 @@ void setup() {
     lcd.write(screen[i+16]);
   }
 
-  pinMode(4, OUTPUT);
-  pinMode(3, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
   Serial.begin(115200);
 }
-
 // good wrong buzzer sound: 4ms high, 4ms low
 void loop() {
-  static long int lastMicros = 0;
   /*
   static int pitches[] = {Gb5,Gb5,Gb5,Gb5,D5 ,D5 ,D5 ,D5 ,
                           B4 ,B4 ,B4 ,B4 ,G4 ,G4 ,G4 ,Bb4,
@@ -163,39 +161,24 @@ void loop() {
                           Bb5,Bb5,Bb5,Bb5,Bb5,Bb5,Bb5,0  ,
                           Db5,E5 ,Ab5,B5 ,Bb5,Bb5,Bb5,Ab5,
                           
-                          Gb5,};
-                          */
-
-  static int pitches[] = {A4,A4,A4,A4,A4,A4,A4,A4,A4,A4,A4,A4,A4,};
+                          Gb5,};*/
+  static int pitches[] = {E3, 0, E3, 0, 0, E3, 0, 0, C3, 0, E3, 0, 0, G3, 0, 0, G2, C3, G2, E2, A2, B2, Bb2, A2, G2, E3, G3, A3, F3, G3, E3, C3, D3, B2, C3, G2, E2, A2, B2, Bb2, A2, G2, E3, G3, A3, F3, G3, E3, C3, D3, B2, G3, Gb3, F3, D3, E3, G2, A2, C3, A2, C3, D3, G3, Gb3, F3, D3, E3, C4, C4, C4, G3, Gb3, F3, D3, E3, G2, A2, C3, A2, C3, D3, Eb3, D3, C3, C3, C3, C3, C3, D3, E3, C3, A2, G2, C3, C3, C3, C3, D3, E3, C3, C3, C3, C3, D3, E3, C3, A2, G2, E3, E3, E3, C3, E3, G3, G2, C3, G2, E2, A2, B2, Bb2, A2, G2, E3, G3, A3, F3, G3, E3, C3, D3, B2, C3, G2, E2, A2, B2, Bb2, A2, G2, E3, G3, A3, F3, G3, E3, C3, D3, B2, E3, C3, G2, G2, A2, F3, F3, A2, B2, A3, A3, A3, G3, F3, E3, C3, A2, G2, E3, C3, G2, G2, A2, F3, F3, A2, B2, F3, F3, F3, E3, D3, C3, G2, E3, C2, C3, G2, E2, A2, B2, A2, Ab4, Bb2, Ab4, G2, Gb4, G2
+};
   static int pitch;
-  int lastMicros = 0;
-/*
-  if(millis() < sizeof(pitches)/sizeof(int) * 91) {
-    pitch = pitches[millis() / 91];
+
+  if(millis() < sizeof(pitches)/sizeof(int) * 200) {
+    pitch = pitches[millis() / 125];
   } else {
     pitch = 0;
   }
+  tone(6, pitch, 1000);
 
 
-*/
+/*
 
-
-
-
-  if(pitch == 0) {
-    digitalWrite(4, LOW);
-    digitalWrite(3, LOW);
-    return;
+  for(unsigned long i = 0; i < 50000; i++){
+    tone(6, i);
+    delay(10);
   }
-  if(micros() - lastMicros < 500000/pitch) {
-    digitalWrite(4, HIGH);
-    digitalWrite(3, LOW);
-  } else {
-    digitalWrite(4, LOW);
-    digitalWrite(3, HIGH);
-    lastMicros = micros();
-  }
-  if(micros() - lastMicros >= 1000000/pitch) {
-    lastMicros = micros();
-  }
+  */
 }
