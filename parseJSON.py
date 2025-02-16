@@ -2,6 +2,7 @@
 import json
 import sys
 import time
+import os
 import subprocess
 
 class Note: 
@@ -21,15 +22,28 @@ class Note:
 
 def main():
     checkArgs(sys.argv)
-    bpm = getBPM(sys.argv[1])
-    notesList = getNotes(sys.argv[2])
-    playGame(sys.argv[3], bpm, notesList)
+    folderName = getFolder(sys.argv[1])
+
+    infoName = folderName + "/" + sys.argv[2] + ".dat"
+    difficultyName = folderName + "/" + sys.argv[3] + ".dat"
+    songName = folderName + "/" + sys.argv[4] + ".egg"
+
+    bpm = getBPM(infoName)
+    notesList = getNotes(difficultyName)
+    playGame(songName, bpm, notesList)
 
 def checkArgs(arguments):
-    if len(arguments) != 4:
+    if len(arguments) != 5:
         print("Bad arguments")
-        print("usage: ./parseJSON.py <Info.dat> <Beatmap.dat> <Song.egg>")
+        print("usage: ./parseJSON.py <folderName> <Info/info> <Difficulty> <songFileName>")
         quit()
+
+def getFolder(folderName):
+    folderRoot = os.getcwd() + "/" + folderName
+    if os.path.isdir(folderRoot) == False:
+        print(f"Folder does not exist! Please enter a valid folder name!")
+        quit()
+    return folderRoot
 
 def getBPM(fileName):
     try:
@@ -69,7 +83,7 @@ def playGame(songFile, bpm, notesList):
     startTime = time.time()
     print(f"BPM: {bpm}")
     for note in notesList:
-        while (time.time() - startTime) * bpm/60 < note.time:
+        while (time.time() - startTime) * bpm/60 < (note.time - 4*bpm/60):
             continue
         print(f"{note.getColor()}, {note.getDirection()}")
 
