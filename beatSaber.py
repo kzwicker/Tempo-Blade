@@ -28,7 +28,7 @@ def main():
 def checkArgs(arguments):
     if len(arguments) != 2:
         print("Bad arguments")
-        print("usage: ./parseJSON.py <folderName>")
+        print("usage: ./beatSaber <path_to_folder>")
         quit()
     checkFolder(arguments[1])
 
