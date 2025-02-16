@@ -28,20 +28,23 @@ def main():
 def checkArgs(arguments):
     if len(arguments) != 2:
         print("Bad arguments")
-        print("usage: ./parseJSON.py <folderName> <Info/info> <Difficulty> <songFileName>")
+        print("usage: ./parseJSON.py <folderName>")
         quit()
-    if os.path.isdir(arguments[1]) == False:
+    checkFolder(arguments[1])
+
+def checkFolder(folderPath):
+    if not os.path.isdir(folderPath):
         print("Folder does not exist! Please enter a valid folder name!")
         quit()
-    if not (os.path.exists(f"{arguments[1]}/info.dat") or os.path.exists(f"{arguments[1]}/Info.dat")) or not os.path.exists(f"{arguments[1]}/Normal.dat") or not os.path.exists(f"{arguments[1]}/song.egg"):
+    if not (os.path.exists(f"{folderPath}/info.dat") or os.path.exists(f"{folderPath}/Info.dat")) or not os.path.exists(f"{folderPath}/Normal.dat") or not os.path.exists(f"{folderPath}/song.egg"):
         print("Song files missing!")
         quit()
 
-def getFilenames(folderName):
-    infoName = f"{folderName}/info.dat"
-    if os.path.exists(f"{folderName}/Info.dat"):
-        infoName = f"{folderName}/Info.dat"
-    return infoName, f"{folderName}/Normal.dat", f"{folderName}/song.egg"
+def getFilenames(folderPath):
+    infoName = f"{folderPath}/info.dat"
+    if os.path.exists(f"{folderPath}/Info.dat"):
+        infoName = f"{folderPath}/Info.dat"
+    return infoName, f"{folderPath}/Normal.dat", f"{folderPath}/song.egg"
 
 def getBPM(fileName):
     try:
@@ -81,9 +84,10 @@ def playGame(songFile, bpm, notesList):
     startTime = time.time()
     print(f"BPM: {bpm}")
     for note in notesList:
-        while (time.time() - startTime) * bpm/60 < (note.time - 4*bpm/60):
+        while (time.time() - startTime) < (note.time - 10):
             continue
-        print(f"{note.getColor()}, {note.getDirection()}")
+        #last value in print can be removed
+        print(f"{note.getColor()}, {note.getDirection()}, {note.time}, {time.time()-startTime}")
 
 if __name__ == "__main__":
     main()
