@@ -22,28 +22,26 @@ class Note:
 
 def main():
     checkArgs(sys.argv)
-    folderName = getFolder(sys.argv[1])
-
-    infoName = folderName + "/" + sys.argv[2] + ".dat"
-    difficultyName = folderName + "/" + sys.argv[3] + ".dat"
-    songName = folderName + "/" + sys.argv[4] + ".egg"
-
-    bpm = getBPM(infoName)
-    notesList = getNotes(difficultyName)
-    playGame(songName, bpm, notesList)
+    infoName, difficultyName, songName = getFilenames(sys.argv[1])
+    playGame(songName, getBPM(infoName), getNotes(difficultyName))
 
 def checkArgs(arguments):
-    if len(arguments) != 5:
+    if len(arguments) != 2:
         print("Bad arguments")
         print("usage: ./parseJSON.py <folderName> <Info/info> <Difficulty> <songFileName>")
         quit()
-
-def getFolder(folderName):
-    folderRoot = os.getcwd() + "/" + folderName
-    if os.path.isdir(folderRoot) == False:
-        print(f"Folder does not exist! Please enter a valid folder name!")
+    if os.path.isdir(arguments[1]) == False:
+        print("Folder does not exist! Please enter a valid folder name!")
         quit()
-    return folderRoot
+    if not (os.path.exists(f"{arguments[1]}/info.dat") or os.path.exists(f"{arguments[1]}/Info.dat")) or not os.path.exists(f"{arguments[1]}/Normal.dat") or not os.path.exists(f"{arguments[1]}/song.egg"):
+        print("Song files missing!")
+        quit()
+
+def getFilenames(folderName):
+    infoName = f"{folderName}/info.dat"
+    if os.path.exists(f"{folderName}/Info.dat"):
+        infoName = f"{folderName}/Info.dat"
+    return infoName, f"{folderName}/Normal.dat", f"{folderName}/song.egg"
 
 def getBPM(fileName):
     try:
