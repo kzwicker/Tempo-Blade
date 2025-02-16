@@ -20,20 +20,17 @@ class Note:
         return self.direction
 
 def main():
-    if len(sys.argv) < 4:
+    checkArgs(sys.argv)
+    bpm = getBPM(sys.argv[1])
+    notesList = getNotes(sys.argv[2])
+    playGame(sys.argv[3], bpm, notesList)
+
+def checkArgs(arguments):
+    if len(arguments) != 4:
         print("Bad arguments")
         print("usage: ./parseJSON.py <Info.dat> <Beatmap.dat> <Song.egg>")
         quit()
-    bpm = getBPM(sys.argv[1])
-    notesList = getNotes(sys.argv[2])
-    subprocess.Popen(["ffplay", "-autoexit", "-nodisp", "-loglevel", "error", sys.argv[3]])
-    startTime = time.time()
-    print(f"BPM: {bpm}")
-    for note in notesList:
-        while (time.time() - startTime) * bpm/60 < note.time:
-            continue
-        print(f"{note.getColor()}, {note.getDirection()}")
-    
+
 def getBPM(fileName):
     try:
         with open(fileName) as infoFile:
@@ -66,6 +63,15 @@ def getNotes(fileName):
     except:
         print(f"Failed to parse {fileName}")
         quit()
+
+def playGame(songFile, bpm, notesList):
+    subprocess.Popen(["ffplay", "-autoexit", "-nodisp", "-loglevel", "error", songFile])
+    startTime = time.time()
+    print(f"BPM: {bpm}")
+    for note in notesList:
+        while (time.time() - startTime) * bpm/60 < note.time:
+            continue
+        print(f"{note.getColor()}, {note.getDirection()}")
 
 if __name__ == "__main__":
     main()
