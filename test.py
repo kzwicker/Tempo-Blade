@@ -1,11 +1,12 @@
+#!/bin/python
 import subprocess
 import os
 import sys
 
 def main():
-    print(check_file_exists(sys.argv[1]))
+    print(get_subdirectories())
 
-def check_file_exists(filename):
-    return os.path.exists(filename)
+def get_subdirectories():
+    return next(os.walk('.'))[1]
 
 main()

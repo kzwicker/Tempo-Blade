@@ -21,16 +21,24 @@ class Note:
         return self.direction
 
 def main():
-    checkArgs(sys.argv)
-    infoName, difficultyName, songName = getFilenames(sys.argv[1])
+    songFolder = chooseSong()
+    infoName, difficultyName, songName = getFilenames(songFolder)
     playGame(songName, getBPM(infoName), getNotes(difficultyName))
 
-def checkArgs(arguments):
-    if len(arguments) != 2:
-        print("Bad arguments")
-        print("usage: ./beatSaber <path_to_folder>")
+def chooseSong():
+    if not os.path.isdir("./Songs"):
+        print("No song files found!")
         quit()
-    checkFolder(arguments[1])
+    print("Available Songs:")
+    songList = next(os.walk('./Songs'))[1]
+    for index, song in enumerate(songList):
+        print(f"{index + 1}: {song}")
+    num = int(input("Enter corresponding number to make a song selection: "))
+    if(num < 1 or num > len(songList)):
+        print("Invalid song choice")
+        quit()
+    checkFolder(f"./Songs/{songList[num - 1]}")
+    return f"./Songs/{songList[num - 1]}"
 
 def checkFolder(folderPath):
     if not os.path.isdir(folderPath):
