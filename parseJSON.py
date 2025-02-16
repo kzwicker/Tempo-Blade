@@ -86,7 +86,7 @@ def playGame(songFile, bpm, notesList):
     for note in notesList:
         while (time.time() - startTime) < (note.time - 10):
             continue
-        #last value in print can be removed
+        #last values in print can be removed
         print(f"{note.getColor()}, {note.getDirection()}, {note.time}, {time.time()-startTime}")
 
 if __name__ == "__main__":
