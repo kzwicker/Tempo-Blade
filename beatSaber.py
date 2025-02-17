@@ -21,7 +21,8 @@ class Note:
 
 def main():
     songFolder = chooseSong()
-    infoName, difficultyName, songName = getFilenames(songFolder)
+    difficultyName = chooseDifficulty(songFolder)
+    infoName, songName = getFilenames(songFolder)
     playGame(songName, getBPM(infoName), getNotes(difficultyName))
 
 def chooseSong():
@@ -39,6 +40,24 @@ def chooseSong():
     checkFolder(f"./Songs/{songList[num - 1]}")
     return f"./Songs/{songList[num - 1]}"
 
+def chooseDifficulty(songFolder):
+    print("Available Difficulties:")
+    difficultyList = []
+    for path, folders, files in os.walk(songFolder):
+        for fileName in files:
+            fileName = fileName[0:(len(fileName)-4)]
+            if (fileName != "info" and fileName != "Info" and fileName != "song" and fileName != "cover"):
+                difficultyList.append(fileName)
+    index = 0
+    for difficulty in difficultyList:
+        print(f"{index + 1}: {difficulty}")
+        index += 1
+    num = int(input("Enter corresponding number to make a difficulty selection: "))
+    if (num < 1 or num > len(difficultyList)):
+        print("Invalid song choice")
+        quit()
+    return f"{songFolder}/{difficultyList[num-1]}.dat"
+
 def checkFolder(folderPath):
     if not os.path.isdir(folderPath):
         print("Folder does not exist! Please enter a valid folder name!")
@@ -51,7 +70,7 @@ def getFilenames(folderPath):
     infoName = f"{folderPath}/info.dat"
     if os.path.exists(f"{folderPath}/Info.dat"):
         infoName = f"{folderPath}/Info.dat"
-    return infoName, f"{folderPath}/Normal.dat", f"{folderPath}/song.egg"
+    return infoName, f"{folderPath}/song.egg"
 
 def getBPM(fileName):
     try:
