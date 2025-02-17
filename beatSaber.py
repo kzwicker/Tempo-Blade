@@ -43,15 +43,13 @@ def chooseSong():
 def chooseDifficulty(songFolder):
     print("Available Difficulties:")
     difficultyList = []
-    for path, folders, files in os.walk(songFolder):
-        for fileName in files:
-            fileName = fileName[0:(len(fileName)-4)]
-            if (fileName != "info" and fileName != "Info" and fileName != "song" and fileName != "cover"):
-                difficultyList.append(fileName)
-    index = 0
-    for difficulty in difficultyList:
-        print(f"{index + 1}: {difficulty}")
-        index += 1
+    index = 1
+    for file in next(os.walk(songFolder))[2]:
+        fileName = file[0:file.find(".")]
+        if(fileName != "info" and fileName != "Info" and fileName != "song" and fileName != "cover"):
+            print(f"{index}: {fileName}")
+            index += 1
+            difficultyList.append(fileName)
     num = int(input("Enter corresponding number to make a difficulty selection: "))
     if (num < 1 or num > len(difficultyList)):
         print("Invalid song choice")
