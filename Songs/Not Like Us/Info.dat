@@ -1,0 +1,39 @@
+{
+  "_version": "2.0.0",
+  "_songName": "Not Like Us",
+  "_songSubName": "",
+  "_songAuthorName": "Kendrick Lamar",
+  "_levelAuthorName": "ergerf",
+  "_beatsPerMinute": 202.0,
+  "_songTimeOffset": 0.0,
+  "_shuffle": 0.0,
+  "_shufflePeriod": 0.5,
+  "_previewStartTime": 12.0,
+  "_previewDuration": 10.0,
+  "_songFilename": "song.egg",
+  "_coverImageFilename": "artworks-oOWO4BXm749P-0-t500x500.jpg",
+  "_environmentName": "DefaultEnvironment",
+  "_allDirectionsEnvironmentName": "GlassDesertEnvironment",
+  "_customData": {
+    "_editors": {
+      "_lastEditedBy": "ChroMapper",
+      "ChroMapper": {
+        "version": "0.8.523"
+      }
+    }
+  },
+  "_difficultyBeatmapSets": [
+    {
+      "_beatmapCharacteristicName": "Standard",
+      "_difficultyBeatmaps": [
+        {
+          "_difficulty": "Expert",
+          "_difficultyRank": 7,
+          "_beatmapFilename": "ExpertStandard.dat",
+          "_noteJumpMovementSpeed": 16.0,
+          "_noteJumpStartBeatOffset": 0.0
+        }
+      ]
+    }
+  ]
+}
