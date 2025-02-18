@@ -33,7 +33,11 @@ def chooseSong():
     songList = next(os.walk('./Songs'))[1]
     for index, song in enumerate(songList):
         print(f"{index + 1}: {song}")
-    num = int(input("Enter corresponding number to make a song selection: "))
+    try:
+        num = int(input("Enter corresponding number to make a song selection: "))
+    except:
+        print("Please enter a number")
+        quit()
     if(num < 1 or num > len(songList)):
         print("Invalid song choice")
         quit()
@@ -45,22 +49,31 @@ def chooseDifficulty(songFolder):
     difficultyList = []
     index = 1
     for file in next(os.walk(songFolder))[2]:
-        fileName = file[0:file.find(".")]
-        if(fileName != "info" and fileName != "Info" and fileName != "song" and fileName != "cover"):
-            print(f"{index}: {fileName}")
+        #if(fileName != "info" and fileName != "Info" and fileName != "song" and fileName != "cover"):
+        if(file == "Easy.dat" or file == "Normal.dat" or file == "Hard.dat" or file == "Expert.dat" or file == "ExpertPlus.dat"):
+            print(f"{index}: {file[0:file.find(".")]}")
             index += 1
-            difficultyList.append(fileName)
-    num = int(input("Enter corresponding number to make a difficulty selection: "))
+            difficultyList.append(file)
+    try:
+        num = int(input("Enter corresponding number to make a difficulty selection: "))
+    except:
+        print("Please enter a number")
+        quit()
     if (num < 1 or num > len(difficultyList)):
         print("Invalid song choice")
         quit()
-    return f"{songFolder}/{difficultyList[num-1]}.dat"
+    return f"{songFolder}/{difficultyList[num-1]}"
 
 def checkFolder(folderPath):
     if not os.path.isdir(folderPath):
         print("Folder does not exist! Please enter a valid folder name!")
         quit()
-    if not (os.path.exists(f"{folderPath}/info.dat") or os.path.exists(f"{folderPath}/Info.dat")) or not os.path.exists(f"{folderPath}/Normal.dat") or not os.path.exists(f"{folderPath}/song.egg"):
+    fileList = next(os.walk(folderPath))[2]
+    songFileFound = False
+    for file in fileList:
+        if(file[file.find("."):] == ".egg"):
+            songFileFound = True
+    if not ("info.dat" in fileList or "Info.dat" in fileList) or not songFileFound or not ("Easy.dat" in fileList or "Normal.dat" in fileList or "Hard.dat" in fileList or "Expert.dat" in fileList or "ExpertPlus.dat" in fileList):
         print("Song files missing!")
         quit()
 
@@ -68,7 +81,11 @@ def getFilenames(folderPath):
     infoName = f"{folderPath}/info.dat"
     if os.path.exists(f"{folderPath}/Info.dat"):
         infoName = f"{folderPath}/Info.dat"
-    return infoName, f"{folderPath}/song.egg"
+    songFileName = ""
+    for file in next(os.walk(folderPath))[2]:
+        if(file[file.find("."):] == ".egg"):
+            songFileName = file
+    return infoName, f"{folderPath}/{songFileName}"
 
 def getBPM(fileName):
     try:
