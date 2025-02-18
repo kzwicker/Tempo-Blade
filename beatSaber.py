@@ -50,8 +50,19 @@ def chooseDifficulty(songFolder):
     index = 1
     for file in next(os.walk(songFolder))[2]:
         #if(fileName != "info" and fileName != "Info" and fileName != "song" and fileName != "cover"):
-        if(file == "Easy.dat" or file == "Normal.dat" or file == "Hard.dat" or file == "Expert.dat" or file == "ExpertPlus.dat"):
-            print(f"{index}: {file[0:file.find(".")]}")
+        difficulty = ""
+        if("Easy" in file):
+            difficulty = "Easy"
+        if("Normal" in file):
+            difficulty = "Normal"
+        if("Hard" in file):
+            difficulty = "Hard"
+        if("Expert" in file):
+            difficulty = "Expert"
+        if("ExpertPlus" in file):
+            difficulty = "Expert+"
+        if(difficulty != ""):
+            print(f"{index}: {difficulty}")
             index += 1
             difficultyList.append(file)
     try:
@@ -70,10 +81,13 @@ def checkFolder(folderPath):
         quit()
     fileList = next(os.walk(folderPath))[2]
     songFileFound = False
+    difficultyFound = False
     for file in fileList:
         if(file[file.find("."):] == ".egg"):
             songFileFound = True
-    if not ("info.dat" in fileList or "Info.dat" in fileList) or not songFileFound or not ("Easy.dat" in fileList or "Normal.dat" in fileList or "Hard.dat" in fileList or "Expert.dat" in fileList or "ExpertPlus.dat" in fileList):
+        if("Easy" in file or "Normal" in file or "Hard" in file or "Expert" in file or "ExpertPlus" in file):
+            difficultyFound = True
+    if not ("info.dat" in fileList or "Info.dat" in fileList) or not songFileFound or not difficultyFound:
         print("Song files missing!")
         quit()
 
@@ -124,11 +138,13 @@ def playGame(songFile, bpm, notesList):
     subprocess.Popen(["ffplay", "-autoexit", "-nodisp", "-loglevel", "error", songFile])
     print(f"BPM: {bpm}")
     startTime = time.time()
+    #update this later
+    delay = 0.0002
     for note in notesList:
-        while (time.time() - startTime) < (note.time) / 2:# - 10):
+        while (time.time() - startTime - delay) < (note.time) * 60/bpm:# - 10):
             continue
         #last values in print can be removed
-        print(f"{note.getColor()}, {note.getDirection()}, {note.time}, {time.time()-startTime}")
+        print(f"{note.getColor()}, {note.getDirection()}, {note.time * 60/bpm}, {time.time()-startTime}")
 
 if __name__ == "__main__":
     main()
