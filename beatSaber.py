@@ -122,10 +122,10 @@ def getNotes(fileName):
 
 def playGame(songFile, bpm, notesList):
     subprocess.Popen(["ffplay", "-autoexit", "-nodisp", "-loglevel", "error", songFile])
-    startTime = time.time()
     print(f"BPM: {bpm}")
+    startTime = time.time()
     for note in notesList:
-        while (time.time() - startTime) < (note.time - 10):
+        while (time.time() - startTime) < (note.time) / 2:# - 10):
             continue
         #last values in print can be removed
         print(f"{note.getColor()}, {note.getDirection()}, {note.time}, {time.time()-startTime}")
