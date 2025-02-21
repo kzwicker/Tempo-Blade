@@ -26,24 +26,26 @@ class ScreenState:
         self.notesListRight = [None] * 16
 
     def pushTwoNotes(self, Lnote, Rnote):
-        self.notesListLeft = Lnote + self.notesListLeft
-        self.notesListRight = Rnote + self.notesListRight
+        self.notesListLeft = [Lnote] + self.notesListLeft
+        self.notesListRight = [Rnote] + self.notesListRight
         LplayedNote = self.notesListLeft.pop()
         RplayedNote = self.notesListRight.pop()
-        #if LplayedNote:   
-        #if RplayedNote:
+        if LplayedNote:   
+            print(LplayedNote)
+        if RplayedNote:
+            print(RplayedNote)
         
     def getScreen(self):
         outString = ""
         for note in self.notesListRight:
             if note:
-                outString += chr(note.getDirection())
+                outString += str(note.getDirection())
             else:
                 outString += ' '
         outString += '\n'
         for note in self.notesListLeft:
             if note:
-                outString += chr(note.getDirection())
+                outString += str(note.getDirection())
             else:
                 outString += ' '
         
@@ -175,10 +177,29 @@ def playGame(songFile, bpm, notesList):
     #update this later
     delay = 0.0002
     noteIndex = 0
+    leftNote = None
+    rightNote = None
+
+    for index, note in enumerate(notesList):
+        while(time.time() - startTime - delay < (note.getTime()) * 60/bpm):
+            continue
+        if note.getColor() == 0 and leftNote == None:
+            leftNote = notesList[noteIndex]
+        elif rightNote == None:
+            rightNote = notesList[noteIndex]
+        if time.time() - startTime - delay > (note.time) * 60/bpm:
+            screen.pushTwoNotes(leftNote, rightNote)
+            leftNote = None
+            rightNote = None
+        print(f"{note.getColor()}, {note.getDirection()}")
+    
+        
+"""
     while noteIndex < len(notesList):
         leftNote = None
         rightNote = None
-        while (time.time() - startTime - delay) < (notesList[noteIndex].time - 4) * 60/bpm:# - 10):
+        while (time.time() - startTime - delay) < (notesList[noteIndex].time - 4) * 60/bpm:
+            print(noteIndex)
             if notesList[noteIndex].getColor() == 0 and leftNote == None:
                 leftNote = notesList[noteIndex]
             elif rightNote == None:
@@ -188,8 +209,8 @@ def playGame(songFile, bpm, notesList):
                 break
 
         screen.pushTwoNotes(leftNote, rightNote)
-        print(f"\033[F {screen.getScreen()}")
-
+        #print(f"{screen.getScreen()}")
+"""
 
 if __name__ == "__main__":
     main()
