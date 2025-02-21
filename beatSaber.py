@@ -2,6 +2,7 @@
 import json
 import time
 import os
+import serial
 import subprocess
 
 class Note: 
@@ -24,24 +25,14 @@ class ScreenState:
         self.notesListLeft = [None] * 16
         self.notesListRight = [None] * 16
 
-    def update(self, note):
-        if note:
-            if(note.getColor() == 0):
-                self.notesListLeft = note + self.notesListLeft
-                playedNoteL = self.notesListLeft.pop()
-                if playedNoteL:
-                    something
-                self.notesListRight = None + self.notesListR
-
-            else:
-                self.notesListRight = note + self.notesListRight
-                playedNote = self.notesListRight.pop()
-                self.notesListRight = None + self.noteListRight
-                
-        else:
-            self.notesListLeft = None + self.notesListLeft
-            self
-
+    def pushTwoNotes(self, Lnote, Rnote):
+        self.notesListLeft = Lnote + self.notesListLeft
+        self.notesListRight = Rnote + self.notesListRight
+        LplayedNote = self.notesListLeft.pop()
+        RplayedNote = self.notesListRight.pop()
+        #if LplayedNote:   
+        #if RplayedNote:
+        
     def getScreen(self):
         outString = ""
         for note in self.notesListRight:
@@ -55,6 +46,7 @@ class ScreenState:
                 outString += chr(note.getDirection())
             else:
                 outString += ' '
+        
         return outString
             
 
@@ -178,18 +170,26 @@ def getNotes(fileName):
 def playGame(songFile, bpm, notesList):
     subprocess.Popen(["ffplay", "-autoexit", "-nodisp", "-loglevel", "error", songFile])
     print(f"BPM: {bpm}")
+    screen = ScreenState()
     startTime = time.time()
-    lastNoteBeat = 0
     #update this later
     delay = 0.0002
-    for note in notesList:
-        while (time.time() - startTime - delay) < (note.time) * 60/bpm:# - 10):
-            if((time.time() - startTime) * bpm/60 - lastNoteBeat >= 1):
-            rgrgrgrgrgrgrgrgrgrgrgrgrgrgrgrgrgrgrgrgrgrg  
-            continue
-        #last values in print can be removed
-        lastNoteBeat = note.time
-        print(f"{note.getColor()}, {note.getDirection()}, {note.time * 60/bpm}, {time.time()-startTime}")
+    noteIndex = 0
+    while noteIndex < len(notesList):
+        leftNote = None
+        rightNote = None
+        while (time.time() - startTime - delay) < (notesList[noteIndex].time - 4) * 60/bpm:# - 10):
+            if notesList[noteIndex].getColor() == 0 and leftNote == None:
+                leftNote = notesList[noteIndex]
+            elif rightNote == None:
+                rightNote = notesList[noteIndex]
+            noteIndex += 1
+            if noteIndex >= len(notesList):
+                break
+
+        screen.pushTwoNotes(leftNote, rightNote)
+        print(f"\033[F {screen.getScreen()}")
+
 
 if __name__ == "__main__":
     main()
