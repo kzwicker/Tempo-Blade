@@ -7,7 +7,7 @@ import subprocess
 class Note: 
     def __init__(self, time, color, direction):
         self.time = time
-        self.color = color
+        self.color = color # 0 = left, 1 = right
         self.direction = direction
 
     def getTime(self):
@@ -18,6 +18,47 @@ class Note:
 
     def getDirection(self):
         return self.direction
+
+class ScreenState:
+    def __init__(self):
+        self.notesListLeft = [None] * 16
+        self.notesListRight = [None] * 16
+
+    def update(self, note):
+        if note:
+            if(note.getColor() == 0):
+                self.notesListLeft = note + self.notesListLeft
+                playedNoteL = self.notesListLeft.pop()
+                if playedNoteL:
+                    something
+                self.notesListRight = None + self.notesListR
+
+            else:
+                self.notesListRight = note + self.notesListRight
+                playedNote = self.notesListRight.pop()
+                self.notesListRight = None + self.noteListRight
+                
+        else:
+            self.notesListLeft = None + self.notesListLeft
+            self
+
+    def getScreen(self):
+        outString = ""
+        for note in self.notesListRight:
+            if note:
+                outString += chr(note.getDirection())
+            else:
+                outString += ' '
+        outString += '\n'
+        for note in self.notesListLeft:
+            if note:
+                outString += chr(note.getDirection())
+            else:
+                outString += ' '
+        return outString
+            
+
+
 
 def main():
     songFolder = chooseSong()
@@ -135,16 +176,18 @@ def getNotes(fileName):
         quit()
 
 def playGame(songFile, bpm, notesList):
-    displayList = []
     subprocess.Popen(["ffplay", "-autoexit", "-nodisp", "-loglevel", "error", songFile])
     print(f"BPM: {bpm}")
     startTime = time.time()
+    lastNoteBeat = 0
     #update this later
     delay = 0.0002
     for note in notesList:
         while (time.time() - startTime - delay) < (note.time) * 60/bpm:# - 10):
+            if(time.time() - startTime)
             continue
         #last values in print can be removed
+        lastNoteBeat = note.time
         print(f"{note.getColor()}, {note.getDirection()}, {note.time * 60/bpm}, {time.time()-startTime}")
 
 if __name__ == "__main__":
