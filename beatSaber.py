@@ -185,7 +185,7 @@ def playGame(songFile, bpm, notesList):
     for note in notesList:
         while (time.time() - startTime - delay) < (note.time) * 60/bpm:# - 10):
             if((time.time() - startTime) * bpm/60 - lastNoteBeat >= 1):
-                
+            rgrgrgrgrgrgrgrgrgrgrgrgrgrgrgrgrgrgrgrgrgrg  
             continue
         #last values in print can be removed
         lastNoteBeat = note.time
