@@ -135,6 +135,7 @@ def getNotes(fileName):
         quit()
 
 def playGame(songFile, bpm, notesList):
+    displayList = []
     subprocess.Popen(["ffplay", "-autoexit", "-nodisp", "-loglevel", "error", songFile])
     print(f"BPM: {bpm}")
     startTime = time.time()
