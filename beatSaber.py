@@ -28,8 +28,8 @@ class ScreenState:
     def pushTwoNotes(self, Lnote, Rnote):
         self.notesListLeft.insert(0, Lnote)
         self.notesListRight.insert(0, Rnote)
-        self.notesListLeft.pop(16)
-        self.notesListRight.pop(16)
+        self.notesListLeft.pop()
+        self.notesListRight.pop()
 
     def getScreen(self):
         outString = ""
@@ -166,19 +166,25 @@ def getNotes(fileName):
         quit()
 
 def playGame(songFile, bpm, notesList):
+    #songDelay = 5
+    #command = f"sleep {songDelay}; ffplay -autoexit -nodisp -loglevel error {songFile}"
     subprocess.Popen(["ffplay", "-autoexit", "-nodisp", "-loglevel", "error", songFile])
+    #subprocess.Popen(command, shell=True)
     print(f"BPM: {bpm}")
     screen = ScreenState()
     startTime = time.time()
-    #update this later
-    delay = 0.0002
+    #update this later, probably high due to printing
+    delay = 0.2
     noteIndex = 0
     leftNotes = []
     rightNotes = []
+    print("\n\n\n\n")
     for beat in range(int(notesList[len(notesList) - 1].getTime())):
+        while((time.time() - startTime - delay) * bpm/60 < beat):
+            continue
         while(notesList[noteIndex].getTime() <= beat):
             #print(f"{beat}: {notesList[noteIndex]}")
-            if(notesList[noteIndex].getColor == 0):
+            if(notesList[noteIndex].getColor() == 0):
                 leftNotes.append(notesList[noteIndex])
             else:
                 rightNotes.append(notesList[noteIndex])
@@ -187,17 +193,15 @@ def playGame(songFile, bpm, notesList):
             screen.pushTwoNotes(None, None)
         while(len(leftNotes) > 0 and len(rightNotes) > 0):
             screen.pushTwoNotes(leftNotes[0], rightNotes[0])
-            leftNotes.pop()
-            rightNotes.pop()
+            leftNotes.pop(0)
+            rightNotes.pop(0)
         while(len(leftNotes) > 0):
             screen.pushTwoNotes(leftNotes[0], None)
-            leftNotes.pop()
+            leftNotes.pop(0)
         while(len(rightNotes) > 0):
             screen.pushTwoNotes(None, rightNotes[0])
-            rightNotes.pop()
-        while((time.time() - startTime) * bpm/60 < beat):
-            continue
-        print(f"__________________________\n{screen.getScreen()}\n__________________________")
+            rightNotes.pop(0)
+        print(f"\033[F\033[F\033[F\033[F________________\n{screen.getScreen()}\n________________")
 
 """
     for index, note in enumerate(notesList):
