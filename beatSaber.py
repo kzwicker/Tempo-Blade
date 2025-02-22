@@ -180,14 +180,15 @@ def playGame(songFile, bpm, notesList):
     screen = ScreenState()
     startTime = time.time()
     #update this later, probably high due to printing
-    delay = 0.2
+    delay = 0.1
     noteIndex = 0
     leftNotes = []
     rightNotes = []
     print("\n\n\n\n")
     for beat in range(int(notesList[len(notesList) - 1].getTime() + 16)):
         print(f"\033[F\033[F\033[F\033[F________________\n{screen.getScreen()}\n________________")
-        correction = 0#4 * beat/notesList[len(notesList) - 1].getTime()
+        #this correction lol
+        correction = 3.8 * beat/533
         while((time.time() - startTime + delay - correction) * bpm/60 < beat):
             continue
         if(noteIndex >= len(notesList) or noteIndex < 0):
@@ -215,7 +216,6 @@ def playGame(songFile, bpm, notesList):
         while(len(rightNotes) > 0):
             screen.pushTwoNotes(None, rightNotes[0])
             rightNotes.pop(0)
-
 """
     for index, note in enumerate(notesList):
         while(time.time() - startTime - delay < (note.getTime()) * 60/bpm):
