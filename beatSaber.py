@@ -166,10 +166,15 @@ def getNotes(fileName):
         quit()
 
 def playGame(songFile, bpm, notesList):
-    #songDelay = 5
-    #command = f"sleep {songDelay}; ffplay -autoexit -nodisp -loglevel error {songFile}"
-    subprocess.Popen(["ffplay", "-autoexit", "-nodisp", "-loglevel", "error", songFile])
-    #subprocess.Popen(command, shell=True)
+    songDelay = int(16 * 60/bpm) + 1
+    command = ""
+    if(os.name == "nt"):
+        command = f"timeout /t {songDelay} > NUL"
+    else:
+        command = f"sleep {songDelay}"
+    command += f" && ffplay -autoexit -nodisp -loglevel error \"{songFile}\""
+    #subprocess.Popen(["ffplay", "-autoexit", "-nodisp", "-loglevel", "error", songFile])
+    subprocess.Popen(command, shell=True)
     print(f"BPM: {bpm}")
     screen = ScreenState()
     startTime = time.time()
