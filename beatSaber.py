@@ -166,7 +166,8 @@ def getNotes(fileName):
         quit()
 
 def playGame(songFile, bpm, notesList):
-    songDelay = int(16 * 60/bpm) + 1
+    #scale by 4 seconds total
+    songDelay = int(16 * 60/bpm)
     command = ""
     if(os.name == "nt"):
         command = f"timeout /t {songDelay} > NUL"
@@ -184,8 +185,14 @@ def playGame(songFile, bpm, notesList):
     leftNotes = []
     rightNotes = []
     print("\n\n\n\n")
-    for beat in range(int(notesList[len(notesList) - 1].getTime())):
-        while((time.time() - startTime - delay) * bpm/60 < beat):
+    for beat in range(int(notesList[len(notesList) - 1].getTime() + 16)):
+        print(f"\033[F\033[F\033[F\033[F________________\n{screen.getScreen()}\n________________")
+        correction = 0#4 * beat/notesList[len(notesList) - 1].getTime()
+        while((time.time() - startTime + delay - correction) * bpm/60 < beat):
+            continue
+        if(noteIndex >= len(notesList) or noteIndex < 0):
+            screen.pushTwoNotes(None, None)
+            #print(f"\033[F\033[F\033[F\033[F________________\n{screen.getScreen()}\n________________")
             continue
         while(notesList[noteIndex].getTime() <= beat):
             #print(f"{beat}: {notesList[noteIndex]}")
@@ -194,6 +201,8 @@ def playGame(songFile, bpm, notesList):
             else:
                 rightNotes.append(notesList[noteIndex])
             noteIndex += 1
+            if(noteIndex >= len(notesList)):
+                break
         if(len(leftNotes) + len(rightNotes) == 0):
             screen.pushTwoNotes(None, None)
         while(len(leftNotes) > 0 and len(rightNotes) > 0):
@@ -206,7 +215,6 @@ def playGame(songFile, bpm, notesList):
         while(len(rightNotes) > 0):
             screen.pushTwoNotes(None, rightNotes[0])
             rightNotes.pop(0)
-        print(f"\033[F\033[F\033[F\033[F________________\n{screen.getScreen()}\n________________")
 
 """
     for index, note in enumerate(notesList):
