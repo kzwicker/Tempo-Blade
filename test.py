@@ -1,2 +1,3 @@
-list = []
-print(list[0])
+list = [None]
+list.pop()
+print(len(list))
