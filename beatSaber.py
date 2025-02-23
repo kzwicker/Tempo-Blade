@@ -190,7 +190,7 @@ def playGame(songFile, bpm, notesList):
         print(f"\033[F\033[F\033[F\033[F\033[F________________\n{screen.getScreen()}\n________________")
         #this correction lol
         print(f"Accumulated delay: {delay}")
-        delay += time.time()-loop_start + 0.0035 #magic number from trial and error
+        delay += time.time()-loop_start + 0.0033 #magic number from trial and error
         while((time.time() - startTime - delay) * bpm/60 < beat):
             continue
         loop_start = time.time()
