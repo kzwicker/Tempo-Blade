@@ -178,19 +178,17 @@ def playGame(songFile, bpm, notesList):
     subprocess.Popen(command, shell=True)
     print(f"BPM: {bpm}")
     screen = ScreenState()
-    startTime = time.time()
-    #update this later, probably high due to printing
-    loop_start = time.time()
+    offset = 0.00131752305 * notesList[len(notesList) - 1].getTime()/len(notesList) #trial and error
     delay = 0
     noteIndex = 0
     leftNotes = []
     rightNotes = []
+    startTime = time.time()
+    loop_start = time.time()
     print("\n\n\n\n")
     for beat in range(int(notesList[len(notesList) - 1].getTime() + 18)):
-        print(f"\033[F\033[F\033[F\033[F\033[F________________\n{screen.getScreen()}\n________________")
-        #this correction lol
-        print(f"Accumulated delay: {delay}")
-        delay += time.time()-loop_start + 0.0033 #magic number from trial and error
+        print(f"\033[F\033[F\033[F\033[F\033[F----------------\n{screen.getScreen()}\n----------------")
+        delay += time.time()-loop_start + offset #offset replaced magic number from trial and error: 0.003-0.0035
         while((time.time() - startTime - delay) * bpm/60 < beat):
             continue
         loop_start = time.time()
@@ -198,8 +196,8 @@ def playGame(songFile, bpm, notesList):
             screen.pushTwoNotes(None, None)
             #print(f"\033[F\033[F\033[F\033[F________________\n{screen.getScreen()}\n________________")
             continue
+        #This WILL violently shit itself if there are suddenly a large number of notes in the same beat
         while(notesList[noteIndex].getTime() <= beat):
-            #print(f"{beat}: {notesList[noteIndex]}")
             if(notesList[noteIndex].getColor() == 0):
                 leftNotes.append(notesList[noteIndex])
             else:
