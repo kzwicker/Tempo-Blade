@@ -20,6 +20,26 @@ class Note:
 
     def getDirection(self):
         return self.direction
+    def getEmoji(self):
+        match self.direction:
+            case 0:
+                return '🡑'
+            case 1:
+                return '🡓'
+            case 2:
+                return '🡐'
+            case 3:
+                return '🡒'
+            case 4:
+                return '🡔'
+            case 5:
+                return '🡕'
+            case 6:
+                return '🡗'
+            case 7:
+                return '🡖'
+            case 8:
+                return '•'
 
 class ScreenState:
     def __init__(self):
@@ -52,11 +72,11 @@ class ScreenState:
         for i in range(0,16):
             outString += "|"
             if self.notesListLeft[i] is not None:
-                outString += str(self.notesListLeft[i].getDirection())
+                outString += self.notesListLeft[i].getEmoji()
             else:
                 outString += ' '
             if self.notesListRight[i] is not None:
-                outString += str(self.notesListRight[i].getDirection())
+                outString += self.notesListRight[i].getEmoji()
             else:
                 outString += ' '
             outString += "|\n"
