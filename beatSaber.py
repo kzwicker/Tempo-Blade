@@ -3,6 +3,7 @@ import json
 import time
 import os
 import serial
+import serial.tools.list_ports as listports
 import subprocess
 
 class Note: 
@@ -35,17 +36,32 @@ class ScreenState:
         outString = ""
         for note in self.notesListRight:
             if note is not None:
-                outString += str(note.getDirection())
+                outString += chr(note.getDirection())
             else:
                 outString += ' '
         outString += '\n'
         for note in self.notesListLeft:
             if note is not None:
-                outString += str(note.getDirection())
+                outString += chr(note.getDirection())
             else:
                 outString += ' '
-        
         return outString
+
+    def getDebug(self):
+        outString = ""
+        for i in range(0,16):
+            outString += "|"
+            if self.notesListLeft[i] is not None:
+                outString += str(self.notesListLeft[i].getDirection())
+            else:
+                outString += ' '
+            if self.notesListRight[i] is not None:
+                outString += str(self.notesListRight[i].getDirection())
+            else:
+                outString += ' '
+            outString += "|\n"
+        return outString
+
             
 
 
@@ -53,8 +69,9 @@ class ScreenState:
 def main():
     songFolder = chooseSong()
     difficultyName = chooseDifficulty(songFolder)
+    port = choosePort()
     infoName, songName = getFilenames(songFolder)
-    playGame(songName, getBPM(infoName), getNotes(difficultyName))
+    playGame(songName, getBPM(infoName), getNotes(difficultyName), port)
 
 def chooseSong():
     if not os.path.isdir("./Songs"):
@@ -104,6 +121,19 @@ def chooseDifficulty(songFolder):
         print("Invalid song choice")
         quit()
     return f"{songFolder}/{difficultyList[num-1]}"
+
+def choosePort():
+    print("Available Ports:")
+    comports = listports.comports()
+    for index, port in enumerate(comports):
+        print(f"{index}: {port.name}")
+    try:
+        num = int(input("Enter corresponding number to make a port selection: "))
+    except:
+        print("Port not specified, entering debug mode")
+        return None
+    return serial.Serial(comports[num].device, 115200)
+
 
 def checkFolder(folderPath):
     if not os.path.isdir(folderPath):
@@ -164,8 +194,8 @@ def getNotes(fileName):
         print(f"Failed to parse {fileName}")
         quit()
 
-def playGame(songFile, bpm, notesList):
-    songDelay = int(16 * 60/bpm)
+def playGame(songFile, bpm, notesList, port):
+    songDelay = (4 * 60/bpm)
     command = ""
     if(os.name == "nt"):
         command = f"timeout /t {songDelay} > NUL"
@@ -183,18 +213,23 @@ def playGame(songFile, bpm, notesList):
     rightNotes = []
     startTime = time.time()
     loop_start = time.time()
-    print("\n\n\n\n")
-    for beat in range(int(notesList[len(notesList) - 1].getTime() + 18)):
-        print(f"\033[4F----------------\n{screen.getScreen()}\n----------------")
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    for beat in range(int(notesList[len(notesList) - 1].getTime() + 18) * 4):
+        # print screen to serial port or terminal
+        if port:
+            port.write(bytes(screen.getScreen() + '\f', "utf-8"))
+        else:
+            print(f"\033[17F{screen.getDebug()}")
+
         delay += time.time()-loop_start + offset #offset replaced magic number from trial and error: 0.003-0.0035
-        while((time.time() - startTime - delay) * bpm/60 < beat):
+        while((time.time() - startTime - delay) * bpm/60 < beat/4):
             continue
         loop_start = time.time()
         if(noteIndex >= len(notesList) or noteIndex < 0):
             screen.pushTwoNotes(None, None)
             continue
         #This WILL violently shit itself if there are suddenly a large number of notes in the same beat
-        while(notesList[noteIndex].getTime() <= beat):
+        while(notesList[noteIndex].getTime() <= beat/4):
             if(notesList[noteIndex].getColor() == 0):
                 leftNotes.append(notesList[noteIndex])
             else:
