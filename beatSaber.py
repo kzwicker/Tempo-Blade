@@ -185,7 +185,7 @@ def playGame(songFile, bpm, notesList):
     noteIndex = 0
     leftNotes = []
     rightNotes = []
-    print("\n\n\n\n\n")
+    print("\n\n\n\n")
     for beat in range(int(notesList[len(notesList) - 1].getTime() + 18)):
         print(f"\033[F\033[F\033[F\033[F\033[F________________\n{screen.getScreen()}\n________________")
         #this correction lol
