@@ -80,7 +80,6 @@ def chooseDifficulty(songFolder):
     difficultyList = []
     index = 1
     for file in next(os.walk(songFolder))[2]:
-        #if(fileName != "info" and fileName != "Info" and fileName != "song" and fileName != "cover"):
         difficulty = ""
         if("Easy" in file):
             difficulty = "Easy"
@@ -166,7 +165,6 @@ def getNotes(fileName):
         quit()
 
 def playGame(songFile, bpm, notesList):
-    #scale by 4 seconds total
     songDelay = int(16 * 60/bpm)
     command = ""
     if(os.name == "nt"):
@@ -194,7 +192,6 @@ def playGame(songFile, bpm, notesList):
         loop_start = time.time()
         if(noteIndex >= len(notesList) or noteIndex < 0):
             screen.pushTwoNotes(None, None)
-            #print(f"\033[F\033[F\033[F\033[F________________\n{screen.getScreen()}\n________________")
             continue
         #This WILL violently shit itself if there are suddenly a large number of notes in the same beat
         while(notesList[noteIndex].getTime() <= beat):
@@ -217,38 +214,6 @@ def playGame(songFile, bpm, notesList):
         while(len(rightNotes) > 0):
             screen.pushTwoNotes(None, rightNotes[0])
             rightNotes.pop(0)
-"""
-    for index, note in enumerate(notesList):
-        while(time.time() - startTime - delay < (note.getTime()) * 60/bpm):
-            continue
-        if note.getColor() == 0 and leftNote == None:
-            leftNote = notesList[noteIndex]
-        elif rightNote == None:
-            rightNote = notesList[noteIndex]
-        if time.time() - startTime - delay > (note.time) * 60/bpm:
-            screen.pushTwoNotes(leftNote, rightNote)
-            leftNote = None
-            rightNote = None
-        print(f"{note.getColor()}, {note.getDirection()}")
-"""    
-        
-"""
-    while noteIndex < len(notesList):
-        leftNote = None
-        rightNote = None
-        while (time.time() - startTime - delay) < (notesList[noteIndex].time - 4) * 60/bpm:
-            print(noteIndex)
-            if notesList[noteIndex].getColor() == 0 and leftNote == None:
-                leftNote = notesList[noteIndex]
-            elif rightNote == None:
-                rightNote = notesList[noteIndex]
-            noteIndex += 1
-            if noteIndex >= len(notesList):
-                break
-
-        screen.pushTwoNotes(leftNote, rightNote)
-        #print(f"{screen.getScreen()}")
-"""
 
 if __name__ == "__main__":
     main()
