@@ -1,3 +1,4 @@
-list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-list.pop()
-print(list)
+import time
+x = time.time()
+y = time.time()
+print(y - x)
