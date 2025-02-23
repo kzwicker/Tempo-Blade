@@ -154,6 +154,8 @@ void loop() {
       case '\f':
         lcd.setCursor(0,0);
         break;
+      case 8:
+        lcd.write('X');
       default:
         lcd.write(c);
     }
