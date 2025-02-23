@@ -37,13 +37,13 @@ class ScreenState:
             if note is not None:
                 outString += str(note.getDirection())
             else:
-                outString += '-'
+                outString += ' '
         outString += '\n'
         for note in self.notesListLeft:
             if note is not None:
                 outString += str(note.getDirection())
             else:
-                outString += '-'
+                outString += ' '
         
         return outString
             
@@ -185,7 +185,7 @@ def playGame(songFile, bpm, notesList):
     loop_start = time.time()
     print("\n\n\n\n")
     for beat in range(int(notesList[len(notesList) - 1].getTime() + 18)):
-        print(f"\033[F\033[F\033[F\033[F\033[F----------------\n{screen.getScreen()}\n----------------")
+        print(f"\033[4F----------------\n{screen.getScreen()}\n----------------")
         delay += time.time()-loop_start + offset #offset replaced magic number from trial and error: 0.003-0.0035
         while((time.time() - startTime - delay) * bpm/60 < beat):
             continue
