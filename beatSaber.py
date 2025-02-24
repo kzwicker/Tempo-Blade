@@ -202,7 +202,10 @@ def getNotes(fileName):
                 quit()
             direction = 0
             notesList = []
-            for note in notesJSON["_notes"]:
+            notesLabel = "_notes"
+            if(notesJSON[notesLabel] == []):
+                notesLabel = "_events"
+            for note in notesJSON[notesLabel]:
                 direction = 8
                 if "_cutDirection" in note:
                     direction = note["_cutDirection"]
@@ -215,10 +218,11 @@ def getNotes(fileName):
         quit()
 
 def playGame(songFile, bpm, notesList, port):
-    songDelay = (4 * 60/bpm)
+    songDelay = 4 * 60/bpm
     command = ""
     if(os.name == "nt"):
-        command = f"timeout /t {songDelay} > NUL"
+        #this needs to be casted to int for windows
+        command = f"timeout /t {int(songDelay)} > NUL"
     else:
         command = f"sleep {songDelay}"
     command += f" && ffplay -autoexit -nodisp -loglevel error \"{songFile}\""
