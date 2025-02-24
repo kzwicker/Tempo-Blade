@@ -219,7 +219,7 @@ def playGame(songFile, bpm, notesList, port):
     noteIndex = 0
     leftNotes = []
     rightNotes = []
-    print("\n" * 16)
+    print("\n" * 15)
     pygame.mixer.pre_init(44100, -16, 1, 512)
     pygame.mixer.init()
     pygame.mixer.music.load(songFile)
@@ -230,13 +230,12 @@ def playGame(songFile, bpm, notesList, port):
         if port:
             port.write(bytes(screen.getScreen() + '\f', "utf-8"))
         else:
-            print(f"\033[17F{screen.getDebug()}")
+            print(f"\033[16F{screen.getDebug()}", end="")
         while((time.time() - startTime) * bpm/60 <= (beat-15.25)/4):
             continue
         if(noteIndex >= len(notesList) or noteIndex < 0):
             screen.pushTwoNotes(None, None)
             continue
-        #This WILL violently shit itself if there are suddenly a large number of notes in the same beat
         while(notesList[noteIndex].getTime() <= beat/4):
             if(notesList[noteIndex].getColor() == 0):
                 leftNotes.append(notesList[noteIndex])
