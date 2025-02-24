@@ -4,7 +4,7 @@ import time
 import os
 import serial
 import serial.tools.list_ports as listports
-import subprocess
+import pygame
 
 class Note: 
     def __init__(self, time, color, direction):
@@ -81,10 +81,6 @@ class ScreenState:
                 outString += ' '
             outString += "|\n"
         return outString
-
-            
-
-
 
 def main():
     songFolder = chooseSong()
@@ -218,37 +214,25 @@ def getNotes(fileName):
         quit()
 
 def playGame(songFile, bpm, notesList, port):
-    songDelay = 4 * 60/bpm
-    command = ""
-    if(os.name == "nt"):
-        #this needs to be casted to int for windows
-        command = f"timeout /t {int(songDelay)} > NUL"
-    else:
-        command = f"sleep {songDelay}"
-    command += f" && ffplay -autoexit -nodisp -loglevel error \"{songFile}\""
-    #subprocess.Popen(["ffplay", "-autoexit", "-nodisp", "-loglevel", "error", songFile])
-    subprocess.Popen(command, shell=True)
     print(f"BPM: {bpm}")
     screen = ScreenState()
-    offset = 0.00131752305 * notesList[len(notesList) - 1].getTime()/len(notesList) #trial and error
-    delay = 0
     noteIndex = 0
     leftNotes = []
     rightNotes = []
+    print("\n" * 16)
+    pygame.mixer.pre_init(44100, -16, 1, 512)
+    pygame.mixer.init()
+    pygame.mixer.music.load(songFile)
+    pygame.mixer.music.play()
     startTime = time.time()
-    loop_start = time.time()
-    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     for beat in range(int(notesList[len(notesList) - 1].getTime() + 18) * 4):
         # print screen to serial port or terminal
         if port:
             port.write(bytes(screen.getScreen() + '\f', "utf-8"))
         else:
             print(f"\033[17F{screen.getDebug()}")
-
-        #delay += time.time()-loop_start + offset #offset replaced magic number from trial and error: 0.003-0.0035
-        while((time.time() - startTime) * bpm/60 < beat/4):
+        while((time.time() - startTime) * bpm/60 < (beat-16)/4):
             continue
-        loop_start = time.time()
         if(noteIndex >= len(notesList) or noteIndex < 0):
             screen.pushTwoNotes(None, None)
             continue
