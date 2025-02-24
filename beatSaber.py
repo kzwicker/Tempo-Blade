@@ -108,10 +108,24 @@ def chooseSong():
     checkFolder(f"./Songs/{songList[num - 1]}")
     return f"./Songs/{songList[num - 1]}"
 
+def sortDifficulty(file):
+    if("Easy" in file):
+        return 0
+    if("Normal" in file):
+        return 1
+    if("Hard" in file):
+        return 2
+    if("Expert" in file):
+        return 3
+    if("ExpertPlus" in file):
+        return 4
+    
+        
+
 def chooseDifficulty(songFolder):
     print("Available Difficulties:")
+    difficultyFileList = []
     difficultyList = []
-    index = 1
     for file in next(os.walk(songFolder))[2]:
         difficulty = ""
         if("Easy" in file):
@@ -125,9 +139,13 @@ def chooseDifficulty(songFolder):
         if("ExpertPlus" in file):
             difficulty = "Expert+"
         if(difficulty != ""):
-            print(f"{index}: {difficulty}")
-            index += 1
-            difficultyList.append(file)
+            difficultyList.append(difficulty)
+            difficultyFileList.append(file)
+    difficultyList.sort(key=sortDifficulty)
+    difficultyFileList.sort(key=sortDifficulty)
+    for index, difficulty in enumerate(difficultyList):
+        print(f"{index + 1}: {difficulty}")
+
     try:
         num = int(input("Enter corresponding number to make a difficulty selection: "))
     except:
@@ -136,7 +154,7 @@ def chooseDifficulty(songFolder):
     if (num < 1 or num > len(difficultyList)):
         print("Invalid song choice")
         quit()
-    return f"{songFolder}/{difficultyList[num-1]}"
+    return f"{songFolder}/{difficultyFileList[num-1]}"
 
 def choosePort():
     print("Available Ports:")
