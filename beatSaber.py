@@ -241,8 +241,8 @@ def playGame(songFile, bpm, notesList, port):
         else:
             print(f"\033[17F{screen.getDebug()}")
 
-        delay += time.time()-loop_start + offset #offset replaced magic number from trial and error: 0.003-0.0035
-        while((time.time() - startTime - delay) * bpm/60 < beat/4):
+        #delay += time.time()-loop_start + offset #offset replaced magic number from trial and error: 0.003-0.0035
+        while((time.time() - startTime) * bpm/60 < beat/4):
             continue
         loop_start = time.time()
         if(noteIndex >= len(notesList) or noteIndex < 0):

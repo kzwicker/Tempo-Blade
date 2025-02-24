@@ -145,21 +145,32 @@ void loop() {
   }
   tone(6, pitch, 1000);
 */
-  if(Serial.available() > 0) {
+  char buffer[32];
+  int i = 0;
+  while(Serial.available() > 0) {
     int c = Serial.read();
     switch(c) {
       case '\n':
-        lcd.setCursor(0,1);
+        i = 16;
         break;
       case '\f':
-        lcd.setCursor(0,0);
+        i = 0;
         break;
       case 8:
-        lcd.write('X');
+        buffer[i++] = 'X';
       default:
-        lcd.write(c);
+        buffer[i++] = (char)c;
     }
   }
+
+  for(int j = 0; j < 16; j++) {
+    lcd.write(buffer[j]);
+  }
+  lcd.setCursor(0,1);
+  for(int j = 16; j < 32; j++) {
+    lcd.write(buffer[j]);
+  }
+  lcd.setCursor(0,0);
 
 
 /*
