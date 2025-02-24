@@ -231,7 +231,7 @@ def playGame(songFile, bpm, notesList, port):
             port.write(bytes(screen.getScreen() + '\f', "utf-8"))
         else:
             print(f"\033[17F{screen.getDebug()}")
-        while((time.time() - startTime) * bpm/60 < (beat-16)/4):
+        while((time.time() - startTime) * bpm/60 <= (beat-15)/4):
             continue
         if(noteIndex >= len(notesList) or noteIndex < 0):
             screen.pushTwoNotes(None, None)
