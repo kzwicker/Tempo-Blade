@@ -116,17 +116,6 @@ void setup() {
     lcd.createChar(i, arrows[i]);
   }
   lcd.begin(columns, rows);
-  /*
-  byte screen[] = {0,1,' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',7,' ',
-                   ' ',' ',' ',' ',3,' ',' ',' ',' ',' ',' ',' ',' ',' ',5,' '};
-  for(int i = 0; i < 16; i++) {
-    lcd.write(screen[i]);
-  }
-  lcd.setCursor(0,1);
-  for(int i = 0; i < 16; i++) {
-    lcd.write(screen[i+16]);
-  }
-  */
 
   pinMode(5, OUTPUT);
   pinMode(6, OUTPUT);

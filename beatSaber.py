@@ -194,7 +194,7 @@ def choosePort():
     print("Available Ports:")
     comports = listports.comports()
     for index, port in enumerate(comports):
-        print(f"{index}: {port.name}")
+        print(f"{index}: {port.name} - {port.manufacturer}")
     try:
         num = int(input("Enter corresponding number to make a port selection or leave blank for debug: "))
     except:
