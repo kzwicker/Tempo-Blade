@@ -16,6 +16,18 @@ width = screen.get_width()
 height = screen.get_height() 
 font = pygame.font.SysFont('Corbel',35)
 
+
+class Directions:
+    up = 0
+    down = 1
+    left = 2
+    right = 3
+    upleft = 4
+    upright = 5
+    downleft = 6
+    downright = 7
+    any = 8
+
 class Note: 
     def __init__(self, time, color, direction):
         self.time = time
@@ -32,23 +44,23 @@ class Note:
         return self.direction
     def getEmoji(self):
         match self.direction:
-            case 0:
+            case Directions.up:
                 return '🡑'
-            case 1:
+            case Directions.down:
                 return '🡓'
-            case 2:
+            case Directions.left:
                 return '🡐'
-            case 3:
+            case Directions.right:
                 return '🡒'
-            case 4:
+            case Directions.upleft:
                 return '🡔'
-            case 5:
+            case Directions.upright:
                 return '🡕'
-            case 6:
+            case Directions.downleft:
                 return '🡗'
-            case 7:
+            case Directions.downright:
                 return '🡖'
-            case 8:
+            case Directions.any:
                 return '•'
 
 class ScreenState:
@@ -93,11 +105,33 @@ class ScreenState:
         return outString
 
 def main():
+    global gameType
+    gameType = chooseGameType()
     songFolder = chooseSong()
     difficultyName = chooseDifficulty(songFolder)
     port = choosePort()
     infoName, songName = getFilenames(songFolder)
     playGame(songName, getBPM(infoName), getNotes(difficultyName), port)
+
+class gameTypes:
+    terminal = 1
+    serial = 2
+    pygame = 3
+
+def chooseGameType():
+    print("Game types:")
+    print("1: terminal")
+    print("2: serial")
+    print("3: pygame")
+    try:
+        num = int(input("Enter corresponding number to make a game selection: "))
+    except:
+        print("Please enter a number")
+        quit()
+    if num < 1 or num > 3:
+        print("Invalid game choice")
+        quit()
+    return num
 
 def chooseSong():
     if not os.path.isdir("./Songs"):
@@ -170,12 +204,16 @@ def choosePort():
     print("Available Ports:")
     comports = listports.comports()
     for index, port in enumerate(comports):
-        print(f"{index}: {port.name}")
+        print(f"{index}: {port.name} - {port.manufacturer}")
     try:
         num = int(input("Enter corresponding number to make a port selection or leave blank for debug: "))
     except:
         print("Port not specified, entering debug mode")
         return None
+    if num < 0 or num >= len(comports):
+        print("Invalid port choice")
+        quit()
+
     return serial.Serial(comports[num].device, 115200)
 
 
@@ -242,12 +280,14 @@ def getNotes(fileName):
         quit()
 
 def playGame(songFile, bpm, notesList, port):
+    global gameType
     print(f"BPM: {bpm}")
     screen = ScreenState()
     noteIndex = 0
     leftNotes = []
     rightNotes = []
-    print("\n" * 15)
+    if gameType == gameTypes.terminal:
+        print("\n" * 15)
     pygame.mixer.pre_init(44100, -16, 1, 512)
     pygame.mixer.init()
     pygame.mixer.music.load(songFile)
@@ -255,9 +295,9 @@ def playGame(songFile, bpm, notesList, port):
     startTime = time.time()
     for beat in range(int(notesList[len(notesList) - 1].getTime() + 18) * 4):
         # print screen to serial port or terminal
-        if port:
+        if gameType == gameTypes.serial:
             port.write(bytes(screen.getScreen() + '\f', "utf-8"))
-        else:
+        if gameType == gameTypes.terminal:
             print(f"\033[16F{screen.getDebug()}", end="")
         while((time.time() - startTime) * bpm/60 <= (beat-15.25)/4):
             continue
