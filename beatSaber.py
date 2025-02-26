@@ -6,6 +6,16 @@ import serial
 import serial.tools.list_ports as listports
 import pygame
 
+pygame.init()
+res = (720,720) 
+screen = pygame.display.set_mode(res) 
+color = (255,255,255) 
+color_light = (170,170,170) 
+color_dark = (100,100,100) 
+width = screen.get_width() 
+height = screen.get_height() 
+font = pygame.font.SysFont('Corbel',35)
+
 class Note: 
     def __init__(self, time, color, direction):
         self.time = time
@@ -120,10 +130,10 @@ def sortDifficulty(file):
     if("ExpertPlus" in file):
         return 4
     
-        
-
 def chooseDifficulty(songFolder):
-    print("Available Difficulties:")
+    screen.fill(255, 255, 255)
+    text = font.render("Available Difficulties:", True, color)
+
     difficultyFileList = []
     difficultyList = []
     for file in next(os.walk(songFolder))[2]:
