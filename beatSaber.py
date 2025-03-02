@@ -104,6 +104,12 @@ class ScreenState:
             outString += "|\n"
         return outString
 
+# for use with the pygame version
+class Arrow:
+    def __init__(self):
+        pygame
+
+
 def main():
     global gameType
     gameType = chooseGameType()
@@ -286,8 +292,14 @@ def playGame(songFile, bpm, notesList, port):
     noteIndex = 0
     leftNotes = []
     rightNotes = []
+    running = False
     if gameType == gameTypes.terminal:
         print("\n" * 15)
+    elif gameType == gameTypes.pygame:
+        display = pygame.display.set_mode((800, 600))
+        pygame.display.set_caption('Tempo Blade')
+        display.fill((0, 0, 0))
+        pygame.display.flip()
     pygame.mixer.pre_init(44100, -16, 1, 512)
     pygame.mixer.init()
     pygame.mixer.music.load(songFile)
@@ -299,6 +311,8 @@ def playGame(songFile, bpm, notesList, port):
             port.write(bytes(screen.getScreen() + '\f', "utf-8"))
         if gameType == gameTypes.terminal:
             print(f"\033[16F{screen.getDebug()}", end="")
+        if gameType == gameTypes.pygame:
+            running = True
         while((time.time() - startTime) * bpm/60 <= (beat-15.25)/4):
             continue
         if(noteIndex >= len(notesList) or noteIndex < 0):
@@ -324,6 +338,8 @@ def playGame(songFile, bpm, notesList, port):
         while(len(rightNotes) > 0):
             screen.pushTwoNotes(None, rightNotes[0])
             rightNotes.pop(0)
+
+def updatePygame
 
 if __name__ == "__main__":
     main()

@@ -9,7 +9,13 @@ const int d7 = 12;
 
 const int columns = 16;
 const int rows = 2;
-unsigned long lastMicros = 0;
+
+const int mpu1 = 0x68;
+const int accelReg = 0x3B;
+const int pwrReg = 0x6B;
+
+const int threshold = 10000;
+const int g = 17300;
 
 enum directions {
     UPD = 0,
@@ -120,6 +126,11 @@ void setup() {
   pinMode(5, OUTPUT);
   pinMode(6, OUTPUT);
   Serial.begin(115200);
+
+  Wire.beginTransmission(mpu1);
+  Wire.write(pwrReg);
+  Wire.write(0);
+  Wire.endTransmission(true);
 }
 // good wrong buzzer sound: 4ms high, 4ms low
 void loop() {
@@ -154,6 +165,65 @@ void loop() {
         lcd.write((char)c);
     }
   }
+
+
+  /*
+  struct {
+    int16_t x;
+    int16_t y;
+    int16_t z;
+  } Accelerometer1;
+  Wire.beginTransmission(mpu1);
+  Wire.write(accelReg);
+  Wire.endTransmission(false);
+  Wire.requestFrom(mpu1, 6, true);
+  for(int i = 0; i < 6; i++) {
+    ((byte *)&Accelerometer1)[i ^ 1] = Wire.read();
+  }
+
+  static int i = 0;
+  static int accBuffer[10];
+  accBuffer[i] = Accelerometer1.x;
+  i = (i+1) % 10;
+
+  static int prevAccel = 0;
+
+  int sum = 0;
+  for(int i = 0; i < 10; i++) {
+    sum += accBuffer[i];
+  }
+  int jerk = sum - prevAccel;
+  prevAccel = sum;
+
+  Serial.print(jerk);
+
+  */
+  
+  /*
+  Serial.print(Accelerometer1.y);
+  Serial.print(", ");
+  Serial.print(Accelerometer1.z);
+  Serial.print(", ");
+  if(Accelerometer1.x > threshold) {
+    Serial.print("+X");
+  }
+  if(Accelerometer1.x < -threshold) {
+    Serial.print("-X");
+  }
+  if(Accelerometer1.z > g + threshold) {
+    Serial.print("+Z");
+  }
+  if(Accelerometer1.z < g - threshold) {
+    Serial.print("-Z");
+  }
+  */
+  /*
+  Serial.println();
+
+  delay(100);
+  */
+
+
 
 
 /*
