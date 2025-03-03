@@ -6,6 +6,7 @@ import serial
 import serial.tools.list_ports as listports
 import pygame
 import requests
+import zipfile
 """
 pygame.init()
 res = (720,720) 
@@ -120,6 +121,8 @@ class Arrow(pygame.sprite.Sprite):
             arr
 """
 def main():
+    if(input("Do you want to load a new song? ")[0].lower() == "y"):
+        loadNewSong()
     global gameType
     gameType = chooseGameType()
     songFolder = chooseSong()

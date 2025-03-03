@@ -16,7 +16,7 @@ for x in range(len(songs["docs"]) - 1):
     print(f"Uploaded by {songs["docs"][x]["uploader"]["name"]}\n")
 choice = int(input("Enter song choice (anything outside will default to 1): "))
 if(choice > len(songs["docs"]) or choice < 1):
-    choice = 0
+    choice = 1
 url = songs["docs"][choice - 1]["versions"][0]["downloadURL"]
 filename = "_garbage.zip"
 folder = "Songs/"
