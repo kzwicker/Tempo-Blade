@@ -107,16 +107,17 @@ class ScreenState:
 # for use with the pygame version
 class Arrow(pygame.sprite.Sprite):
     def __init__(self, note):
-        super().__init__() self.note = note
+        super().__init__()
+        self.note = note
         self.side = note.getColor()
         self.direction = note.getDirection()
-
+"""
     def loadArrow(self):
         if self.side == 0:
             arrSprite = pg.image.load('./Images/')
         else:
             arr
-
+"""
 def main():
     global gameType
     gameType = chooseGameType()
@@ -341,8 +342,8 @@ def playGame(songFile, bpm, notesList, port):
         while(len(rightNotes) > 0):
             screen.pushTwoNotes(None, rightNotes[0])
             rightNotes.pop(0)
-
+"""
 def updatePygame
-
+"""
 if __name__ == "__main__":
     main()

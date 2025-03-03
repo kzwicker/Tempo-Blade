@@ -1,0 +1,326 @@
+{
+    "docs": [
+        {
+            "id": "17c1",
+            "name": "4'33\"",
+            "description": "4′33″ (pronounced \"Four minutes, thirty-three seconds\" or just \"Four thirty-three\") is a three-movement composition by American experimental composer John Cage (1912–1992).\r\n\r\nIt was composed in 1952, for any instrument or combination of instruments, and the score instructs the performer(s) not to play their instrument(s) during the entire duration of the piece throughout the three movements.",
+            "uploader": {
+                "id": 4285629,
+                "name": "lolpants",
+                "hash": "5cff0b7398cc5a672c84efe4",
+                "avatar": "https://cdn.beatsaver.com/avatar/3d6d43f0062cd480b5d71c2735e6077098c1b742.png",
+                "type": "DISCORD",
+                "admin": true,
+                "curator": false,
+                "seniorCurator": false,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4285629/playlist"
+            },
+            "metadata": {
+                "bpm": 120.0,
+                "duration": 273,
+                "songName": "4'33\"",
+                "songSubName": "",
+                "songAuthorName": "John Cage",
+                "levelAuthorName": "lolPants"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 14,
+                "downvotes": 1,
+                "score": 0.821,
+                "reviews": 1
+            },
+            "uploaded": "2018-09-28T21:56:30Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "66ea16584640341a22048c20b0c92895cba31fd6",
+                    "key": "17c1",
+                    "state": "Published",
+                    "createdAt": "2018-09-28T21:56:30Z",
+                    "sageScore": 3,
+                    "diffs": [
+                        {
+                            "njs": 10.0,
+                            "offset": 0.0,
+                            "notes": 0,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 0.0,
+                            "length": 0.0,
+                            "characteristic": "Standard",
+                            "difficulty": "Easy",
+                            "events": 7,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 0.0,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 0,
+                            "environment": "NiceEnvironment"
+                        },
+                        {
+                            "njs": 10.0,
+                            "offset": 0.0,
+                            "notes": 0,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 0.0,
+                            "length": 0.0,
+                            "characteristic": "Standard",
+                            "difficulty": "Normal",
+                            "events": 7,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 0.0,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 0,
+                            "environment": "NiceEnvironment"
+                        },
+                        {
+                            "njs": 10.0,
+                            "offset": 0.0,
+                            "notes": 0,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 0.0,
+                            "length": 0.0,
+                            "characteristic": "Standard",
+                            "difficulty": "Hard",
+                            "events": 7,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 0.0,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 0,
+                            "environment": "NiceEnvironment"
+                        },
+                        {
+                            "njs": 10.0,
+                            "offset": 0.0,
+                            "notes": 0,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 0.0,
+                            "length": 0.0,
+                            "characteristic": "Standard",
+                            "difficulty": "Expert",
+                            "events": 7,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 0.0,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 0,
+                            "environment": "NiceEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/66ea16584640341a22048c20b0c92895cba31fd6.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/66ea16584640341a22048c20b0c92895cba31fd6.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/66ea16584640341a22048c20b0c92895cba31fd6.mp3"
+                }
+            ],
+            "createdAt": "2018-09-28T21:56:30Z",
+            "updatedAt": "2018-09-28T21:56:30Z",
+            "lastPublishedAt": "2018-09-28T21:56:30Z",
+            "tags": [
+                "techno"
+            ],
+            "bookmarked": false,
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "a4ff",
+            "name": "4'33\"",
+            "description": "for an optimal experience, turn hitsound volume to zero.",
+            "uploader": {
+                "id": 26861,
+                "name": "okachamie",
+                "hash": "5dd579a0404d3c0006979ee9",
+                "avatar": "https://www.gravatar.com/avatar/5a7929029b9e9edf8bc7498e224984b1f3bd88b500a7898235f935285baf5d07?d=retro",
+                "type": "SIMPLE",
+                "admin": false,
+                "curator": false,
+                "seniorCurator": false,
+                "playlistUrl": "https://api.beatsaver.com/users/id/26861/playlist"
+            },
+            "metadata": {
+                "bpm": 120.0,
+                "duration": 403,
+                "songName": "4'33\"",
+                "songSubName": "",
+                "songAuthorName": "John Cage",
+                "levelAuthorName": "Okachamie"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 2,
+                "downvotes": 0,
+                "score": 0.6771
+            },
+            "uploaded": "2020-05-11T01:12:55.218Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "3082d9b7b73080ec1792a38d75b4988ea31650eb",
+                    "key": "a4ff",
+                    "state": "Published",
+                    "createdAt": "2020-05-11T01:12:55.218Z",
+                    "sageScore": 1,
+                    "diffs": [
+                        {
+                            "njs": 23.0,
+                            "offset": 0.0,
+                            "notes": 135,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 0.36,
+                            "length": 749.625,
+                            "characteristic": "Standard",
+                            "difficulty": "ExpertPlus",
+                            "events": 331,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 374.813,
+                            "paritySummary": {
+                                "errors": 24,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 116955,
+                            "environment": "DefaultEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/3082d9b7b73080ec1792a38d75b4988ea31650eb.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/3082d9b7b73080ec1792a38d75b4988ea31650eb.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/3082d9b7b73080ec1792a38d75b4988ea31650eb.mp3"
+                }
+            ],
+            "createdAt": "2020-05-11T01:12:55.218Z",
+            "updatedAt": "2020-05-11T01:12:55.218Z",
+            "lastPublishedAt": "2020-05-11T01:12:55.218Z",
+            "bookmarked": false,
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "256b8",
+            "name": "John Cage - 4'33\"",
+            "description": "貴方はこの曲をどう捉えますか\n\nHow do you perceive this song?",
+            "uploader": {
+                "id": 4290730,
+                "name": "eiL",
+                "avatar": "https://cdn.beatsaver.com/avatar/4290730.jpg",
+                "type": "SIMPLE",
+                "admin": false,
+                "curator": false,
+                "seniorCurator": false,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4290730/playlist"
+            },
+            "metadata": {
+                "bpm": 120.0,
+                "duration": 273,
+                "songName": "4'33\"",
+                "songSubName": "",
+                "songAuthorName": "John Cage",
+                "levelAuthorName": " "
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 6,
+                "downvotes": 0,
+                "score": 0.7915
+            },
+            "uploaded": "2022-05-09T08:21:12.827497Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "0fdad565f1802516e933d2b3651922fd93add999",
+                    "state": "Published",
+                    "createdAt": "2022-05-09T08:16:46.032162Z",
+                    "sageScore": 1,
+                    "diffs": [
+                        {
+                            "njs": 1.0,
+                            "offset": 18.0,
+                            "notes": 0,
+                            "bombs": 16,
+                            "obstacles": 0,
+                            "nps": 0.0,
+                            "length": 545.0,
+                            "characteristic": "Standard",
+                            "difficulty": "Hard",
+                            "events": 0,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 272.5,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 2
+                            },
+                            "maxScore": 0,
+                            "environment": "DefaultEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/0fdad565f1802516e933d2b3651922fd93add999.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/0fdad565f1802516e933d2b3651922fd93add999.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/0fdad565f1802516e933d2b3651922fd93add999.mp3"
+                }
+            ],
+            "createdAt": "2022-05-09T08:16:46.032162Z",
+            "updatedAt": "2022-05-09T08:21:12.827497Z",
+            "lastPublishedAt": "2022-05-09T08:21:12.827497Z",
+            "tags": [
+                "accuracy"
+            ],
+            "bookmarked": false,
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        }
+    ],
+    "info": {
+        "total": 3,
+        "pages": 1,
+        "duration": 0.001
+    }
+}
