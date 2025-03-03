@@ -1,59 +1,1228 @@
 {
     "docs": [
         {
-            "id": "17c1",
-            "name": "4'33\"",
-            "description": "4′33″ (pronounced \"Four minutes, thirty-three seconds\" or just \"Four thirty-three\") is a three-movement composition by American experimental composer John Cage (1912–1992).\r\n\r\nIt was composed in 1952, for any instrument or combination of instruments, and the score instructs the performer(s) not to play their instrument(s) during the entire duration of the piece throughout the three movements.",
+            "id": "34bc1",
+            "name": "Walk The Moon - Jenny",
+            "description": "Has been a while, but per request of @Taddus and @RFCaps_ we now have a midspeed only version of this song, without random tech at the end lmao.\r\n\r\nHF guys",
             "uploader": {
-                "id": 4285629,
-                "name": "lolpants",
-                "hash": "5cff0b7398cc5a672c84efe4",
-                "avatar": "https://cdn.beatsaver.com/avatar/3d6d43f0062cd480b5d71c2735e6077098c1b742.png",
+                "id": 4286383,
+                "name": "oegoe",
+                "hash": "5f974e573dd2f00006d6eac5",
+                "avatar": "https://cdn.beatsaver.com/avatar/c97b5c2169760e6136e8e11bed8668c1c879ec5c.png",
                 "type": "DISCORD",
-                "admin": true,
+                "admin": false,
                 "curator": false,
                 "seniorCurator": false,
-                "playlistUrl": "https://api.beatsaver.com/users/id/4285629/playlist"
+                "verifiedMapper": true,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4286383/playlist"
             },
             "metadata": {
-                "bpm": 120.0,
-                "duration": 273,
-                "songName": "4'33\"",
-                "songSubName": "",
-                "songAuthorName": "John Cage",
-                "levelAuthorName": "lolPants"
+                "bpm": 148.0,
+                "duration": 243,
+                "songName": "Jenny",
+                "songSubName": "fr midspeed this time",
+                "songAuthorName": "Walk The Moon",
+                "levelAuthorName": "oegoe"
             },
             "stats": {
                 "plays": 0,
                 "downloads": 0,
-                "upvotes": 14,
-                "downvotes": 1,
-                "score": 0.821,
-                "reviews": 1
+                "upvotes": 176,
+                "downvotes": 5,
+                "score": 0.945
             },
-            "uploaded": "2018-09-28T21:56:30Z",
+            "uploaded": "2023-08-07T17:53:14.977692Z",
             "automapper": false,
             "ranked": false,
             "qualified": false,
             "versions": [
                 {
-                    "hash": "66ea16584640341a22048c20b0c92895cba31fd6",
-                    "key": "17c1",
+                    "hash": "113a325a31c5e830a7bf9816e4daa08ce6102478",
                     "state": "Published",
-                    "createdAt": "2018-09-28T21:56:30Z",
+                    "createdAt": "2023-08-07T17:53:11.415188Z",
+                    "sageScore": 4,
+                    "diffs": [
+                        {
+                            "njs": 18.0,
+                            "offset": -0.767,
+                            "notes": 1274,
+                            "bombs": 4,
+                            "obstacles": 102,
+                            "nps": 5.331,
+                            "length": 589.5,
+                            "characteristic": "Standard",
+                            "difficulty": "ExpertPlus",
+                            "events": 3310,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 238.986,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 1
+                            },
+                            "maxScore": 1164835,
+                            "label": "taking my time, taking my time",
+                            "environment": "PanicEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/113a325a31c5e830a7bf9816e4daa08ce6102478.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/113a325a31c5e830a7bf9816e4daa08ce6102478.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/113a325a31c5e830a7bf9816e4daa08ce6102478.mp3"
+                }
+            ],
+            "curator": {
+                "id": 4284360,
+                "name": "rfcaps_",
+                "hash": "5fd6437336e980000655d06a",
+                "avatar": "https://cdn.beatsaver.com/avatar/1d8cdd8fa7f3ebf1a25911bff6ec8778ac4e5f19.png",
+                "type": "DISCORD",
+                "admin": false,
+                "curator": false,
+                "seniorCurator": false,
+                "curatorTab": true,
+                "verifiedMapper": true,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4284360/playlist"
+            },
+            "curatedAt": "2023-08-07T21:17:37.000003Z",
+            "createdAt": "2023-08-07T17:53:11.415188Z",
+            "updatedAt": "2023-08-07T21:17:37.000003Z",
+            "lastPublishedAt": "2023-08-07T17:53:14.977692Z",
+            "tags": [
+                "balanced",
+                "accuracy",
+                "rock"
+            ],
+            "bookmarked": false,
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "d614",
+            "name": "We Are The Champions - Queen",
+            "description": "After mapping Bohemian Rhapsody, I felt that this song was a pretty reasonable step forward, so here it is.\r\nEnjoy.\r\n\r\nP.S. - I've started school up again, so I may not have as much time to map these songs anymore. Since it takes an average of 2-4 days to make songs like these, I hope I'll be able to keep this up.\r\n\r\nSong Info:\r\nhttps://en.wikipedia.org/wiki/We_Are_the_Champions",
+            "uploader": {
+                "id": 4284694,
+                "name": "Jokidum",
+                "hash": "5e15518d47f1600006e912cc",
+                "avatar": "https://cdn.beatsaver.com/avatar/da6133c71c7c84b75622f59dd2fce215f8c444f3.png",
+                "type": "DISCORD",
+                "admin": false,
+                "curator": false,
+                "seniorCurator": false,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4284694/playlist"
+            },
+            "metadata": {
+                "bpm": 120.0,
+                "duration": 180,
+                "songName": "We Are The Champions",
+                "songSubName": "- Queen",
+                "songAuthorName": "Queen",
+                "levelAuthorName": "Jokidum"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 992,
+                "downvotes": 23,
+                "score": 0.968
+            },
+            "uploaded": "2020-08-14T20:00:22.208Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "16a675ae1686a5c87be5caf7e00d5e99d06c15cc",
+                    "key": "d614",
+                    "state": "Published",
+                    "createdAt": "2020-08-14T20:00:22.208Z",
+                    "sageScore": 2,
+                    "diffs": [
+                        {
+                            "njs": 12.0,
+                            "offset": 0.0,
+                            "notes": 560,
+                            "bombs": 4,
+                            "obstacles": 0,
+                            "nps": 3.272,
+                            "length": 342.25,
+                            "characteristic": "Standard",
+                            "difficulty": "Expert",
+                            "events": 1832,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 171.125,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 507955,
+                            "environment": "PanicEnvironment"
+                        },
+                        {
+                            "njs": 16.0,
+                            "offset": 0.0,
+                            "notes": 0,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 0.0,
+                            "length": 0.0,
+                            "characteristic": "Lightshow",
+                            "difficulty": "Easy",
+                            "events": 1832,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 0.0,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 0,
+                            "label": "Lightshow",
+                            "environment": "PanicEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/16a675ae1686a5c87be5caf7e00d5e99d06c15cc.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/16a675ae1686a5c87be5caf7e00d5e99d06c15cc.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/16a675ae1686a5c87be5caf7e00d5e99d06c15cc.mp3"
+                }
+            ],
+            "createdAt": "2020-08-14T20:00:22.208Z",
+            "updatedAt": "2020-08-14T20:00:22.208Z",
+            "lastPublishedAt": "2020-08-14T20:00:22.208Z",
+            "bookmarked": false,
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "2ffd",
+            "name": "Duran Duran - Hungry Like the Wolf",
+            "description": "We really need more Duran Duran!  Here is an EXPERT only map with full custom lighting.  There are a couple of lesser visible spots - it isn't a 100%-first-run maps.  Enjoy!\r\n\r\nhttps://vimeo.com/312647944",
+            "uploader": {
+                "id": 45163,
+                "name": "darkuni",
+                "hash": "5cff0b7698cc5a672c854042",
+                "avatar": "https://cdn.beatsaver.com/avatar/45163.jpg",
+                "type": "SIMPLE",
+                "admin": false,
+                "curator": false,
+                "seniorCurator": false,
+                "playlistUrl": "https://api.beatsaver.com/users/id/45163/playlist"
+            },
+            "metadata": {
+                "bpm": 130.0,
+                "duration": 203,
+                "songName": "Hungry Like the Wolf",
+                "songSubName": "",
+                "songAuthorName": "Duran Duran",
+                "levelAuthorName": "ShaneRMonroe"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 58,
+                "downvotes": 43,
+                "score": 0.5681
+            },
+            "uploaded": "2019-01-22T03:16:00Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "85f1d81697f8065dbb5aba81ec281245f433703b",
+                    "key": "2ffd",
+                    "state": "Published",
+                    "createdAt": "2019-01-22T03:16:00Z",
+                    "sageScore": 6,
+                    "diffs": [
+                        {
+                            "njs": 12.0,
+                            "offset": 0.0,
+                            "notes": 567,
+                            "bombs": 92,
+                            "obstacles": 22,
+                            "nps": 2.859,
+                            "length": 429.75,
+                            "characteristic": "Standard",
+                            "difficulty": "Expert",
+                            "events": 1551,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 198.346,
+                            "paritySummary": {
+                                "errors": 96,
+                                "warns": 44,
+                                "resets": 18
+                            },
+                            "maxScore": 514395,
+                            "environment": "NiceEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/85f1d81697f8065dbb5aba81ec281245f433703b.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/85f1d81697f8065dbb5aba81ec281245f433703b.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/85f1d81697f8065dbb5aba81ec281245f433703b.mp3"
+                }
+            ],
+            "createdAt": "2019-01-22T03:16:00Z",
+            "updatedAt": "2019-01-22T03:16:00Z",
+            "lastPublishedAt": "2019-01-22T03:16:00Z",
+            "bookmarked": false,
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "1aa59",
+            "name": "Core (That's Who We Are) - VIZE & Papa Roach",
+            "description": "Hello everyone,\nthis is another custom song made by me.\nI hope u guys like the map and pls check i took a lot of effort into it for u, so have fun playing it!\n\nVideo: https://www.youtube.com/watch?v=NdpiDnN2wyM",
+            "uploader": {
+                "id": 4285394,
+                "name": "nofailnogame",
+                "hash": "6089706a5ab13d00060aef31",
+                "avatar": "https://cdn.beatsaver.com/avatar/9e2d4042525cb45abf31e5412ef9a3d7079a4f24.png",
+                "type": "DISCORD",
+                "admin": false,
+                "curator": false,
+                "seniorCurator": false,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4285394/playlist"
+            },
+            "metadata": {
+                "bpm": 110.0,
+                "duration": 181,
+                "songName": "Core",
+                "songSubName": "(That's Who We Are)",
+                "songAuthorName": "VIZE & Papa Roach",
+                "levelAuthorName": "NoFailNoGame"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 35,
+                "downvotes": 1,
+                "score": 0.8985
+            },
+            "uploaded": "2021-07-26T12:48:14.630Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "9eaa2fadd9e8131430d4a6aadbb81360b1db1684",
+                    "key": "1aa59",
+                    "state": "Published",
+                    "createdAt": "2021-07-26T12:48:14.630Z",
+                    "sageScore": 4,
+                    "diffs": [
+                        {
+                            "njs": 19.0,
+                            "offset": 0.1,
+                            "notes": 622,
+                            "bombs": 10,
+                            "obstacles": 36,
+                            "nps": 3.525,
+                            "length": 323.5,
+                            "characteristic": "Standard",
+                            "difficulty": "Hard",
+                            "events": 10379,
+                            "chroma": true,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 176.455,
+                            "paritySummary": {
+                                "errors": 1,
+                                "warns": 1,
+                                "resets": 2
+                            },
+                            "maxScore": 564995,
+                            "label": "That's who we are",
+                            "environment": "FitBeatEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/9eaa2fadd9e8131430d4a6aadbb81360b1db1684.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/9eaa2fadd9e8131430d4a6aadbb81360b1db1684.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/9eaa2fadd9e8131430d4a6aadbb81360b1db1684.mp3"
+                }
+            ],
+            "createdAt": "2021-07-26T12:48:14.630Z",
+            "updatedAt": "2021-07-26T12:48:14.630Z",
+            "lastPublishedAt": "2021-07-26T12:48:14.630Z",
+            "bookmarked": false,
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "2523a",
+            "name": "[Chroma] Walk The Moon - Different Colors",
+            "description": "Pretty happy with how this map turned out. This is by far my best lighting job, and I also like the other things I did with Chroma. Too lazy to do all the walls however, lmao\r\n\r\nThis map took just under 8 hours collectively to finish over the course of several days and am very happy with how it turned out. I put a lot of time into the mapping, lighting, and all of the Chroma effects that were included throughout the map.\r\n\r\nBPM: 192\r\nNJS: 20\r\nJD: 18.5\r\nNotes: 1146\r\nBombs: 32\r\nWalls: 53\r\nLighting Events: 8335\r\nNPS: 5.12\r\nSPS: 4.20 (nice)\r\n\r\nDon't know what else to say about this map, so hope you enjoy it :D",
+            "uploader": {
+                "id": 4284353,
+                "name": "Raydz",
+                "hash": "5f10ef7d99178800062eb7c5",
+                "avatar": "https://cdn.beatsaver.com/avatar/25177a51fdb244bab95a1ecca9b5384285033c00.png",
+                "type": "DISCORD",
+                "admin": false,
+                "curator": false,
+                "seniorCurator": false,
+                "verifiedMapper": true,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4284353/playlist"
+            },
+            "metadata": {
+                "bpm": 192.0,
+                "duration": 224,
+                "songName": "Different Colors",
+                "songSubName": "",
+                "songAuthorName": "Walk The Moon",
+                "levelAuthorName": "Raydz"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 6,
+                "downvotes": 4,
+                "score": 0.5677
+            },
+            "uploaded": "2022-05-01T22:49:04.955613Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "88ad8c371948681aff636fb2da638e415cfb507f",
+                    "state": "Published",
+                    "createdAt": "2022-05-01T22:48:54.903238Z",
                     "sageScore": 3,
                     "diffs": [
                         {
-                            "njs": 10.0,
+                            "njs": 20.0,
+                            "offset": -0.52,
+                            "notes": 1146,
+                            "bombs": 32,
+                            "obstacles": 53,
+                            "nps": 5.457,
+                            "length": 672.0,
+                            "characteristic": "Standard",
+                            "difficulty": "ExpertPlus",
+                            "events": 8335,
+                            "chroma": true,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 210.0,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 2
+                            },
+                            "maxScore": 1047075,
+                            "label": "Various Tones",
+                            "environment": "GreenDayEnvironment"
+                        },
+                        {
+                            "njs": 16.0,
                             "offset": 0.0,
                             "notes": 0,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 0.0,
+                            "length": 0.0,
+                            "characteristic": "Lightshow",
+                            "difficulty": "ExpertPlus",
+                            "events": 8335,
+                            "chroma": true,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 0.0,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 0,
+                            "label": "Lightshow",
+                            "environment": "GreenDayEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/88ad8c371948681aff636fb2da638e415cfb507f.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/88ad8c371948681aff636fb2da638e415cfb507f.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/88ad8c371948681aff636fb2da638e415cfb507f.mp3"
+                }
+            ],
+            "createdAt": "2022-05-01T22:48:54.903238Z",
+            "updatedAt": "2022-05-01T22:49:04.955613Z",
+            "lastPublishedAt": "2022-05-01T22:49:04.955613Z",
+            "bookmarked": false,
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "424e2",
+            "name": "[SS2H] I LIKE THE NOISE (I made this song in 1 hour while I was pooping) - Sickmode",
+            "description": "I LIKE THE NOISE (I made this song in 1 hour while I was pooping) - Sickmode\n\nCollab with swag shark for the 2 hour mapping challenge of Shrado's Sludgehouse\n\nit only took 1 hour even though we had two hours but because there's two of us it only took one since we mapped it twice as fast\n\nreupload #1 thanks to Shrado for modding and thanks to xScaramouche for modding and thanks to Anodize for modding and thanks to",
+            "uploader": {
+                "id": 4284904,
+                "name": "xScaramouche",
+                "hash": "5cff0b7798cc5a672c8558ed",
+                "avatar": "https://cdn.beatsaver.com/avatar/1f7fe122bfa8b82541c0b931ee6c2d58088819c2.png",
+                "type": "DISCORD",
+                "admin": false,
+                "curator": false,
+                "seniorCurator": false,
+                "verifiedMapper": true,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4284904/playlist"
+            },
+            "metadata": {
+                "bpm": 160.0,
+                "duration": 167,
+                "songName": "I LIKE THE NOISE",
+                "songSubName": "(I made this song in 1 hour while I was pooping)",
+                "songAuthorName": "Sickmode",
+                "levelAuthorName": "Swag_Shark & xScaramouche"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 7,
+                "downvotes": 0,
+                "score": 0.8064
+            },
+            "uploaded": "2024-12-11T05:03:44.978476Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "0f871f12907cce20f196c40a9cd1a6b8b7b40682",
+                    "state": "Published",
+                    "createdAt": "2024-12-20T03:00:41.133052Z",
+                    "sageScore": 3,
+                    "diffs": [
+                        {
+                            "njs": 16.0,
+                            "offset": -0.92,
+                            "notes": 1318,
+                            "bombs": 50,
+                            "obstacles": 862,
+                            "nps": 8.275,
+                            "length": 425.0,
+                            "characteristic": "Standard",
+                            "difficulty": "ExpertPlus",
+                            "events": 4902,
+                            "chroma": true,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 159.375,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 1205315,
+                            "label": "mapped in 2 hours from the toilet",
+                            "environment": "DefaultEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/0f871f12907cce20f196c40a9cd1a6b8b7b40682.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/0f871f12907cce20f196c40a9cd1a6b8b7b40682.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/0f871f12907cce20f196c40a9cd1a6b8b7b40682.mp3"
+                }
+            ],
+            "createdAt": "2024-12-11T05:03:18.342589Z",
+            "updatedAt": "2025-02-10T23:28:25.610738Z",
+            "lastPublishedAt": "2024-12-20T03:00:47.227139Z",
+            "tags": [
+                "challenge",
+                "tech",
+                "techno",
+                "hardcore"
+            ],
+            "bookmarked": false,
+            "collaborators": [
+                {
+                    "id": 243530,
+                    "name": "Swag_Shark",
+                    "avatar": "https://cdn.beatsaver.com/avatar/243530.jpg",
+                    "type": "SIMPLE",
+                    "admin": false,
+                    "curator": false,
+                    "seniorCurator": false,
+                    "playlistUrl": "https://api.beatsaver.com/users/id/243530/playlist"
+                }
+            ],
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "1c609",
+            "name": "Eskimo Callboy - We Got the Moves",
+            "description": "Suggested by ZemphisTV\n\nThese guys don't look like they sound.",
+            "uploader": {
+                "id": 4284347,
+                "name": "Aimedhades16",
+                "hash": "5eba9d872a34090006bc8955",
+                "avatar": "https://cdn.beatsaver.com/avatar/409309b0a9e5bdc74edd5e7c8026ca3ef26e2e75.png",
+                "type": "DISCORD",
+                "admin": false,
+                "curator": false,
+                "seniorCurator": false,
+                "verifiedMapper": true,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4284347/playlist"
+            },
+            "metadata": {
+                "bpm": 150.0,
+                "duration": 209,
+                "songName": "We Got the Moves",
+                "songSubName": "",
+                "songAuthorName": "Eskimo Callboy",
+                "levelAuthorName": "Aimedhades16"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 36,
+                "downvotes": 14,
+                "score": 0.6918
+            },
+            "uploaded": "2021-09-20T01:29:25.466770Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "1950aefc629da442919bd802b2df1b65e00960b4",
+                    "state": "Published",
+                    "createdAt": "2021-09-19T23:28:03.569370Z",
+                    "sageScore": 5,
+                    "diffs": [
+                        {
+                            "njs": 20.0,
+                            "offset": -0.75,
+                            "notes": 1682,
+                            "bombs": 13,
+                            "obstacles": 6,
+                            "nps": 8.225,
+                            "length": 511.25,
+                            "characteristic": "Standard",
+                            "difficulty": "ExpertPlus",
+                            "events": 0,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 204.5,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 38,
+                                "resets": 2
+                            },
+                            "maxScore": 1540195,
+                            "label": "Bruh They Stole My Moves",
+                            "environment": "DefaultEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/1950aefc629da442919bd802b2df1b65e00960b4.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/1950aefc629da442919bd802b2df1b65e00960b4.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/1950aefc629da442919bd802b2df1b65e00960b4.mp3"
+                }
+            ],
+            "createdAt": "2021-09-19T21:15:20.224102Z",
+            "updatedAt": "2021-09-20T02:35:48.356855Z",
+            "lastPublishedAt": "2021-09-20T02:35:48.356855Z",
+            "tags": [
+                "electronic",
+                "metal"
+            ],
+            "bookmarked": false,
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "341eb",
+            "name": "[V3] Billy Joel - We Didn't Start the Fire (Fall Out Boy Cover)",
+            "description": "Showcase Video\nhttps://www.youtube.com/watch?v=6zWUAKSFbsc\n===========================\n*This map uses the Fall out Boy environment which is only compatible with version 1.21 or higher*\n===========================\nDecided to map this song cause it sounds pretty good. though the events aren't in chronological order like the original.\nalso this my first map that has 1000 notes in it\nThanks to @steeak for mapping the expert difficulty\nedit: there was an issue with the expert difficulty and had to reupload the map\nsorry about the score resets\n===========================\nThanks to @JohnieCanine and @cush for testplaying",
+            "uploader": {
+                "id": 4335970,
+                "name": "Scorefam",
+                "avatar": "https://cdn.beatsaver.com/avatar/ffb0633b830f43850e7ee5ff02fd8f90926fb791.png",
+                "type": "DISCORD",
+                "admin": false,
+                "curator": false,
+                "seniorCurator": false,
+                "verifiedMapper": true,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4335970/playlist"
+            },
+            "metadata": {
+                "bpm": 152.0,
+                "duration": 216,
+                "songName": "We Didn't Start The Fire",
+                "songSubName": "(Fall Out Boy Cover)",
+                "songAuthorName": "Billy Joel",
+                "levelAuthorName": "scorefam"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 401,
+                "downvotes": 9,
+                "score": 0.9615
+            },
+            "uploaded": "2023-07-16T10:56:26.913180Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "407c658e2e8161b5a3cdc2ae8b3acaaad3d22233",
+                    "state": "Published",
+                    "createdAt": "2023-07-20T20:08:32.448620Z",
+                    "sageScore": 3,
+                    "diffs": [
+                        {
+                            "njs": 16.0,
+                            "offset": -0.4,
+                            "notes": 773,
+                            "bombs": 0,
+                            "obstacles": 6,
+                            "nps": 4.013,
+                            "length": 488.0,
+                            "characteristic": "Standard",
+                            "difficulty": "Expert",
+                            "events": 2731,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 192.632,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 703915,
+                            "label": "Expert (Steeak)",
+                            "environment": "PyroEnvironment"
+                        },
+                        {
+                            "njs": 17.0,
+                            "offset": -0.48,
+                            "notes": 1000,
+                            "bombs": 0,
+                            "obstacles": 74,
+                            "nps": 5.191,
+                            "length": 488.0,
+                            "characteristic": "Standard",
+                            "difficulty": "ExpertPlus",
+                            "events": 2731,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 192.632,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 912755,
+                            "label": "Expert+ (Scorefam)",
+                            "environment": "PyroEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/407c658e2e8161b5a3cdc2ae8b3acaaad3d22233.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/407c658e2e8161b5a3cdc2ae8b3acaaad3d22233.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/407c658e2e8161b5a3cdc2ae8b3acaaad3d22233.mp3"
+                }
+            ],
+            "curator": {
+                "id": 58338,
+                "name": "Joetastic",
+                "hash": "5cff0b7498cc5a672c85050e",
+                "avatar": "https://cdn.beatsaver.com/avatar/91bb7b0510cea647179bc95e032f8a25608b09f1.png",
+                "type": "DISCORD",
+                "admin": false,
+                "curator": false,
+                "seniorCurator": false,
+                "curatorTab": true,
+                "verifiedMapper": true,
+                "playlistUrl": "https://api.beatsaver.com/users/id/58338/playlist"
+            },
+            "curatedAt": "2023-07-16T12:37:24.754560Z",
+            "createdAt": "2023-07-16T10:51:29.793055Z",
+            "updatedAt": "2024-02-18T04:23:12.496129Z",
+            "lastPublishedAt": "2023-07-20T20:08:39.774125Z",
+            "tags": [
+                "balanced",
+                "alternative",
+                "indie"
+            ],
+            "bookmarked": false,
+            "collaborators": [
+                {
+                    "id": 60601,
+                    "name": "steeak",
+                    "hash": "6016fea3b85f2d00062b0f95",
+                    "avatar": "https://cdn.beatsaver.com/avatar/887ec5cd960471f08fdc1900d9810026aff6f4fe.png",
+                    "type": "DISCORD",
+                    "admin": false,
+                    "curator": true,
+                    "seniorCurator": false,
+                    "curatorTab": true,
+                    "verifiedMapper": true,
+                    "playlistUrl": "https://api.beatsaver.com/users/id/60601/playlist"
+                }
+            ],
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "144ca",
+            "name": "Jim-E Stack - Can We (with Kacy Hill)",
+            "description": "A nice chill pop map to vibe to, also good for practicing some basic streams at a slow bpm.\nIf you like the tune, check out more from Jim-E Stack and Kacy Hill, both great artists.\nThanks to Vaser888, Monstor and Reckoner for feedback.\nEnjoy!",
+            "uploader": {
+                "id": 4286611,
+                "name": "xynie",
+                "hash": "601d7861b85f2d00062b2310",
+                "avatar": "https://www.gravatar.com/avatar/c55f251c6125241e563c5ef4698146f62ac0b33a897e16fced6691af094b949d?d=retro",
+                "type": "DISCORD",
+                "admin": false,
+                "curator": false,
+                "seniorCurator": false,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4286611/playlist"
+            },
+            "metadata": {
+                "bpm": 95.3515,
+                "duration": 171,
+                "songName": "Can We (wth Kacy Hill)",
+                "songSubName": "",
+                "songAuthorName": "Jim-E Stack",
+                "levelAuthorName": "XYNie"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 4,
+                "downvotes": 0,
+                "score": 0.75
+            },
+            "uploaded": "2021-02-19T17:25:19.258Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "bebfa66e895cde4463f2360645d1faeb8a515548",
+                    "key": "144ca",
+                    "state": "Published",
+                    "createdAt": "2021-02-19T17:25:19.258Z",
+                    "sageScore": 5,
+                    "diffs": [
+                        {
+                            "njs": 14.0,
+                            "offset": 0.0,
+                            "notes": 374,
+                            "bombs": 0,
+                            "obstacles": 25,
+                            "nps": 2.239,
+                            "length": 265.5,
+                            "characteristic": "Standard",
+                            "difficulty": "Hard",
+                            "events": 1542,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 167.066,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 336835,
+                            "environment": "BTSEnvironment"
+                        },
+                        {
+                            "njs": 16.0,
+                            "offset": 0.4,
+                            "notes": 456,
+                            "bombs": 8,
+                            "obstacles": 25,
+                            "nps": 2.729,
+                            "length": 265.5,
+                            "characteristic": "Standard",
+                            "difficulty": "Expert",
+                            "events": 1542,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 167.066,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 4
+                            },
+                            "maxScore": 412275,
+                            "environment": "BTSEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/bebfa66e895cde4463f2360645d1faeb8a515548.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/bebfa66e895cde4463f2360645d1faeb8a515548.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/bebfa66e895cde4463f2360645d1faeb8a515548.mp3"
+                }
+            ],
+            "createdAt": "2021-02-19T17:25:19.258Z",
+            "updatedAt": "2021-02-19T17:25:19.258Z",
+            "lastPublishedAt": "2021-02-19T17:25:19.258Z",
+            "bookmarked": false,
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "1fcf6",
+            "name": "We Don't Talk About Bruno - Encanto",
+            "description": "\"We Don't Talk About Bruno\"... how about just a little but plz...\nThis song (and almost every song in Encanto) has been stuck in my head for the past few weeks. It's just so catchy and also loved watching it in theaters. Hope you all like the map!\n\nPreview of Expert:\nhttps://youtu.be/5Ck4tVPRZKA\n\nConsider subscribing to my YouTube channel if you like what you see! 💜\n",
+            "uploader": {
+                "id": 4285445,
+                "name": "Supercoop900YT",
+                "hash": "5ed4febc9ae7380006ca95e7",
+                "avatar": "https://cdn.beatsaver.com/avatar/827cfd87ca100484b85ea052b961a2084a5745ea.png",
+                "type": "DISCORD",
+                "admin": false,
+                "curator": false,
+                "seniorCurator": false,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4285445/playlist"
+            },
+            "metadata": {
+                "bpm": 103.0,
+                "duration": 211,
+                "songName": "We Don't Talk About Bruno",
+                "songSubName": "",
+                "songAuthorName": "Lin-Manuel Miranda",
+                "levelAuthorName": "Supercoop900YT"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 210,
+                "downvotes": 115,
+                "score": 0.6403
+            },
+            "uploaded": "2022-01-07T23:15:36.991620Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "e920184f310faac34bbc070b5372269e898ab1ca",
+                    "state": "Published",
+                    "createdAt": "2022-01-07T23:12:28.579646Z",
+                    "sageScore": 4,
+                    "diffs": [
+                        {
+                            "njs": 12.0,
+                            "offset": 1.0,
+                            "notes": 693,
+                            "bombs": 0,
+                            "obstacles": 2,
+                            "nps": 3.37,
+                            "length": 353.0,
+                            "characteristic": "Standard",
+                            "difficulty": "Hard",
+                            "events": 1187,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 205.631,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 630315,
+                            "environment": "BillieEnvironment"
+                        },
+                        {
+                            "njs": 15.0,
+                            "offset": -0.2,
+                            "notes": 805,
+                            "bombs": 2,
+                            "obstacles": 12,
+                            "nps": 3.915,
+                            "length": 353.0,
+                            "characteristic": "Standard",
+                            "difficulty": "Expert",
+                            "events": 1186,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 205.631,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 2,
+                                "resets": 0
+                            },
+                            "maxScore": 733355,
+                            "environment": "BillieEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/e920184f310faac34bbc070b5372269e898ab1ca.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/e920184f310faac34bbc070b5372269e898ab1ca.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/e920184f310faac34bbc070b5372269e898ab1ca.mp3"
+                }
+            ],
+            "createdAt": "2022-01-07T23:12:28.579646Z",
+            "updatedAt": "2022-01-07T23:15:36.991620Z",
+            "lastPublishedAt": "2022-01-07T23:15:36.991620Z",
+            "bookmarked": false,
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "2e88e",
+            "name": "Nao Toyama - Imakoko (TV Size) (Tsuki ga Kirei OP)",
+            "description": "\"The moon teaches us that darkness can’t hide the beauty of life if we know how to reflect beauty.\" \n\nHuge thanks to @CookedChili for the feedback and playtesting! Go play his maps (after playing mine of course)\n\nMap preview: https://youtu.be/leg49pAkFp8",
+            "uploader": {
+                "id": 4285732,
+                "name": "NTBased",
+                "avatar": "https://cdn.beatsaver.com/avatar/2c8f573add58fd55936fc6d8169afc08a060bfff.png",
+                "type": "DISCORD",
+                "admin": false,
+                "curator": false,
+                "seniorCurator": false,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4285732/playlist"
+            },
+            "metadata": {
+                "bpm": 140.0,
+                "duration": 91,
+                "songName": "Imakoko",
+                "songSubName": "(TV Size)",
+                "songAuthorName": "Nao Toyama",
+                "levelAuthorName": "NTBased"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 26,
+                "downvotes": 0,
+                "score": 0.9054
+            },
+            "uploaded": "2023-01-22T20:27:20.896851Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "369e42ebac25a423e64afe9583613c88b642916a",
+                    "state": "Published",
+                    "createdAt": "2023-01-23T03:14:44.672328Z",
+                    "sageScore": 3,
+                    "diffs": [
+                        {
+                            "njs": 15.0,
+                            "offset": -0.717,
+                            "notes": 308,
+                            "bombs": 4,
+                            "obstacles": 56,
+                            "nps": 3.657,
+                            "length": 196.5,
+                            "characteristic": "Standard",
+                            "difficulty": "ExpertPlus",
+                            "events": 823,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 84.214,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 2
+                            },
+                            "maxScore": 276115,
+                            "label": "lunar",
+                            "environment": "DefaultEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/369e42ebac25a423e64afe9583613c88b642916a.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/369e42ebac25a423e64afe9583613c88b642916a.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/369e42ebac25a423e64afe9583613c88b642916a.mp3"
+                }
+            ],
+            "createdAt": "2023-01-22T20:22:44.402357Z",
+            "updatedAt": "2023-01-23T03:14:59.203051Z",
+            "lastPublishedAt": "2023-01-23T03:14:59.203051Z",
+            "tags": [
+                "accuracy",
+                "balanced",
+                "anime",
+                "j-pop"
+            ],
+            "bookmarked": false,
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "927b",
+            "name": "Chroma - Made In Love",
+            "description": "We really be out here doin this, I'm pretty happy with the result even though I mapped it in 2 hours\n\nC22H #5 Gamers\n\nTo The Moon And Back:\nNPS: 5.22\nNotes: 972\n\n𝗗𝗜𝗙𝗙𝗜𝗖𝗨𝗟𝗧𝗬 𝗘𝗦𝗧𝗜𝗠𝗔𝗧𝗘: 7.8🌟",
+            "uploader": {
+                "id": 1344,
+                "name": "schwnk",
+                "hash": "5cff0b7698cc5a672c855294",
+                "avatar": "https://cdn.beatsaver.com/avatar/fb334d74acfd48f37a15ff95d1f528435a362832.png",
+                "type": "DISCORD",
+                "admin": false,
+                "curator": false,
+                "seniorCurator": false,
+                "verifiedMapper": true,
+                "playlistUrl": "https://api.beatsaver.com/users/id/1344/playlist"
+            },
+            "metadata": {
+                "bpm": 176.0,
+                "duration": 186,
+                "songName": "Made In Love",
+                "songSubName": "",
+                "songAuthorName": "Chroma",
+                "levelAuthorName": "Schwank"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 117,
+                "downvotes": 19,
+                "score": 0.8354
+            },
+            "uploaded": "2020-03-22T02:22:35.347Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "17d16da577e843ac9d7c1b003861c860edeec165",
+                    "key": "927b",
+                    "state": "Published",
+                    "createdAt": "2020-03-22T02:22:35.347Z",
+                    "sageScore": 3,
+                    "diffs": [
+                        {
+                            "njs": 22.0,
+                            "offset": -0.4,
+                            "notes": 972,
+                            "bombs": 8,
+                            "obstacles": 24,
+                            "nps": 5.673,
+                            "length": 502.563,
+                            "characteristic": "Standard",
+                            "difficulty": "ExpertPlus",
+                            "events": 0,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 171.328,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 1
+                            },
+                            "maxScore": 886995,
+                            "label": "To The Moon And Back ",
+                            "environment": "DefaultEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/17d16da577e843ac9d7c1b003861c860edeec165.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/17d16da577e843ac9d7c1b003861c860edeec165.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/17d16da577e843ac9d7c1b003861c860edeec165.mp3"
+                }
+            ],
+            "createdAt": "2020-03-22T02:22:35.347Z",
+            "updatedAt": "2020-03-22T02:22:35.347Z",
+            "lastPublishedAt": "2020-03-22T02:22:35.347Z",
+            "bookmarked": false,
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "cffd",
+            "name": "C418 - Sweden",
+            "description": "I like song\n\nblank - like our minds and thoughts\ndepressing - like the times we weren't together\nnostalgic - like the time we first met\nheavy - like the tears we shed\nfast - like the days passing by\n\npisscat#8128; dm me feedback tnx",
+            "uploader": {
+                "id": 16516,
+                "name": "pisscat",
+                "hash": "5cff0b7598cc5a672c852ced",
+                "avatar": "https://www.gravatar.com/avatar/c6e28e70be70851d383338240ac54af124831bbf3057b8980a2e4271ad2540fc?d=retro",
+                "type": "SIMPLE",
+                "admin": false,
+                "curator": false,
+                "seniorCurator": false,
+                "playlistUrl": "https://api.beatsaver.com/users/id/16516/playlist"
+            },
+            "metadata": {
+                "bpm": 88.0,
+                "duration": 217,
+                "songName": "Sweden",
+                "songSubName": "",
+                "songAuthorName": "C418",
+                "levelAuthorName": "pisscat"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 114,
+                "downvotes": 17,
+                "score": 0.844,
+                "reviews": 2
+            },
+            "uploaded": "2020-08-06T14:53:25.147Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "1a139794a12d7b9e78248c3b9f8942907904d120",
+                    "key": "cffd",
+                    "state": "Published",
+                    "createdAt": "2020-08-06T14:53:25.147Z",
+                    "sageScore": 6,
+                    "diffs": [
+                        {
+                            "njs": 12.0,
+                            "offset": 0.0,
+                            "notes": 1,
                             "bombs": 0,
                             "obstacles": 0,
                             "nps": 0.0,
                             "length": 0.0,
                             "characteristic": "Standard",
                             "difficulty": "Easy",
-                            "events": 7,
+                            "events": 690,
                             "chroma": false,
                             "me": false,
                             "ne": false,
@@ -64,71 +1233,416 @@
                                 "warns": 0,
                                 "resets": 0
                             },
-                            "maxScore": 0,
-                            "environment": "NiceEnvironment"
+                            "maxScore": 115,
+                            "label": "blank",
+                            "environment": "DefaultEnvironment"
                         },
                         {
-                            "njs": 10.0,
-                            "offset": 0.0,
-                            "notes": 0,
+                            "njs": 13.0,
+                            "offset": -0.3,
+                            "notes": 192,
                             "bombs": 0,
-                            "obstacles": 0,
-                            "nps": 0.0,
-                            "length": 0.0,
+                            "obstacles": 86,
+                            "nps": 0.914,
+                            "length": 308.0,
                             "characteristic": "Standard",
                             "difficulty": "Normal",
-                            "events": 7,
+                            "events": 690,
                             "chroma": false,
                             "me": false,
                             "ne": false,
                             "cinema": false,
-                            "seconds": 0.0,
+                            "seconds": 210.0,
                             "paritySummary": {
                                 "errors": 0,
                                 "warns": 0,
                                 "resets": 0
                             },
-                            "maxScore": 0,
-                            "environment": "NiceEnvironment"
+                            "maxScore": 169395,
+                            "label": "depressing",
+                            "environment": "DefaultEnvironment"
                         },
                         {
-                            "njs": 10.0,
-                            "offset": 0.0,
-                            "notes": 0,
+                            "njs": 16.0,
+                            "offset": 0.25,
+                            "notes": 223,
                             "bombs": 0,
-                            "obstacles": 0,
-                            "nps": 0.0,
-                            "length": 0.0,
+                            "obstacles": 146,
+                            "nps": 1.062,
+                            "length": 308.0,
                             "characteristic": "Standard",
                             "difficulty": "Hard",
-                            "events": 7,
+                            "events": 690,
                             "chroma": false,
                             "me": false,
                             "ne": false,
                             "cinema": false,
-                            "seconds": 0.0,
+                            "seconds": 210.0,
                             "paritySummary": {
-                                "errors": 0,
+                                "errors": 1,
                                 "warns": 0,
                                 "resets": 0
                             },
-                            "maxScore": 0,
-                            "environment": "NiceEnvironment"
+                            "maxScore": 197915,
+                            "label": "nostalgic",
+                            "environment": "DefaultEnvironment"
                         },
                         {
-                            "njs": 10.0,
-                            "offset": 0.0,
-                            "notes": 0,
-                            "bombs": 0,
-                            "obstacles": 0,
-                            "nps": 0.0,
-                            "length": 0.0,
+                            "njs": 18.0,
+                            "offset": 0.15,
+                            "notes": 472,
+                            "bombs": 222,
+                            "obstacles": 27,
+                            "nps": 2.248,
+                            "length": 308.0,
                             "characteristic": "Standard",
                             "difficulty": "Expert",
-                            "events": 7,
+                            "events": 690,
                             "chroma": false,
                             "me": false,
                             "ne": false,
+                            "cinema": false,
+                            "seconds": 210.0,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 1
+                            },
+                            "maxScore": 426995,
+                            "label": "heavy",
+                            "environment": "DefaultEnvironment"
+                        },
+                        {
+                            "njs": 69.0,
+                            "offset": 0.0,
+                            "notes": 235,
+                            "bombs": 54,
+                            "obstacles": 93,
+                            "nps": 1.119,
+                            "length": 308.0,
+                            "characteristic": "Standard",
+                            "difficulty": "ExpertPlus",
+                            "events": 690,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 210.0,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 1
+                            },
+                            "maxScore": 208955,
+                            "label": "fast",
+                            "environment": "DefaultEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/1a139794a12d7b9e78248c3b9f8942907904d120.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/1a139794a12d7b9e78248c3b9f8942907904d120.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/1a139794a12d7b9e78248c3b9f8942907904d120.mp3"
+                }
+            ],
+            "createdAt": "2020-08-06T14:53:25.147Z",
+            "updatedAt": "2020-08-06T14:53:25.147Z",
+            "lastPublishedAt": "2020-08-06T14:53:25.147Z",
+            "bookmarked": false,
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "e23f",
+            "name": "Night SURFING (TV Size) - (K)NoW_NAME",
+            "description": "🌙🏄🌙🏄🌙🏄🌙🏄🌙🏄🌙🏄🌙🏄🌙🏄🌙🏄🌙🏄🌙🏄🌙🏄🌙🏄🌙🏄🌙🏄🌙🏄🌙🏄🌙🏄🌙🏄🌙🏄\n\nwe out here surfing under the moon 🌙🏄",
+            "uploader": {
+                "id": 4285404,
+                "name": "Pug",
+                "hash": "5cff0b7398cc5a672c84f09f",
+                "avatar": "https://cdn.beatsaver.com/avatar/6e36a4bada92f8c8973f2f964c32c7b3ef28e5f3.png",
+                "type": "DISCORD",
+                "admin": false,
+                "curator": false,
+                "seniorCurator": false,
+                "verifiedMapper": true,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4285404/playlist"
+            },
+            "metadata": {
+                "bpm": 124.0,
+                "duration": 92,
+                "songName": "Night SURFING",
+                "songSubName": "(TV Size)",
+                "songAuthorName": "(K)NoW_NAME",
+                "levelAuthorName": "Pug"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 593,
+                "downvotes": 116,
+                "score": 0.8281
+            },
+            "uploaded": "2020-09-02T05:30:00.485Z",
+            "automapper": false,
+            "ranked": true,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "7ae4747a006c6e64f3c6e63e0139b11046e0fd87",
+                    "key": "e23f",
+                    "state": "Published",
+                    "createdAt": "2020-09-02T05:30:00.485Z",
+                    "sageScore": 5,
+                    "diffs": [
+                        {
+                            "njs": 12.0,
+                            "offset": 0.0,
+                            "notes": 205,
+                            "bombs": 0,
+                            "obstacles": 127,
+                            "nps": 2.404,
+                            "length": 176.25,
+                            "characteristic": "Standard",
+                            "difficulty": "Hard",
+                            "events": 1527,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 85.282,
+                            "paritySummary": {
+                                "errors": 3,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "stars": 2.61,
+                            "maxScore": 181355,
+                            "label": "Sunset SURFING",
+                            "environment": "BigMirrorEnvironment"
+                        },
+                        {
+                            "njs": 16.0,
+                            "offset": -0.5,
+                            "notes": 343,
+                            "bombs": 0,
+                            "obstacles": 127,
+                            "nps": 4.022,
+                            "length": 176.25,
+                            "characteristic": "Standard",
+                            "difficulty": "Expert",
+                            "events": 1527,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 85.282,
+                            "paritySummary": {
+                                "errors": 53,
+                                "warns": 25,
+                                "resets": 0
+                            },
+                            "stars": 4.96,
+                            "maxScore": 308315,
+                            "label": "Midnight SURFING",
+                            "environment": "BigMirrorEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/7ae4747a006c6e64f3c6e63e0139b11046e0fd87.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/7ae4747a006c6e64f3c6e63e0139b11046e0fd87.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/7ae4747a006c6e64f3c6e63e0139b11046e0fd87.mp3"
+                }
+            ],
+            "createdAt": "2020-09-02T05:30:00.485Z",
+            "updatedAt": "2020-09-02T05:30:00.485Z",
+            "lastPublishedAt": "2020-09-02T05:30:00.485Z",
+            "bookmarked": false,
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "40087",
+            "name": "Bad Habits - Ed Sheeran (Chroma+)",
+            "description": "**Warning:** Chroma Note Coloring is very important for the \"Bad Poodles and Bloqs\". You can still use your own custom colors.\n\nPoodle and 2 normal bloq diffs. The \"Bad Poodles and Bloqs\" diffs are special versions of the top diffs. Some have said its amazing, some think its a war crime, I say why not both.\nComes with a lightshow diff since Zen mode wont work (the moon is actually a bloq...bomb...both).\n\nAgain, huge thanks to @Phoenix for making environments like the one I used here. You can find and use them for free at the github https://github.com/Phoenix-BS/BSCEL\n\nThanks for the playtests MadChase, mochichi72, TheCzar1994, earblind69, VirtualStella,  vanitygirl_vr, suziescum, HyperSonicSharkz, CrazyOtterLady, ThatsJodie, Dietah, GeneralDum, TinkerVr85 and anyone I may have forgot.\n\n",
+            "uploader": {
+                "id": 4280701,
+                "name": "rategyro",
+                "hash": "605e50f0cd73ba00060a45e3",
+                "avatar": "https://cdn.beatsaver.com/avatar/06d29645455d6652940b240658617d968fc53d91.png",
+                "type": "DISCORD",
+                "admin": true,
+                "curator": true,
+                "seniorCurator": true,
+                "curatorTab": true,
+                "verifiedMapper": true,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4280701/playlist"
+            },
+            "metadata": {
+                "bpm": 126.0,
+                "duration": 233,
+                "songName": "Bad Habits",
+                "songSubName": "",
+                "songAuthorName": "Ed Sheeran",
+                "levelAuthorName": "RateGyro"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 288,
+                "downvotes": 17,
+                "score": 0.9257,
+                "reviews": 1
+            },
+            "uploaded": "2024-09-06T15:34:03.913127Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "ae80daa7accd144aa3945badad6a17c9a14f2843",
+                    "state": "Published",
+                    "createdAt": "2024-09-06T14:24:09.320329Z",
+                    "sageScore": 5,
+                    "diffs": [
+                        {
+                            "njs": 15.0,
+                            "offset": -0.625,
+                            "notes": 559,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 2.487,
+                            "length": 472.0,
+                            "characteristic": "Standard",
+                            "difficulty": "Easy",
+                            "events": 3296,
+                            "chroma": true,
+                            "me": false,
+                            "ne": true,
+                            "cinema": false,
+                            "seconds": 224.762,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 507035,
+                            "label": "Bloqs H",
+                            "environment": "HalloweenEnvironment"
+                        },
+                        {
+                            "njs": 16.0,
+                            "offset": -0.75,
+                            "notes": 770,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 3.426,
+                            "length": 472.0,
+                            "characteristic": "Standard",
+                            "difficulty": "Normal",
+                            "events": 3296,
+                            "chroma": true,
+                            "me": false,
+                            "ne": true,
+                            "cinema": false,
+                            "seconds": 224.762,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 701155,
+                            "label": "Bloqs Ex+",
+                            "environment": "HalloweenEnvironment"
+                        },
+                        {
+                            "njs": 16.0,
+                            "offset": -0.75,
+                            "notes": 770,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 3.426,
+                            "length": 472.0,
+                            "characteristic": "Standard",
+                            "difficulty": "Hard",
+                            "events": 3296,
+                            "chroma": true,
+                            "me": false,
+                            "ne": true,
+                            "cinema": false,
+                            "seconds": 224.762,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 701155,
+                            "label": "\"Bad Bloqs\"",
+                            "environment": "HalloweenEnvironment"
+                        },
+                        {
+                            "njs": 16.0,
+                            "offset": -0.875,
+                            "notes": 2114,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 9.405,
+                            "length": 472.0,
+                            "characteristic": "Standard",
+                            "difficulty": "Expert",
+                            "events": 3296,
+                            "chroma": true,
+                            "me": false,
+                            "ne": true,
+                            "cinema": false,
+                            "seconds": 224.762,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 1937635,
+                            "label": "Poodles",
+                            "environment": "HalloweenEnvironment"
+                        },
+                        {
+                            "njs": 16.0,
+                            "offset": -0.875,
+                            "notes": 2114,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 9.405,
+                            "length": 472.0,
+                            "characteristic": "Standard",
+                            "difficulty": "ExpertPlus",
+                            "events": 3296,
+                            "chroma": true,
+                            "me": false,
+                            "ne": true,
+                            "cinema": false,
+                            "seconds": 224.762,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 1937635,
+                            "label": "\"Bad Poodles\"",
+                            "environment": "HalloweenEnvironment"
+                        },
+                        {
+                            "njs": 16.0,
+                            "offset": -0.875,
+                            "notes": 0,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 0.0,
+                            "length": 0.0,
+                            "characteristic": "Lightshow",
+                            "difficulty": "ExpertPlus",
+                            "events": 3296,
+                            "chroma": true,
+                            "me": false,
+                            "ne": true,
                             "cinema": false,
                             "seconds": 0.0,
                             "paritySummary": {
@@ -137,19 +1651,36 @@
                                 "resets": 0
                             },
                             "maxScore": 0,
-                            "environment": "NiceEnvironment"
+                            "label": "Lightshow",
+                            "environment": "HalloweenEnvironment"
                         }
                     ],
-                    "downloadURL": "https://r2cdn.beatsaver.com/66ea16584640341a22048c20b0c92895cba31fd6.zip",
-                    "coverURL": "https://na.cdn.beatsaver.com/66ea16584640341a22048c20b0c92895cba31fd6.jpg",
-                    "previewURL": "https://na.cdn.beatsaver.com/66ea16584640341a22048c20b0c92895cba31fd6.mp3"
+                    "downloadURL": "https://r2cdn.beatsaver.com/ae80daa7accd144aa3945badad6a17c9a14f2843.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/ae80daa7accd144aa3945badad6a17c9a14f2843.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/ae80daa7accd144aa3945badad6a17c9a14f2843.mp3"
                 }
             ],
-            "createdAt": "2018-09-28T21:56:30Z",
-            "updatedAt": "2018-09-28T21:56:30Z",
-            "lastPublishedAt": "2018-09-28T21:56:30Z",
+            "curator": {
+                "id": 72422,
+                "name": "tinkervr85",
+                "hash": "606294f0686b9f0006a2c475",
+                "avatar": "https://cdn.beatsaver.com/avatar/67591b4b4654c981e1fd834c78dc4e50114a27b4.png",
+                "type": "DISCORD",
+                "admin": false,
+                "curator": true,
+                "seniorCurator": false,
+                "curatorTab": true,
+                "verifiedMapper": true,
+                "playlistUrl": "https://api.beatsaver.com/users/id/72422/playlist"
+            },
+            "curatedAt": "2024-09-06T22:33:19.707488Z",
+            "createdAt": "2024-09-06T14:24:09.320329Z",
+            "updatedAt": "2024-09-06T22:33:19.707488Z",
+            "lastPublishedAt": "2024-09-06T15:34:03.913127Z",
             "tags": [
-                "techno"
+                "balanced",
+                "pop",
+                "dance"
             ],
             "bookmarked": false,
             "declaredAi": "None",
@@ -157,170 +1688,753 @@
             "blQualified": false
         },
         {
-            "id": "a4ff",
-            "name": "4'33\"",
-            "description": "for an optimal experience, turn hitsound volume to zero.",
+            "id": "33c50",
+            "name": "BIBI & 88rising - The Weekend",
+            "description": "Delightful dark Kpop and R&B by Bibi\n\nI really like the beat\n\n~ You only call me on the weekend\n~ You only love me when we freakin\n\nCan find me on Discord: bellus__",
             "uploader": {
-                "id": 26861,
-                "name": "okachamie",
-                "hash": "5dd579a0404d3c0006979ee9",
-                "avatar": "https://www.gravatar.com/avatar/5a7929029b9e9edf8bc7498e224984b1f3bd88b500a7898235f935285baf5d07?d=retro",
-                "type": "SIMPLE",
+                "id": 145971,
+                "name": "Bellus",
+                "avatar": "https://cdn.beatsaver.com/avatar/0deb1969cd9c96b3bc5c3821c158b1b23d9550b8.png",
+                "type": "DISCORD",
                 "admin": false,
-                "curator": false,
+                "curator": true,
                 "seniorCurator": false,
-                "playlistUrl": "https://api.beatsaver.com/users/id/26861/playlist"
+                "curatorTab": true,
+                "verifiedMapper": true,
+                "playlistUrl": "https://api.beatsaver.com/users/id/145971/playlist"
             },
             "metadata": {
-                "bpm": 120.0,
-                "duration": 403,
-                "songName": "4'33\"",
+                "bpm": 202.99,
+                "duration": 170,
+                "songName": "The Weekend",
                 "songSubName": "",
-                "songAuthorName": "John Cage",
-                "levelAuthorName": "Okachamie"
+                "songAuthorName": "88rising & BIBI",
+                "levelAuthorName": "bellus"
             },
             "stats": {
                 "plays": 0,
                 "downloads": 0,
-                "upvotes": 2,
+                "upvotes": 48,
                 "downvotes": 0,
-                "score": 0.6771
+                "score": 0.9344
             },
-            "uploaded": "2020-05-11T01:12:55.218Z",
+            "uploaded": "2023-07-06T21:50:07.755779Z",
             "automapper": false,
             "ranked": false,
             "qualified": false,
             "versions": [
                 {
-                    "hash": "3082d9b7b73080ec1792a38d75b4988ea31650eb",
-                    "key": "a4ff",
+                    "hash": "be475b17c7ed2ae54719f1ea1797b56c24948aa3",
                     "state": "Published",
-                    "createdAt": "2020-05-11T01:12:55.218Z",
-                    "sageScore": 1,
+                    "createdAt": "2023-08-24T21:50:08.617549Z",
+                    "sageScore": 4,
                     "diffs": [
                         {
-                            "njs": 23.0,
-                            "offset": 0.0,
-                            "notes": 135,
+                            "njs": 16.0,
+                            "offset": 0.22,
+                            "notes": 727,
                             "bombs": 0,
                             "obstacles": 0,
-                            "nps": 0.36,
-                            "length": 749.625,
+                            "nps": 4.472,
+                            "length": 550.0,
                             "characteristic": "Standard",
                             "difficulty": "ExpertPlus",
-                            "events": 331,
+                            "events": 1340,
                             "chroma": false,
                             "me": false,
                             "ne": false,
                             "cinema": false,
-                            "seconds": 374.813,
-                            "paritySummary": {
-                                "errors": 24,
-                                "warns": 0,
-                                "resets": 0
-                            },
-                            "maxScore": 116955,
-                            "environment": "DefaultEnvironment"
-                        }
-                    ],
-                    "downloadURL": "https://r2cdn.beatsaver.com/3082d9b7b73080ec1792a38d75b4988ea31650eb.zip",
-                    "coverURL": "https://na.cdn.beatsaver.com/3082d9b7b73080ec1792a38d75b4988ea31650eb.jpg",
-                    "previewURL": "https://na.cdn.beatsaver.com/3082d9b7b73080ec1792a38d75b4988ea31650eb.mp3"
-                }
-            ],
-            "createdAt": "2020-05-11T01:12:55.218Z",
-            "updatedAt": "2020-05-11T01:12:55.218Z",
-            "lastPublishedAt": "2020-05-11T01:12:55.218Z",
-            "bookmarked": false,
-            "declaredAi": "None",
-            "blRanked": false,
-            "blQualified": false
-        },
-        {
-            "id": "256b8",
-            "name": "John Cage - 4'33\"",
-            "description": "貴方はこの曲をどう捉えますか\n\nHow do you perceive this song?",
-            "uploader": {
-                "id": 4290730,
-                "name": "eiL",
-                "avatar": "https://cdn.beatsaver.com/avatar/4290730.jpg",
-                "type": "SIMPLE",
-                "admin": false,
-                "curator": false,
-                "seniorCurator": false,
-                "playlistUrl": "https://api.beatsaver.com/users/id/4290730/playlist"
-            },
-            "metadata": {
-                "bpm": 120.0,
-                "duration": 273,
-                "songName": "4'33\"",
-                "songSubName": "",
-                "songAuthorName": "John Cage",
-                "levelAuthorName": " "
-            },
-            "stats": {
-                "plays": 0,
-                "downloads": 0,
-                "upvotes": 6,
-                "downvotes": 0,
-                "score": 0.7915
-            },
-            "uploaded": "2022-05-09T08:21:12.827497Z",
-            "automapper": false,
-            "ranked": false,
-            "qualified": false,
-            "versions": [
-                {
-                    "hash": "0fdad565f1802516e933d2b3651922fd93add999",
-                    "state": "Published",
-                    "createdAt": "2022-05-09T08:16:46.032162Z",
-                    "sageScore": 1,
-                    "diffs": [
-                        {
-                            "njs": 1.0,
-                            "offset": 18.0,
-                            "notes": 0,
-                            "bombs": 16,
-                            "obstacles": 0,
-                            "nps": 0.0,
-                            "length": 545.0,
-                            "characteristic": "Standard",
-                            "difficulty": "Hard",
-                            "events": 0,
-                            "chroma": false,
-                            "me": false,
-                            "ne": false,
-                            "cinema": false,
-                            "seconds": 272.5,
+                            "seconds": 162.57,
                             "paritySummary": {
                                 "errors": 0,
                                 "warns": 0,
-                                "resets": 2
+                                "resets": 0
                             },
-                            "maxScore": 0,
+                            "maxScore": 661595,
+                            "environment": "BillieEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/be475b17c7ed2ae54719f1ea1797b56c24948aa3.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/be475b17c7ed2ae54719f1ea1797b56c24948aa3.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/be475b17c7ed2ae54719f1ea1797b56c24948aa3.mp3"
+                }
+            ],
+            "createdAt": "2023-07-06T21:49:55.799875Z",
+            "updatedAt": "2023-09-16T16:28:21.316185Z",
+            "lastPublishedAt": "2023-08-24T21:50:17.911110Z",
+            "tags": [
+                "balanced",
+                "dance-style",
+                "k-pop",
+                "rb"
+            ],
+            "bookmarked": false,
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "1da94",
+            "name": "Puffer Reacts to memes",
+            "description": "I was challenged, called out and threatened when browsing the YouTubes so I mapped this. \n\nalso Puffer why we map is out of boredom or if we like the song or meme!\n\nTime mapped: 38:30\n-----------------------------------------------------------------------\n\njoin the discord: https://discord.gg/7yQeT8e\nif you have any questions message me on Discord: Orbie#0173",
+            "uploader": {
+                "id": 4286373,
+                "name": "Orbie",
+                "hash": "5cff0b7798cc5a672c855c28",
+                "avatar": "https://cdn.beatsaver.com/avatar/feaf212a200c903aec200afc317e500fc2dc0930.png",
+                "type": "DISCORD",
+                "admin": false,
+                "curator": false,
+                "seniorCurator": false,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4286373/playlist"
+            },
+            "metadata": {
+                "bpm": 100.0,
+                "duration": 27,
+                "songName": "Puffer Reacts to memes",
+                "songSubName": "",
+                "songAuthorName": "BigPuffer",
+                "levelAuthorName": "Orbie"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 24,
+                "downvotes": 0,
+                "score": 0.9009
+            },
+            "uploaded": "2021-11-05T01:10:43.204715Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "c8c10e72af2b94b2b98518153fc07abd44cfab59",
+                    "state": "Published",
+                    "createdAt": "2021-11-05T01:10:31.910282Z",
+                    "sageScore": -1,
+                    "diffs": [
+                        {
+                            "njs": 18.0,
+                            "offset": 0.2,
+                            "notes": 134,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 5.763,
+                            "length": 38.75,
+                            "characteristic": "Standard",
+                            "difficulty": "Expert",
+                            "events": 475,
+                            "chroma": false,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 23.25,
+                            "paritySummary": {
+                                "errors": 1,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 116035,
+                            "label": "Idk either Puffer",
                             "environment": "DefaultEnvironment"
                         }
                     ],
-                    "downloadURL": "https://r2cdn.beatsaver.com/0fdad565f1802516e933d2b3651922fd93add999.zip",
-                    "coverURL": "https://na.cdn.beatsaver.com/0fdad565f1802516e933d2b3651922fd93add999.jpg",
-                    "previewURL": "https://na.cdn.beatsaver.com/0fdad565f1802516e933d2b3651922fd93add999.mp3"
+                    "downloadURL": "https://r2cdn.beatsaver.com/c8c10e72af2b94b2b98518153fc07abd44cfab59.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/c8c10e72af2b94b2b98518153fc07abd44cfab59.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/c8c10e72af2b94b2b98518153fc07abd44cfab59.mp3"
                 }
             ],
-            "createdAt": "2022-05-09T08:16:46.032162Z",
-            "updatedAt": "2022-05-09T08:21:12.827497Z",
-            "lastPublishedAt": "2022-05-09T08:21:12.827497Z",
+            "createdAt": "2021-11-05T01:10:31.910282Z",
+            "updatedAt": "2025-01-12T10:12:32.018246Z",
+            "lastPublishedAt": "2021-11-05T01:10:43.204715Z",
+            "bookmarked": false,
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "3e04f",
+            "name": "Secrets - OneRepublic (Chroma+)",
+            "description": "2 Poodles diffs and 2 normal bloq diffs. \n@MadChase did the lighting and Poodle diff in the Expert slot. Go check them out.\n\nAgain, huge thanks to @Phoenix for making environments like the one we used here. You can find and use them for free at the github https://github.com/Phoenix-BS/BSCEL\n\nThanks for the playtests Katinyyy, mochichi72, Tastum and the people that tested Chases diff. ",
+            "uploader": {
+                "id": 4280701,
+                "name": "rategyro",
+                "hash": "605e50f0cd73ba00060a45e3",
+                "avatar": "https://cdn.beatsaver.com/avatar/06d29645455d6652940b240658617d968fc53d91.png",
+                "type": "DISCORD",
+                "admin": true,
+                "curator": true,
+                "seniorCurator": true,
+                "curatorTab": true,
+                "verifiedMapper": true,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4280701/playlist"
+            },
+            "metadata": {
+                "bpm": 148.0,
+                "duration": 227,
+                "songName": "Secrets",
+                "songSubName": "",
+                "songAuthorName": "OneRepublic",
+                "levelAuthorName": "RateGyro & MadChase"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 163,
+                "downvotes": 4,
+                "score": 0.9471
+            },
+            "uploaded": "2024-06-28T22:24:50.558078Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "91853c9fff678af576cd3c17b6d86c2d28f74540",
+                    "state": "Published",
+                    "createdAt": "2024-06-28T22:22:16.997075Z",
+                    "sageScore": 1,
+                    "diffs": [
+                        {
+                            "njs": 15.0,
+                            "offset": -0.25,
+                            "notes": 650,
+                            "bombs": 0,
+                            "obstacles": 3543,
+                            "nps": 2.953,
+                            "length": 543.0,
+                            "characteristic": "Standard",
+                            "difficulty": "Normal",
+                            "events": 3766,
+                            "chroma": true,
+                            "me": false,
+                            "ne": true,
+                            "cinema": false,
+                            "seconds": 220.135,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 590755,
+                            "label": "Bloqs H",
+                            "environment": "BillieEnvironment"
+                        },
+                        {
+                            "njs": 16.0,
+                            "offset": -0.5,
+                            "notes": 907,
+                            "bombs": 0,
+                            "obstacles": 3543,
+                            "nps": 4.12,
+                            "length": 543.0,
+                            "characteristic": "Standard",
+                            "difficulty": "Hard",
+                            "events": 3766,
+                            "chroma": true,
+                            "me": false,
+                            "ne": true,
+                            "cinema": false,
+                            "seconds": 220.135,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 827195,
+                            "label": "Bloqs Ex+",
+                            "environment": "BillieEnvironment"
+                        },
+                        {
+                            "njs": 16.0,
+                            "offset": -0.625,
+                            "notes": 2569,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 11.643,
+                            "length": 544.25,
+                            "characteristic": "Standard",
+                            "difficulty": "Expert",
+                            "events": 3766,
+                            "chroma": true,
+                            "me": false,
+                            "ne": true,
+                            "cinema": false,
+                            "seconds": 220.642,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 2356235,
+                            "label": "Chase Poodles",
+                            "environment": "BillieEnvironment"
+                        },
+                        {
+                            "njs": 16.0,
+                            "offset": -0.625,
+                            "notes": 3148,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 14.281,
+                            "length": 543.75,
+                            "characteristic": "Standard",
+                            "difficulty": "ExpertPlus",
+                            "events": 3766,
+                            "chroma": true,
+                            "me": false,
+                            "ne": true,
+                            "cinema": false,
+                            "seconds": 220.439,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 2888915,
+                            "label": "Rate Poodles",
+                            "environment": "BillieEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/91853c9fff678af576cd3c17b6d86c2d28f74540.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/91853c9fff678af576cd3c17b6d86c2d28f74540.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/91853c9fff678af576cd3c17b6d86c2d28f74540.mp3"
+                }
+            ],
+            "curator": {
+                "id": 4285984,
+                "name": "TheCzar1994",
+                "hash": "60a1b026686b9f0006a4ae2c",
+                "avatar": "https://cdn.beatsaver.com/avatar/4285984.jpg",
+                "type": "SIMPLE",
+                "admin": true,
+                "curator": false,
+                "seniorCurator": false,
+                "curatorTab": true,
+                "verifiedMapper": true,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4285984/playlist"
+            },
+            "curatedAt": "2024-06-28T23:46:59.895458Z",
+            "createdAt": "2024-06-28T22:22:16.997075Z",
+            "updatedAt": "2024-06-28T23:46:59.895458Z",
+            "lastPublishedAt": "2024-06-28T22:24:50.558078Z",
             "tags": [
-                "accuracy"
+                "pop",
+                "rock"
             ],
             "bookmarked": false,
+            "collaborators": [
+                {
+                    "id": 4286182,
+                    "name": "MadChase",
+                    "avatar": "https://cdn.beatsaver.com/avatar/99feaf0fe97b6c67dde2ae7ba055fab744b0ac61.png",
+                    "type": "DISCORD",
+                    "admin": false,
+                    "curator": true,
+                    "seniorCurator": false,
+                    "curatorTab": true,
+                    "verifiedMapper": true,
+                    "playlistUrl": "https://api.beatsaver.com/users/id/4286182/playlist"
+                }
+            ],
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "40820",
+            "name": "Every Breath You Take - The Police (Chroma+)",
+            "description": "Poodles and 2 normal bloq diffs. Lightshow diff is there because zen mode will not show everything.  First of a couple Halloween maps? We will see.\nMe and my little friends will be watching you...\n\nThanks @Craedien for modeling the hands.\nAgain, huge thanks to @Phoenix for making environments like the one I used here. You can find and use them for free at the github https://github.com/Phoenix-BS/BSCEL\n\nThanks for the playtests mochichi72, Smarmybweeble, TheCzar1994 and anyone I may have forgotten. This has been a wip for months.",
+            "uploader": {
+                "id": 4280701,
+                "name": "rategyro",
+                "hash": "605e50f0cd73ba00060a45e3",
+                "avatar": "https://cdn.beatsaver.com/avatar/06d29645455d6652940b240658617d968fc53d91.png",
+                "type": "DISCORD",
+                "admin": true,
+                "curator": true,
+                "seniorCurator": true,
+                "curatorTab": true,
+                "verifiedMapper": true,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4280701/playlist"
+            },
+            "metadata": {
+                "bpm": 117.359,
+                "duration": 226,
+                "songName": "Every Breath You Take",
+                "songSubName": "",
+                "songAuthorName": "The Police",
+                "levelAuthorName": "RateGyro"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 240,
+                "downvotes": 6,
+                "score": 0.9529,
+                "reviews": 1
+            },
+            "uploaded": "2024-09-27T22:18:29.271711Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "edaf75498962d20a5e753d5120846eef794f9680",
+                    "state": "Published",
+                    "createdAt": "2024-09-27T22:15:45.692019Z",
+                    "sageScore": 3,
+                    "diffs": [
+                        {
+                            "njs": 16.0,
+                            "offset": -0.75,
+                            "notes": 729,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 3.427,
+                            "length": 416.0,
+                            "characteristic": "Standard",
+                            "difficulty": "Hard",
+                            "events": 4636,
+                            "chroma": true,
+                            "me": false,
+                            "ne": true,
+                            "cinema": false,
+                            "seconds": 212.681,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 663435,
+                            "label": "Bloqs Ex",
+                            "environment": "HalloweenEnvironment"
+                        },
+                        {
+                            "njs": 17.0,
+                            "offset": -0.875,
+                            "notes": 879,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 4.133,
+                            "length": 416.0,
+                            "characteristic": "Standard",
+                            "difficulty": "Expert",
+                            "events": 4636,
+                            "chroma": true,
+                            "me": false,
+                            "ne": true,
+                            "cinema": false,
+                            "seconds": 212.681,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 801435,
+                            "label": "Bloqs Ex+",
+                            "environment": "HalloweenEnvironment"
+                        },
+                        {
+                            "njs": 17.0,
+                            "offset": -0.875,
+                            "notes": 2183,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 10.264,
+                            "length": 416.0,
+                            "characteristic": "Standard",
+                            "difficulty": "ExpertPlus",
+                            "events": 4636,
+                            "chroma": true,
+                            "me": false,
+                            "ne": true,
+                            "cinema": false,
+                            "seconds": 212.681,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 2001115,
+                            "label": "Poodles",
+                            "environment": "HalloweenEnvironment"
+                        },
+                        {
+                            "njs": 17.0,
+                            "offset": -0.875,
+                            "notes": 0,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 0.0,
+                            "length": 0.0,
+                            "characteristic": "Lightshow",
+                            "difficulty": "ExpertPlus",
+                            "events": 4636,
+                            "chroma": true,
+                            "me": false,
+                            "ne": true,
+                            "cinema": false,
+                            "seconds": 0.0,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 0,
+                            "label": "Lightshow",
+                            "environment": "HalloweenEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/edaf75498962d20a5e753d5120846eef794f9680.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/edaf75498962d20a5e753d5120846eef794f9680.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/edaf75498962d20a5e753d5120846eef794f9680.mp3"
+                }
+            ],
+            "curator": {
+                "id": 4331555,
+                "name": "TheBlackParrot",
+                "avatar": "https://cdn.beatsaver.com/avatar/213097af5fb746f71825aad761723951ce4807ab.png",
+                "type": "DISCORD",
+                "admin": false,
+                "curator": true,
+                "seniorCurator": false,
+                "curatorTab": true,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4331555/playlist"
+            },
+            "curatedAt": "2024-09-28T22:17:28.898876Z",
+            "createdAt": "2024-09-27T22:07:52.434043Z",
+            "updatedAt": "2024-09-28T22:17:28.898876Z",
+            "lastPublishedAt": "2024-09-27T22:18:29.271712Z",
+            "tags": [
+                "rock",
+                "holiday",
+                "balanced"
+            ],
+            "bookmarked": false,
+            "declaredAi": "None",
+            "blRanked": false,
+            "blQualified": false
+        },
+        {
+            "id": "3e6a3",
+            "name": "Queen of Kings - Alessandra (Gabry Ponte Remix) [Chroma+]",
+            "description": "Thanks for the Request Cynder!\n\n3 Normal diffs and Poodles. All normal diffs have the gaga exclusive floor lighting effect. Lawless Poodles is with the effect since it has performance issues.\n\nThanks @Bytrius for making the Expert+ diff. Go check them out!\n\nAgain, huge thanks to @Phoenix for making environments like the one we used here. You can find and use them for free at the github https://github.com/Phoenix-BS/BSCEL\n\nThanks for the testplays Cynder, Katinyyy, mochichi72, Tastum, earblind69, VirtualStella, TheCzar1994 and everyone I might have forgot.",
+            "uploader": {
+                "id": 4280701,
+                "name": "rategyro",
+                "hash": "605e50f0cd73ba00060a45e3",
+                "avatar": "https://cdn.beatsaver.com/avatar/06d29645455d6652940b240658617d968fc53d91.png",
+                "type": "DISCORD",
+                "admin": true,
+                "curator": true,
+                "seniorCurator": true,
+                "curatorTab": true,
+                "verifiedMapper": true,
+                "playlistUrl": "https://api.beatsaver.com/users/id/4280701/playlist"
+            },
+            "metadata": {
+                "bpm": 202.503,
+                "duration": 183,
+                "songName": "Queen of Kings",
+                "songSubName": "Gabry Ponte Remix",
+                "songAuthorName": "Alessandra",
+                "levelAuthorName": "RateGyro & Bytrius"
+            },
+            "stats": {
+                "plays": 0,
+                "downloads": 0,
+                "upvotes": 346,
+                "downvotes": 11,
+                "score": 0.9514,
+                "reviews": 2
+            },
+            "uploaded": "2024-07-13T05:35:04.123001Z",
+            "automapper": false,
+            "ranked": false,
+            "qualified": false,
+            "versions": [
+                {
+                    "hash": "6f7f5aaec92d7b425c9bf3b3f0715872767ba056",
+                    "state": "Published",
+                    "createdAt": "2024-07-13T05:33:39.838251Z",
+                    "sageScore": 1,
+                    "diffs": [
+                        {
+                            "njs": 17.0,
+                            "offset": -0.1,
+                            "notes": 3218,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 18.566,
+                            "length": 585.0,
+                            "characteristic": "Standard",
+                            "difficulty": "Normal",
+                            "events": 12184,
+                            "chroma": true,
+                            "me": false,
+                            "ne": true,
+                            "cinema": false,
+                            "seconds": 173.331,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 2908675,
+                            "label": "Rate Poodle",
+                            "environment": "GagaEnvironment"
+                        },
+                        {
+                            "njs": 16.0,
+                            "offset": 0.125,
+                            "notes": 464,
+                            "bombs": 0,
+                            "obstacles": 10,
+                            "nps": 2.677,
+                            "length": 585.0,
+                            "characteristic": "Standard",
+                            "difficulty": "Hard",
+                            "events": 12184,
+                            "chroma": true,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 173.331,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 419635,
+                            "label": "Rate H",
+                            "environment": "GagaEnvironment"
+                        },
+                        {
+                            "njs": 17.0,
+                            "offset": -0.1,
+                            "notes": 732,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 4.223,
+                            "length": 585.0,
+                            "characteristic": "Standard",
+                            "difficulty": "Expert",
+                            "events": 12184,
+                            "chroma": true,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 173.331,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 666195,
+                            "label": "Rate Ex",
+                            "environment": "GagaEnvironment"
+                        },
+                        {
+                            "njs": 17.0,
+                            "offset": -0.1,
+                            "notes": 926,
+                            "bombs": 0,
+                            "obstacles": 39,
+                            "nps": 5.342,
+                            "length": 585.0,
+                            "characteristic": "Standard",
+                            "difficulty": "ExpertPlus",
+                            "events": 12184,
+                            "chroma": true,
+                            "me": false,
+                            "ne": false,
+                            "cinema": false,
+                            "seconds": 173.331,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 844675,
+                            "label": "Byte Ex+",
+                            "environment": "GagaEnvironment"
+                        },
+                        {
+                            "njs": 17.0,
+                            "offset": -0.1,
+                            "notes": 3218,
+                            "bombs": 0,
+                            "obstacles": 0,
+                            "nps": 18.566,
+                            "length": 585.0,
+                            "characteristic": "Lawless",
+                            "difficulty": "ExpertPlus",
+                            "events": 12184,
+                            "chroma": true,
+                            "me": false,
+                            "ne": true,
+                            "cinema": false,
+                            "seconds": 173.331,
+                            "paritySummary": {
+                                "errors": 0,
+                                "warns": 0,
+                                "resets": 0
+                            },
+                            "maxScore": 2908675,
+                            "label": "Poodles w/ Floor Effect",
+                            "environment": "GagaEnvironment"
+                        }
+                    ],
+                    "downloadURL": "https://r2cdn.beatsaver.com/6f7f5aaec92d7b425c9bf3b3f0715872767ba056.zip",
+                    "coverURL": "https://na.cdn.beatsaver.com/6f7f5aaec92d7b425c9bf3b3f0715872767ba056.jpg",
+                    "previewURL": "https://na.cdn.beatsaver.com/6f7f5aaec92d7b425c9bf3b3f0715872767ba056.mp3"
+                }
+            ],
+            "curator": {
+                "id": 168973,
+                "name": "RhythmShade",
+                "avatar": "https://cdn.beatsaver.com/avatar/4f2ff2deae6c35948aa218eca3eefca4a0ba5fb0.png",
+                "type": "DISCORD",
+                "admin": false,
+                "curator": true,
+                "seniorCurator": true,
+                "curatorTab": true,
+                "playlistUrl": "https://api.beatsaver.com/users/id/168973/playlist"
+            },
+            "curatedAt": "2024-07-17T07:06:38.433615Z",
+            "createdAt": "2024-07-13T05:33:39.838251Z",
+            "updatedAt": "2024-07-17T07:06:38.433615Z",
+            "lastPublishedAt": "2024-07-13T05:35:04.123002Z",
+            "tags": [
+                "balanced",
+                "electronic"
+            ],
+            "bookmarked": false,
+            "collaborators": [
+                {
+                    "id": 73032,
+                    "name": "Bytrius",
+                    "hash": "5de442271dc9e8000696cd15",
+                    "avatar": "https://cdn.beatsaver.com/avatar/62ed9906317427e9b14435ca144c7189b83a711a.png",
+                    "type": "DISCORD",
+                    "admin": false,
+                    "curator": false,
+                    "seniorCurator": false,
+                    "curatorTab": true,
+                    "verifiedMapper": true,
+                    "playlistUrl": "https://api.beatsaver.com/users/id/73032/playlist"
+                }
+            ],
             "declaredAi": "None",
             "blRanked": false,
             "blQualified": false
         }
     ],
     "info": {
-        "total": 3,
-        "pages": 1,
-        "duration": 0.001
+        "total": 48,
+        "pages": 3,
+        "duration": 0.004
     }
 }
