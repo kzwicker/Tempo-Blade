@@ -223,7 +223,6 @@ def choosePort():
     if num < 0 or num >= len(comports):
         print("Invalid port choice")
         quit()
-
     return serial.Serial(comports[num].device, 115200)
 
 
