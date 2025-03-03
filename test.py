@@ -1,8 +1,8 @@
-import requests
 import zipfile
 import os
 import json
-import shutil
+os.system("pip install requests")
+import requests
 url = "https://r2cdn.beatsaver.com/ced8a18aee94f77aa8b38ee10e5f2980d7f6c26b.zip"
 filename = "starships.zip"
 folder = "Songs/"
@@ -16,13 +16,3 @@ with zipfile.ZipFile(filename, 'r') as zip_ref:
     folder += info["_songName"]
     zip_ref.extractall(folder)
 os.remove(filename)
-"""
-command = f"mv FOLDER {folder}"
-if(goofy):
-    command = f"powershell -command '{command}'"
-"""
-"""if os.path.exists("FOLDER"):
-    command = "rm -rf FOLDER"
-    if(goofy):
-        command = f"powershell -command '{command}'"
-    os.system(command)"""
