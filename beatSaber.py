@@ -105,10 +105,17 @@ class ScreenState:
         return outString
 
 # for use with the pygame version
-class Arrow:
-    def __init__(self):
-        pygame
+class Arrow(pygame.sprite.Sprite):
+    def __init__(self, note):
+        super().__init__() self.note = note
+        self.side = note.getColor()
+        self.direction = note.getDirection()
 
+    def loadArrow(self):
+        if self.side == 0:
+            arrSprite = pg.image.load('./Images/')
+        else:
+            arr
 
 def main():
     global gameType
@@ -171,10 +178,6 @@ def sortDifficulty(file):
         return 4
     
 def chooseDifficulty(songFolder):
-    """
-    screen.fill(255, 255, 255)
-    text = font.render("Available Difficulties:", True, color)
-    """
     difficultyFileList = []
     difficultyList = []
     for file in next(os.walk(songFolder))[2]:
