@@ -2,6 +2,7 @@ import requests
 import zipfile
 import os
 import json
+import shutil
 url = "https://r2cdn.beatsaver.com/ced8a18aee94f77aa8b38ee10e5f2980d7f6c26b.zip"
 filename = "starships.zip"
 folder = "Songs/"
@@ -18,10 +19,16 @@ with open("FOLDER/info.dat") as infoFile:
 if os.path.exists(folder):
     command = f"rm -rf {folder}"
     if(goofy):
-        command = f"powershell -command '{command}' > NULL"
+        command = f"powershell -command '{command}'"
     os.system(command)
 command = f"mv FOLDER {folder}"
 if(goofy):
-    command = f"powershell -command '{command}' > NULL"
+    command = f"powershell -command '{command}'"
 os.system(command)
 os.remove(filename)
+shutil.rmtree("FOLDER")
+"""if os.path.exists("FOLDER"):
+    command = "rm -rf FOLDER"
+    if(goofy):
+        command = f"powershell -command '{command}'"
+    os.system(command)"""
