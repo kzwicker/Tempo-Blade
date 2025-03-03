@@ -16,10 +16,11 @@ with open("FOLDER/info.dat") as infoFile:
     if info["_version"] != "2.0.0":
         print("beatmap not version 2.0.0")
     folder += info["_songName"]
-if(folder == "Songs/"):
-    quit()
 if os.path.exists(folder):
-    shutil.rmtree(folder)
+    command = f"rm -rf {folder}"
+    if(goofy):
+        command = f"powershell -command '{command}'"
+    os.system(command)
 command = f"mv FOLDER {folder}"
 if(goofy):
     command = f"powershell -command '{command}'"
