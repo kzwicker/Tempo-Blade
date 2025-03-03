@@ -25,7 +25,7 @@ const int pwrReg = 0x6B;
 const int threshold = 10000;
 const int g = 17300;
 
-const int mpuReadPeriod = 100;
+const int mpuReadPeriod = 50;
 
 enum directions {
     UPD = 0,
@@ -48,6 +48,24 @@ LiquidCrystal lcd(rs, e, d4, d5, d6, d7);
 MPU6050 mpu;
 
 bool ready = false;
+
+#ifdef __arm__
+// should use uinstd.h to define sbrk but Due causes a conflict
+extern "C" char* sbrk(int incr);
+#else  // __ARM__
+extern char *__brkval;
+#endif  // __arm__
+
+int freeMemory() {
+  char top;
+#ifdef __arm__
+  return &top - reinterpret_cast<char*>(sbrk(0));
+#elif defined(CORE_TEENSY) || (ARDUINO > 103 && ARDUINO != 151)
+  return &top - __brkval;
+#else  // __arm__
+  return __brkval ? &top - __brkval : &top - __malloc_heap_start;
+#endif  // __arm__
+}
 
 
 void setup() {
@@ -88,17 +106,7 @@ void loop() {
   if(!ready) {
     dip;
   }
-/*
-  static int pitches[] = {E3, 0, E3, 0, 0, E3, 0, 0, C3, 0, E3, 0, 0, G3, 0, 0, G2, 0, C3, 0, 0, G2, 0, 0, E2, 0, 0, A2, 0, B2, 0, Bb2, 0, A2, 0, G2, 0, E3, 0, G3, 0, A3, F3, G3, E3, C3, D3, B2, C3, G2, E2, A2, B2, Bb2, A2, G2, E3, G3, A3, F3, G3, E3, C3, D3, B2, G3, Gb3, F3, D3, E3, G2, A2, C3, A2, C3, D3, G3, Gb3, F3, D3, E3, C4, C4, C4, G3, Gb3, F3, D3, E3, G2, A2, C3, A2, C3, D3, Eb3, D3, C3, C3, C3, C3, C3, D3, E3, C3, A2, G2, C3, C3, C3, C3, D3, E3, C3, C3, C3, C3, D3, E3, C3, A2, G2, E3, E3, E3, C3, E3, G3, G2, C3, G2, E2, A2, B2, Bb2, A2, G2, E3, G3, A3, F3, G3, E3, C3, D3, B2, C3, G2, E2, A2, B2, Bb2, A2, G2, E3, G3, A3, F3, G3, E3, C3, D3, B2, E3, C3, G2, G2, A2, F3, F3, A2, B2, A3, A3, A3, G3, F3, E3, C3, A2, G2, E3, C3, G2, G2, A2, F3, F3, A2, B2, F3, F3, F3, E3, D3, C3, G2, E3, C2, C3, G2, E2, A2, B2, A2, Ab4, Bb2, Ab4, G2, Gb4, G2};
-  static int pitch;
 
-  if(millis() < sizeof(pitches)/sizeof(int) * 200) {
-    pitch = pitches[millis() / 125];
-  } else {
-    pitch = 0;
-  }
-  tone(6, pitch, 1000);
-*/
 
   static byte dmpBuf[64];
   static Quaternion q;
@@ -107,24 +115,26 @@ void loop() {
   static VectorInt16 worldAccel;
   static VectorFloat grabity;
 
-  static int mpuTime = 0;
+  static unsigned long mpuTime = 0;
 
   if(millis() >= mpuTime){
-  if(mpu.dmpGetCurrentFIFOPacket(dmpBuf)) {
-    mpu.dmpGetQuaternion(&q, dmpBuf);
-    mpu.dmpGetAccel(&accel, dmpBuf);
-    mpu.dmpGetGravity(&grabity, &q);
-    mpu.dmpGetLinearAccel(&realAccel, &accel, &grabity);
-    mpu.dmpGetLinearAccelInWorld(&worldAccel, &realAccel, &q);
+    if(mpu.dmpGetCurrentFIFOPacket(dmpBuf)) {
+      mpu.dmpGetQuaternion(&q, dmpBuf);
+      mpu.dmpGetAccel(&accel, dmpBuf);
+      mpu.dmpGetGravity(&grabity, &q);
+      mpu.dmpGetLinearAccel(&realAccel, &accel, &grabity);
+      mpu.dmpGetLinearAccelInWorld(&worldAccel, &realAccel, &q);
 
-    Serial.print(worldAccel.x);
-    Serial.print(", ");
-    Serial.print(worldAccel.y);
-    Serial.print(", ");
-    Serial.println(worldAccel.z);
+      Serial.print(worldAccel.x);
+      Serial.print(", ");
+      Serial.print(worldAccel.y);
+      Serial.print(", ");
+      Serial.println(worldAccel.z);
+    }
+    mpuTime += mpuReadPeriod;
   }
-  mpuTime += mpuReadPeriod;
-  }
+
+  /*
 
   while(Serial.available() > 0) {
     int c = Serial.read();
@@ -145,6 +155,7 @@ void loop() {
         lcd.write((char)c);
     }
   }
+  */
 
 
 
