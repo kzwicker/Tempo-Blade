@@ -1,7 +1,6 @@
 import zipfile
 import os
 import json
-os.system("pip install requests")
 import requests
 url = "https://r2cdn.beatsaver.com/ced8a18aee94f77aa8b38ee10e5f2980d7f6c26b.zip"
 filename = "starships.zip"

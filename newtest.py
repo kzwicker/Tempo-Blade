@@ -1,20 +1,37 @@
-import os
-os.system("pip install bs4")
 from bs4 import BeautifulSoup
-html_content = """
-<html>
-<body>
-  <h1>Title</h1>
-  <p>Paragraph 1</p>
-  <p>Paragraph 2</p>
-  <ul>
-    <li>Item 1</li>
-    <li>Item 2</li>
-  </ul>
-</body>
-</html>
+import requests
+import os
+def get_website_source(url):
+  """
+  Retrieves the source code of a website.
+
+  Args:
+    url: The URL of the website.
+
+  Returns:
+    The source code of the website as a string, or None if an error occurs.
+  """
+  try:
+    response = requests.get(url)
+    response.raise_for_status()  # Raise HTTPError for bad responses (4xx or 5xx)
+    return response.text
+  except requests.exceptions.RequestException as e:
+    print(f"Error fetching URL '{url}': {e}")
+    return None
+
+page_source = get_website_source("https://beatsaver.com/?q=starships").encode("utf-8")
+if page_source is None:
+   quit()
+   """
+search = "starships"
+text = requests.get(f"http://beatsaver.com/?q={search}").text
+soup = BeautifulSoup(text, "html.parser")
+hello = soup.find_all("body")
+for x in hello:
+   print(x.text)
+print(hello)
 """
-soup = BeautifulSoup(html_content, 'html.parser')
-paragraphs = soup.find_all('p')
-for p in paragraphs:
-    print(p.text)
+filename = "website.html"
+folder = "Songs/"
+goofy = os.name == "nt"
+open(filename, 'wb').write(page_source)
