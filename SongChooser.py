@@ -23,7 +23,10 @@ folder = "Songs/"
 r = requests.get(url, allow_redirects=True)
 open(filename, 'wb').write(r.content)
 with zipfile.ZipFile(filename) as zip_ref:
-    info = json.load(zip_ref.open("info.dat"))
+    try:
+        info = json.load(zip_ref.open("info.dat"))
+    except:
+        info = json.load(zip_ref.open("Info.dat"))
     if info["_version"] != "2.0.0":
         print("beatmap not version 2.0.0")
     folder += info['_songName']
