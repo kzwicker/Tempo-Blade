@@ -16,12 +16,12 @@ with open("FOLDER/info.dat") as infoFile:
         print("beatmap not version 2.0.0")
     folder += info["_songName"]
 if os.path.exists(folder):
-    command = f"rm -rf {folder}' > NULL"
+    command = f"rm -rf {folder}"
     if(goofy):
-        command = f"powershell -command '{command}'"
+        command = f"powershell -command '{command}' > NULL"
     os.system(command)
-command = f"mv FOLDER {folder}' > NULL"
+command = f"mv FOLDER {folder}"
 if(goofy):
-    command = f"powershell -command '{command}'"
+    command = f"powershell -command '{command}' > NULL"
 os.system(command)
 os.remove(filename)
