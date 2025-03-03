@@ -1,5 +1,13 @@
 #include <LiquidCrystal.h>
+#include "I2Cdev.h"
+#include "MPU6050_6Axis_MotionApps20.h"
+#include "Wire.h"
+
 #include "notes.h"
+#include "arrows.h"
+
+#define dip return
+
 const int rs = 7;
 const int e  = 8;
 const int d4 = 9;
@@ -17,6 +25,8 @@ const int pwrReg = 0x6B;
 const int threshold = 10000;
 const int g = 17300;
 
+const int mpuReadPeriod = 100;
+
 enum directions {
     UPD = 0,
     DOWND,
@@ -33,88 +43,12 @@ enum directions {
 #define D3  147
 #define D3  147
 
-byte arrows[8][8] = {{
-  ~0b00000,
-  ~0b00100,
-  ~0b01000,
-  ~0b11111,
-  ~0b01000,
-  ~0b00100,
-  ~0b00000,
-  ~0b00000,
-},
-{
-  ~0b00000,
-  ~0b00100,
-  ~0b00010,
-  ~0b11111,
-  ~0b00010,
-  ~0b00100,
-  ~0b00000,
-  ~0b00000,
-},
-{
-  ~0b00000,
-  ~0b00100,
-  ~0b00100,
-  ~0b10101,
-  ~0b01110,
-  ~0b00100,
-  ~0b00000,
-  ~0b00000,
-},
-{
-  ~0b00000,
-  ~0b00100,
-  ~0b01110,
-  ~0b10101,
-  ~0b00100,
-  ~0b00100,
-  ~0b00000,
-  ~0b00000,
-},
-{
-  ~0b00000,
-  ~0b00000,
-  ~0b10010,
-  ~0b10100,
-  ~0b11000,
-  ~0b11110,
-  ~0b00000,
-  ~0b00000,
-},
-{
-  ~0b00000,
-  ~0b11110,
-  ~0b11000,
-  ~0b10100,
-  ~0b10010,
-  ~0b00000,
-  ~0b00000,
-  ~0b00000,
-},
-{
-  ~0b00000,
-  ~0b00000,
-  ~0b01001,
-  ~0b00101,
-  ~0b00011,
-  ~0b01111,
-  ~0b00000,
-  ~0b00000,
-},
-{
-  ~0b00000,
-  ~0b01111,
-  ~0b00011,
-  ~0b00101,
-  ~0b01001,
-  ~0b00000,
-  ~0b00000,
-  ~0b00000,
-}};
-
+byte arrows[8][8] = ARROWS;
 LiquidCrystal lcd(rs, e, d4, d5, d6, d7);
+MPU6050 mpu;
+
+bool ready = false;
+
 
 void setup() {
   // put your setup code here, to run once:
@@ -127,13 +61,33 @@ void setup() {
   pinMode(6, OUTPUT);
   Serial.begin(115200);
 
-  Wire.beginTransmission(mpu1);
-  Wire.write(pwrReg);
-  Wire.write(0);
-  Wire.endTransmission(true);
+  Wire.begin();
+
+  mpu.initialize();
+  Serial.println(mpu.testConnection() ? F("MPU6050 connection successful") : F("MPU6050 connection failed"));
+
+  byte status = mpu.dmpInitialize();
+
+  mpu.setZAccelOffset(g);
+
+  if(status != 0) {
+    Serial.println("Something has gone awfully wrong.");
+    dip;
+  }
+
+  mpu.CalibrateAccel(6);
+  mpu.CalibrateGyro(6);
+  mpu.PrintActiveOffsets();
+
+  mpu.setDMPEnabled(true);
+
+  ready = true;
 }
 // good wrong buzzer sound: 4ms high, 4ms low
 void loop() {
+  if(!ready) {
+    dip;
+  }
 /*
   static int pitches[] = {E3, 0, E3, 0, 0, E3, 0, 0, C3, 0, E3, 0, 0, G3, 0, 0, G2, 0, C3, 0, 0, G2, 0, 0, E2, 0, 0, A2, 0, B2, 0, Bb2, 0, A2, 0, G2, 0, E3, 0, G3, 0, A3, F3, G3, E3, C3, D3, B2, C3, G2, E2, A2, B2, Bb2, A2, G2, E3, G3, A3, F3, G3, E3, C3, D3, B2, G3, Gb3, F3, D3, E3, G2, A2, C3, A2, C3, D3, G3, Gb3, F3, D3, E3, C4, C4, C4, G3, Gb3, F3, D3, E3, G2, A2, C3, A2, C3, D3, Eb3, D3, C3, C3, C3, C3, C3, D3, E3, C3, A2, G2, C3, C3, C3, C3, D3, E3, C3, C3, C3, C3, D3, E3, C3, A2, G2, E3, E3, E3, C3, E3, G3, G2, C3, G2, E2, A2, B2, Bb2, A2, G2, E3, G3, A3, F3, G3, E3, C3, D3, B2, C3, G2, E2, A2, B2, Bb2, A2, G2, E3, G3, A3, F3, G3, E3, C3, D3, B2, E3, C3, G2, G2, A2, F3, F3, A2, B2, A3, A3, A3, G3, F3, E3, C3, A2, G2, E3, C3, G2, G2, A2, F3, F3, A2, B2, F3, F3, F3, E3, D3, C3, G2, E3, C2, C3, G2, E2, A2, B2, A2, Ab4, Bb2, Ab4, G2, Gb4, G2};
   static int pitch;
@@ -145,6 +99,32 @@ void loop() {
   }
   tone(6, pitch, 1000);
 */
+
+  static byte dmpBuf[64];
+  static Quaternion q;
+  static VectorInt16 accel;
+  static VectorInt16 realAccel;
+  static VectorInt16 worldAccel;
+  static VectorFloat grabity;
+
+  static int mpuTime = 0;
+
+  if(millis() >= mpuTime){
+  if(mpu.dmpGetCurrentFIFOPacket(dmpBuf)) {
+    mpu.dmpGetQuaternion(&q, dmpBuf);
+    mpu.dmpGetAccel(&accel, dmpBuf);
+    mpu.dmpGetGravity(&grabity, &q);
+    mpu.dmpGetLinearAccel(&realAccel, &accel, &grabity);
+    mpu.dmpGetLinearAccelInWorld(&worldAccel, &realAccel, &q);
+
+    Serial.print(worldAccel.x);
+    Serial.print(", ");
+    Serial.print(worldAccel.y);
+    Serial.print(", ");
+    Serial.println(worldAccel.z);
+  }
+  mpuTime += mpuReadPeriod;
+  }
 
   while(Serial.available() > 0) {
     int c = Serial.read();
@@ -167,61 +147,7 @@ void loop() {
   }
 
 
-  /*
-  struct {
-    int16_t x;
-    int16_t y;
-    int16_t z;
-  } Accelerometer1;
-  Wire.beginTransmission(mpu1);
-  Wire.write(accelReg);
-  Wire.endTransmission(false);
-  Wire.requestFrom(mpu1, 6, true);
-  for(int i = 0; i < 6; i++) {
-    ((byte *)&Accelerometer1)[i ^ 1] = Wire.read();
-  }
 
-  static int i = 0;
-  static int accBuffer[10];
-  accBuffer[i] = Accelerometer1.x;
-  i = (i+1) % 10;
-
-  static int prevAccel = 0;
-
-  int sum = 0;
-  for(int i = 0; i < 10; i++) {
-    sum += accBuffer[i];
-  }
-  int jerk = sum - prevAccel;
-  prevAccel = sum;
-
-  Serial.print(jerk);
-
-  */
-  
-  /*
-  Serial.print(Accelerometer1.y);
-  Serial.print(", ");
-  Serial.print(Accelerometer1.z);
-  Serial.print(", ");
-  if(Accelerometer1.x > threshold) {
-    Serial.print("+X");
-  }
-  if(Accelerometer1.x < -threshold) {
-    Serial.print("-X");
-  }
-  if(Accelerometer1.z > g + threshold) {
-    Serial.print("+Z");
-  }
-  if(Accelerometer1.z < g - threshold) {
-    Serial.print("-Z");
-  }
-  */
-  /*
-  Serial.println();
-
-  delay(100);
-  */
 
 
 
