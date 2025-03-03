@@ -25,6 +25,8 @@ const int pwrReg = 0x6B;
 const int threshold = 10000;
 const int g = 17300;
 
+const int mpuReadPeriod = 100;
+
 enum directions {
     UPD = 0,
     DOWND,
@@ -62,11 +64,13 @@ void setup() {
   Wire.begin();
 
   mpu.initialize();
-  bool status = mpu.dmpInitialize();
+  Serial.println(mpu.testConnection() ? F("MPU6050 connection successful") : F("MPU6050 connection failed"));
+
+  byte status = mpu.dmpInitialize();
 
   mpu.setZAccelOffset(g);
 
-  if(!status) {
+  if(status != 0) {
     Serial.println("Something has gone awfully wrong.");
     dip;
   }
@@ -96,6 +100,32 @@ void loop() {
   tone(6, pitch, 1000);
 */
 
+  static byte dmpBuf[64];
+  static Quaternion q;
+  static VectorInt16 accel;
+  static VectorInt16 realAccel;
+  static VectorInt16 worldAccel;
+  static VectorFloat grabity;
+
+  static int mpuTime = 0;
+
+  if(millis() >= mpuTime){
+  if(mpu.dmpGetCurrentFIFOPacket(dmpBuf)) {
+    mpu.dmpGetQuaternion(&q, dmpBuf);
+    mpu.dmpGetAccel(&accel, dmpBuf);
+    mpu.dmpGetGravity(&grabity, &q);
+    mpu.dmpGetLinearAccel(&realAccel, &accel, &grabity);
+    mpu.dmpGetLinearAccelInWorld(&worldAccel, &realAccel, &q);
+
+    Serial.print(worldAccel.x);
+    Serial.print(", ");
+    Serial.print(worldAccel.y);
+    Serial.print(", ");
+    Serial.println(worldAccel.z);
+  }
+  mpuTime += mpuReadPeriod;
+  }
+
   while(Serial.available() > 0) {
     int c = Serial.read();
     switch(c) {
@@ -117,61 +147,7 @@ void loop() {
   }
 
 
-  /*
-  struct {
-    int16_t x;
-    int16_t y;
-    int16_t z;
-  } Accelerometer1;
-  Wire.beginTransmission(mpu1);
-  Wire.write(accelReg);
-  Wire.endTransmission(false);
-  Wire.requestFrom(mpu1, 6, true);
-  for(int i = 0; i < 6; i++) {
-    ((byte *)&Accelerometer1)[i ^ 1] = Wire.read();
-  }
 
-  static int i = 0;
-  static int accBuffer[10];
-  accBuffer[i] = Accelerometer1.x;
-  i = (i+1) % 10;
-
-  static int prevAccel = 0;
-
-  int sum = 0;
-  for(int i = 0; i < 10; i++) {
-    sum += accBuffer[i];
-  }
-  int jerk = sum - prevAccel;
-  prevAccel = sum;
-
-  Serial.print(jerk);
-
-  */
-  
-  /*
-  Serial.print(Accelerometer1.y);
-  Serial.print(", ");
-  Serial.print(Accelerometer1.z);
-  Serial.print(", ");
-  if(Accelerometer1.x > threshold) {
-    Serial.print("+X");
-  }
-  if(Accelerometer1.x < -threshold) {
-    Serial.print("-X");
-  }
-  if(Accelerometer1.z > g + threshold) {
-    Serial.print("+Z");
-  }
-  if(Accelerometer1.z < g - threshold) {
-    Serial.print("-Z");
-  }
-  */
-  /*
-  Serial.println();
-
-  delay(100);
-  */
 
 
 
