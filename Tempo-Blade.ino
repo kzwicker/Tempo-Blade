@@ -18,14 +18,13 @@ const int d7 = 12;
 const int columns = 16;
 const int rows = 2;
 
-const int mpu1 = 0x68;
 const int accelReg = 0x3B;
 const int pwrReg = 0x6B;
 
 const int threshold = 10000;
 const int g = 17300;
 
-const int mpuReadPeriod = 50;
+const int mpuReadPeriod = 25;
 
 enum directions {
     UPD = 0,
@@ -45,7 +44,8 @@ enum directions {
 
 byte arrows[8][8] = ARROWS;
 LiquidCrystal lcd(rs, e, d4, d5, d6, d7);
-MPU6050 mpu;
+MPU6050 mpu1(MPU6050_ADDRESS_AD0_LOW);
+MPU6050 mpu2(MPU6050_ADDRESS_AD0_HIGH);
 
 bool ready = false;
 
@@ -68,6 +68,21 @@ int freeMemory() {
 }
 
 
+template<typename T>
+T operator*(const T &vec, const float &coeff) {
+  return T(vec.x*coeff, vec.y*coeff, vec.z*coeff);
+}
+
+template<typename T>
+T operator+(const T &vec1, const T &vec2) {
+  return T(vec1.x + vec2.x, vec1.y + vec2.y, vec1.z + vec2.z);
+}
+
+template<typename T>
+T operator+=(T &obj1, const T &obj2) {
+  obj1 = obj1 + obj2;
+}
+
 void setup() {
   // put your setup code here, to run once:
   for(int i = 0; i < 8; i++) {
@@ -81,23 +96,26 @@ void setup() {
 
   Wire.begin();
 
-  mpu.initialize();
-  Serial.println(mpu.testConnection() ? F("MPU6050 connection successful") : F("MPU6050 connection failed"));
+  for(int i = 0; i < 2; i++){
+    MPU6050 &mpu = i == 0 ? mpu1 : mpu2;
+    mpu.initialize();
+    Serial.println(mpu.testConnection() ? F("MPU6050 connection successful") : F("MPU6050 connection failed"));
 
-  byte status = mpu.dmpInitialize();
+    byte status = mpu.dmpInitialize();
 
-  mpu.setZAccelOffset(g);
+    mpu.setZAccelOffset(g);
 
-  if(status != 0) {
-    Serial.println("Something has gone awfully wrong.");
-    dip;
+    if(status != 0) {
+      Serial.println("Something has gone awfully wrong.");
+      dip;
+    }
+
+    mpu.CalibrateAccel(6);
+    mpu.CalibrateGyro(6);
+    mpu.PrintActiveOffsets();
+
+    mpu.setDMPEnabled(true);
   }
-
-  mpu.CalibrateAccel(6);
-  mpu.CalibrateGyro(6);
-  mpu.PrintActiveOffsets();
-
-  mpu.setDMPEnabled(true);
 
   ready = true;
 }
@@ -115,21 +133,61 @@ void loop() {
   static VectorInt16 worldAccel;
   static VectorFloat grabity;
 
+  static VectorInt16 vel1;
+  static VectorInt16 vel2;
+
   static unsigned long mpuTime = 0;
 
   if(millis() >= mpuTime){
-    if(mpu.dmpGetCurrentFIFOPacket(dmpBuf)) {
-      mpu.dmpGetQuaternion(&q, dmpBuf);
-      mpu.dmpGetAccel(&accel, dmpBuf);
-      mpu.dmpGetGravity(&grabity, &q);
-      mpu.dmpGetLinearAccel(&realAccel, &accel, &grabity);
-      mpu.dmpGetLinearAccelInWorld(&worldAccel, &realAccel, &q);
+    if(mpu1.dmpGetCurrentFIFOPacket(dmpBuf)) {
+      mpu1.dmpGetQuaternion(&q, dmpBuf);
+      mpu1.dmpGetAccel(&accel, dmpBuf);
+      mpu1.dmpGetGravity(&grabity, &q);
+      mpu1.dmpGetLinearAccel(&realAccel, &accel, &grabity);
+      mpu1.dmpGetLinearAccelInWorld(&worldAccel, &realAccel, &q);
 
+      vel1 += worldAccel * (mpuReadPeriod/1000.0);
+      /*
       Serial.print(worldAccel.x);
       Serial.print(", ");
       Serial.print(worldAccel.y);
       Serial.print(", ");
-      Serial.println(worldAccel.z);
+      Serial.print(worldAccel.z);
+      Serial.print("\t");
+      */
+
+      Serial.print(vel1.x);
+      Serial.print(", ");
+      Serial.print(vel1.y);
+      Serial.print(", ");
+      Serial.print(vel1.z);
+      Serial.print("\t");
+    }
+
+    if(mpu2.dmpGetCurrentFIFOPacket(dmpBuf)) {
+      mpu2.dmpGetQuaternion(&q, dmpBuf);
+      mpu2.dmpGetAccel(&accel, dmpBuf);
+      mpu2.dmpGetGravity(&grabity, &q);
+      mpu2.dmpGetLinearAccel(&realAccel, &accel, &grabity);
+      mpu2.dmpGetLinearAccelInWorld(&worldAccel, &realAccel, &q);
+
+      vel2 += worldAccel * (mpuReadPeriod/1000.0);
+
+      /*
+      Serial.print(worldAccel.x);
+      Serial.print(", ");
+      Serial.print(worldAccel.y);
+      Serial.print(", ");
+      Serial.print(worldAccel.z);
+      Serial.print("\n");
+      */
+
+      Serial.print(vel2.x);
+      Serial.print(", ");
+      Serial.print(vel2.y);
+      Serial.print(", ");
+      Serial.print(vel2.z);
+      Serial.print("\n");
     }
     mpuTime += mpuReadPeriod;
   }
