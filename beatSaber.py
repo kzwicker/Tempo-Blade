@@ -4,9 +4,10 @@ import time
 import os
 import serial
 import serial.tools.list_ports as listports
-import pygame
 import requests
 import zipfile
+import shutil
+import pygame
 """
 pygame.init()
 screenWidth = 720
@@ -163,6 +164,8 @@ def main():
     try:
         if(input("Do you want to load a new song? ")[0].lower() == "y"):
             loadNewSong()
+    except KeyboardInterrupt:
+        quit()
     except:
         ()
     returnNlinesUp(1)
@@ -176,7 +179,10 @@ def main():
         difficultyName = chooseDifficulty(songFolder)
     port = choosePort()
     infoName, songName = getFilenames(songFolder)
-    playGame(songName, getBPM(infoName), getNotes(difficultyName), port)
+    try:
+        playGame(songName, getBPM(infoName), getNotes(difficultyName), port)
+    except KeyboardInterrupt:
+        quit()
 
 class gameTypes:
     terminal = 1
@@ -228,6 +234,8 @@ def chooseGameType():
     try:
         lines += 1
         num = int(input("Enter corresponding number to make a game selection: "))
+    except KeyboardInterrupt:
+        quit()
     except:
         print("Please enter a number")
         lines += 1
@@ -254,6 +262,8 @@ def chooseSong():
     try:
         lines += 1
         num = int(input("Enter corresponding number to make a song selection: "))
+    except KeyboardInterrupt:
+        quit()
     except:
         print("Please enter a number")
         lines += 1
@@ -307,6 +317,8 @@ def chooseDifficulty(songFolder):
     try:
         lines += 1
         num = int(input("Enter corresponding number to make a difficulty selection: "))
+    except KeyboardInterrupt:
+        quit()
     except:
         print("Please enter a number")
         lines += 1
@@ -330,6 +342,8 @@ def choosePort():
     try:
         lines += 1
         num = int(input("Enter corresponding number to make a port selection or leave blank for debug: "))
+    except KeyboardInterrupt:
+        quit()
     except:
         print("Port not specified, entering debug mode")
         lines += 1
@@ -376,10 +390,12 @@ def getBPM(fileName):
             info = json.load(infoFile)
             if info["_version"] != "2.0.0":
                 print("beatmap not version 2.0.0")
+                shutil.rmtree(fileName[:fileName.rfind("/")])
                 quit()
             return info["_beatsPerMinute"]
     except:
         print(f"Failed to parse {fileName}")
+        shutil.rmtree(fileName[:fileName.rfind("/")])
         quit()
 
 def getNotes(fileName):
