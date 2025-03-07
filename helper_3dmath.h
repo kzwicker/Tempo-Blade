@@ -174,6 +174,12 @@ class VectorFloat {
             z = nz;
         }
 
+        VectorFloat(VectorInt16 other) {
+            x = other.x;
+            y = other.y;
+            z = other.z;
+        }
+
         float getMagnitude() {
             return sqrt(x*x + y*y + z*z);
         }

@@ -21,10 +21,10 @@ const int rows = 2;
 const int accelReg = 0x3B;
 const int pwrReg = 0x6B;
 
-const int threshold = 10000;
-const int g = 17300;
+const float threshold = 20.0;
+const int waitTime = 25;
 
-const int mpuReadPeriod = 25;
+const int mpuReadPeriod = 10;
 
 enum directions {
     UPD = 0,
@@ -34,7 +34,9 @@ enum directions {
     UPLEFTD,
     UPRIGHTD,
     DOWNLEFTD,
-    DOWNRIGHTD
+    DOWNRIGHTD,
+    ANYD,
+    NOD
 };
 
 #define C3  131
@@ -79,8 +81,17 @@ T operator+(const T &vec1, const T &vec2) {
 }
 
 template<typename T>
+T operator-(const T &vec1, const T &vec2) {
+  return T(vec1.x - vec2.x, vec1.y - vec2.y, vec1.z - vec2.z);
+}
+
+template<typename T>
 T operator+=(T &obj1, const T &obj2) {
   obj1 = obj1 + obj2;
+}
+
+void buzz() {
+  tone(6, 125, 125);
 }
 
 void setup() {
@@ -103,7 +114,6 @@ void setup() {
 
     byte status = mpu.dmpInitialize();
 
-    mpu.setZAccelOffset(g);
 
     if(status != 0) {
       Serial.println("Something has gone awfully wrong.");
@@ -119,26 +129,36 @@ void setup() {
 
   ready = true;
 }
-// good wrong buzzer sound: 4ms high, 4ms low
+
 void loop() {
   if(!ready) {
     dip;
   }
 
 
-  static byte dmpBuf[64];
-  static Quaternion q;
-  static VectorInt16 accel;
-  static VectorInt16 realAccel;
-  static VectorInt16 worldAccel;
-  static VectorFloat grabity;
+  
 
-  static VectorInt16 vel1;
-  static VectorInt16 vel2;
+
+  static VectorFloat mpu1acc;
+  static VectorFloat mpu2acc;
+  static VectorFloat mpudiffs[2];
+
+  enum swingStates {
+    NOSWING,
+    SWING,
+    LATENTSWING
+  };
+  static byte states[2] = {NOSWING, NOSWING};
+  static float controllerDirections[2] = {0.0, 0.0};
 
   static unsigned long mpuTime = 0;
-
   if(millis() >= mpuTime){
+    static byte dmpBuf[64];
+    static Quaternion q;
+    static VectorInt16 accel;
+    static VectorInt16 realAccel;
+    static VectorInt16 worldAccel;
+    static VectorFloat grabity;
     if(mpu1.dmpGetCurrentFIFOPacket(dmpBuf)) {
       mpu1.dmpGetQuaternion(&q, dmpBuf);
       mpu1.dmpGetAccel(&accel, dmpBuf);
@@ -146,57 +166,98 @@ void loop() {
       mpu1.dmpGetLinearAccel(&realAccel, &accel, &grabity);
       mpu1.dmpGetLinearAccelInWorld(&worldAccel, &realAccel, &q);
 
-      vel1 += worldAccel * (mpuReadPeriod/1000.0);
-      /*
-      Serial.print(worldAccel.x);
-      Serial.print(", ");
-      Serial.print(worldAccel.y);
-      Serial.print(", ");
-      Serial.print(worldAccel.z);
-      Serial.print("\t");
-      */
+      static VectorFloat accelAvgSum;
+      accelAvgSum += VectorFloat(worldAccel) - mpu1acc;
+      mpu1acc = accelAvgSum * (1.0/100);
 
-      Serial.print(vel1.x);
-      Serial.print(", ");
-      Serial.print(vel1.y);
-      Serial.print(", ");
-      Serial.print(vel1.z);
-      Serial.print("\t");
+      static VectorFloat lastAccelAvg;
+      mpudiffs[0] = mpu1acc - lastAccelAvg;
+      lastAccelAvg = mpu1acc;
     }
-
+    
     if(mpu2.dmpGetCurrentFIFOPacket(dmpBuf)) {
       mpu2.dmpGetQuaternion(&q, dmpBuf);
       mpu2.dmpGetAccel(&accel, dmpBuf);
       mpu2.dmpGetGravity(&grabity, &q);
       mpu2.dmpGetLinearAccel(&realAccel, &accel, &grabity);
-      mpu2.dmpGetLinearAccelInWorld(&worldAccel, &realAccel, &q);
+      mpu1.dmpGetLinearAccelInWorld(&worldAccel, &realAccel, &q);
 
-      vel2 += worldAccel * (mpuReadPeriod/1000.0);
+      static VectorFloat accelAvgSum;
+      accelAvgSum += VectorFloat(worldAccel) - mpu2acc;
+      mpu2acc = accelAvgSum * (1.0/100);
 
-      /*
-      Serial.print(worldAccel.x);
-      Serial.print(", ");
-      Serial.print(worldAccel.y);
-      Serial.print(", ");
-      Serial.print(worldAccel.z);
-      Serial.print("\n");
-      */
-
-      Serial.print(vel2.x);
-      Serial.print(", ");
-      Serial.print(vel2.y);
-      Serial.print(", ");
-      Serial.print(vel2.z);
-      Serial.print("\n");
+      static VectorFloat lastAccelAvg;
+      mpudiffs[1] = mpu2acc - lastAccelAvg;
+      lastAccelAvg = mpu2acc;
     }
+
+    
+    static unsigned long timesWhenSwingEnded[2] = {0,0};
+    for(int i = 0; i < 2; i++){
+      switch(states[i]) {
+        case NOSWING:
+          if(mpudiffs[i].getMagnitude() > threshold) {
+            states[i] = SWING;
+            controllerDirections[i] = atan2(mpudiffs[i].z, mpudiffs[i].x);
+          }
+          break;
+        case SWING:
+          if(mpudiffs[i].getMagnitude() <= threshold) {
+            states[i] = LATENTSWING;
+            timesWhenSwingEnded[i] = millis();
+          }
+          break;
+        case LATENTSWING:
+          if(mpudiffs[i].getMagnitude() > threshold) {
+            states[i] = SWING;
+          } else if(millis() > timesWhenSwingEnded[i] + waitTime) {
+            states[i] = NOSWING;
+          }
+          break;
+      
+      }
+    }
+
     mpuTime += mpuReadPeriod;
   }
 
-  /*
 
   while(Serial.available() > 0) {
     int c = Serial.read();
     switch(c) {
+      case 'h':
+        for(int i = 0; i < 2; i++){
+          bool isSwinging = true;
+          if(states[i] == NOSWING) {
+            isSwinging = false;
+          }
+
+          while(Serial.available() == 0);
+          //TODO: DIRECTION CHECKING
+          switch(Serial.read()) {
+            case UPD:
+              break;
+            case DOWND:
+              break;
+            case LEFTD:
+              break;
+            case RIGHTD:
+              break;
+            case UPLEFTD:
+              break;
+            case UPRIGHTD:
+              break;
+            case DOWNLEFTD:
+              break;
+            case DOWNRIGHTD:
+              break;
+            case ANYD:
+              if(!isSwinging) {
+                buzz();
+              }
+              break;
+          }
+        }
       case '\n':
         lcd.setCursor(0,1);
         break;
@@ -206,18 +267,19 @@ void loop() {
       case ' ':
         lcd.write(0xFF);
         break;
-      case 8:
+      case ANYD:
         lcd.write('X');
         break;
       default:
         lcd.write((char)c);
     }
   }
-  */
+
+  
 
 
 
-
+  
 
 
 
