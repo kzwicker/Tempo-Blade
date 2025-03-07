@@ -160,6 +160,7 @@ class Arrow(pygame.sprite.Sprite):
 """
 def main():
     returnNlinesUp(2)
+    print("\n" * 5)
     if(input("Do you want to load a new song? ")[0].lower() == "y"):
         loadNewSong()
     returnNlinesUp(1)
@@ -223,8 +224,8 @@ def chooseGameType():
     print("3: pygame")
     lines = 4
     try:
-        num = int(input("Enter corresponding number to make a game selection: "))
         lines += 1
+        num = int(input("Enter corresponding number to make a game selection: "))
     except:
         print("Please enter a number")
         lines += 1
@@ -249,8 +250,8 @@ def chooseSong():
         print(f"{index + 1}: {song}")
         lines += 1
     try:
-        num = int(input("Enter corresponding number to make a song selection: "))
         lines += 1
+        num = int(input("Enter corresponding number to make a song selection: "))
     except:
         print("Please enter a number")
         lines += 1
@@ -303,8 +304,8 @@ def chooseDifficulty(songFolder):
         lines += 1
 
     try:
-        num = int(input("Enter corresponding number to make a difficulty selection: "))
         lines += 1
+        num = int(input("Enter corresponding number to make a difficulty selection: "))
     except:
         print("Please enter a number")
         lines += 1
@@ -326,8 +327,8 @@ def choosePort():
         print(f"{index}: {port.name} - {port.manufacturer}")
         lines += 1
     try:
-        num = int(input("Enter corresponding number to make a port selection or leave blank for debug: "))
         lines += 1
+        num = int(input("Enter corresponding number to make a port selection or leave blank for debug: "))
     except:
         print("Port not specified, entering debug mode")
         lines += 1
