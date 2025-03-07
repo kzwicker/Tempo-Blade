@@ -161,8 +161,11 @@ class Arrow(pygame.sprite.Sprite):
 def main():
     returnNlinesUp(2)
     print("\n" * 5)
-    if(input("Do you want to load a new song? ")[0].lower() == "y"):
-        loadNewSong()
+    try:
+        if(input("Do you want to load a new song? ")[0].lower() == "y"):
+            loadNewSong()
+    except:
+        ()
     returnNlinesUp(1)
     global gameType
     gameType, songFolder, difficultyName, port, infoName, songName = [None] * 6
