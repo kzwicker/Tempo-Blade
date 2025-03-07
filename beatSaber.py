@@ -4,9 +4,10 @@ import time
 import os
 import serial
 import serial.tools.list_ports as listports
-import pygame
 import requests
 import zipfile
+import shutil
+import pygame
 """
 pygame.init()
 screenWidth = 720
@@ -172,8 +173,13 @@ class Arrow(pygame.sprite.Sprite):
 """
 def main():
     returnNlinesUp(2)
-    if(input("Do you want to load a new song? ")[0].lower() == "y"):
-        loadNewSong()
+    try:
+        if(input("Do you want to load a new song? ")[0].lower() == "y"):
+            loadNewSong()
+    except KeyboardInterrupt:
+        quit()
+    except:
+        ()
     returnNlinesUp(1)
     global gameType
     gameType, songFolder, difficultyName, port, infoName, songName = [None] * 6
@@ -185,7 +191,10 @@ def main():
         difficultyName = chooseDifficulty(songFolder)
     port = choosePort()
     infoName, songName = getFilenames(songFolder)
-    playGame(songName, getBPM(infoName), getNotes(difficultyName), port)
+    try:
+        playGame(songName, getBPM(infoName), getNotes(difficultyName), port)
+    except KeyboardInterrupt:
+        quit()
 
 class gameTypes:
     terminal = 1
@@ -235,8 +244,10 @@ def chooseGameType():
     print("3: pygame")
     lines = 4
     try:
-        num = int(input("Enter corresponding number to make a game selection: "))
         lines += 1
+        num = int(input("Enter corresponding number to make a game selection: "))
+    except KeyboardInterrupt:
+        quit()
     except:
         print("Please enter a number")
         lines += 1
@@ -261,8 +272,10 @@ def chooseSong():
         print(f"{index + 1}: {song}")
         lines += 1
     try:
-        num = int(input("Enter corresponding number to make a song selection: "))
         lines += 1
+        num = int(input("Enter corresponding number to make a song selection: "))
+    except KeyboardInterrupt:
+        quit()
     except:
         print("Please enter a number")
         lines += 1
@@ -284,10 +297,10 @@ def sortDifficulty(file):
         return 1
     if("Hard" in file):
         return 2
-    if("Expert" in file):
-        return 3
     if("ExpertPlus" in file or "Expert+" in file):
         return 4
+    if("Expert" in file):
+        return 3
     
 def chooseDifficulty(songFolder):
     difficultyFileList = []
@@ -313,10 +326,11 @@ def chooseDifficulty(songFolder):
     for index, difficulty in enumerate(difficultyList):
         print(f"{index + 1}: {difficulty}")
         lines += 1
-
     try:
-        num = int(input("Enter corresponding number to make a difficulty selection: "))
         lines += 1
+        num = int(input("Enter corresponding number to make a difficulty selection: "))
+    except KeyboardInterrupt:
+        quit()
     except:
         print("Please enter a number")
         lines += 1
@@ -338,8 +352,10 @@ def choosePort():
         print(f"{index}: {port.name} - {port.manufacturer}")
         lines += 1
     try:
-        num = int(input("Enter corresponding number to make a port selection or leave blank for debug: "))
         lines += 1
+        num = int(input("Enter corresponding number to make a port selection or leave blank for debug: "))
+    except KeyboardInterrupt:
+        quit()
     except:
         print("Port not specified, entering debug mode")
         lines += 1
@@ -386,10 +402,12 @@ def getBPM(fileName):
             info = json.load(infoFile)
             if info["_version"] != "2.0.0":
                 print("beatmap not version 2.0.0")
+                shutil.rmtree(fileName[:fileName.rfind("/")])
                 quit()
             return info["_beatsPerMinute"]
     except:
         print(f"Failed to parse {fileName}")
+        shutil.rmtree(fileName[:fileName.rfind("/")])
         quit()
 
 def getNotes(fileName):
