@@ -121,12 +121,18 @@ class Arrow(pygame.sprite.Sprite):
             arr
 """
 def main():
+    returnNlinesUp(2)
     if(input("Do you want to load a new song? ")[0].lower() == "y"):
         loadNewSong()
+    returnNlinesUp(1)
     global gameType
-    gameType = chooseGameType()
-    songFolder = chooseSong()
-    difficultyName = chooseDifficulty(songFolder)
+    gameType, songFolder, difficultyName, port, infoName, songName = [None] * 6
+    while(gameType == None):
+        gameType = chooseGameType()
+    while(songFolder == None):
+        songFolder = chooseSong()
+    while(difficultyName == None):
+        difficultyName = chooseDifficulty(songFolder)
     port = choosePort()
     infoName, songName = getFilenames(songFolder)
     playGame(songName, getBPM(infoName), getNotes(difficultyName), port)
@@ -138,6 +144,7 @@ class gameTypes:
 
 def loadNewSong():
     song = input("Enter song: ")
+    lines = 1
     request = f"https://api.beatsaver.com/search/text/0?leaderboard=All&pageSize=20&q={song}"
     page_source = requests.get(request).text.encode("utf-8")
     songs = json.loads(page_source)
@@ -147,7 +154,9 @@ def loadNewSong():
         print(f"{x + 1}: ")
         print(songs["docs"][x]["name"])
         print(f"Uploaded by {songs["docs"][x]["uploader"]["name"]}\n")
+        lines += 4
     choice = int(input("Enter song choice (anything outside will default to 1): "))
+    lines += 2
     if(choice > len(songs["docs"]) or choice < 1):
         choice = 0
     url = songs["docs"][choice - 1]["versions"][0]["downloadURL"]
@@ -162,24 +171,33 @@ def loadNewSong():
             info = json.load(zip_ref.open("Info.dat"))
         if info["_version"] != "2.0.0":
             print("beatmap not version 2.0.0")
+            lines += 1
         folder += info['_songName']
         folder = folder.replace("'", "").replace("\"", "")
         zip_ref.extractall(folder)
     os.remove(filename)
+    returnNlinesUp(lines)
 
 def chooseGameType():
     print("Game types:")
     print("1: terminal")
     print("2: serial")
     print("3: pygame")
+    lines = 4
     try:
         num = int(input("Enter corresponding number to make a game selection: "))
+        lines += 1
     except:
         print("Please enter a number")
-        quit()
+        lines += 1
+        returnNlinesUp(lines)
+        return None
     if num < 1 or num > 3:
         print("Invalid game choice")
-        quit()
+        lines += 1
+        returnNlinesUp(lines)
+        return None
+    returnNlinesUp(lines)
     return num
 
 def chooseSong():
@@ -187,18 +205,26 @@ def chooseSong():
         print("No song files found!")
         quit()
     print("Available Songs:")
+    lines = 1
     songList = next(os.walk('./Songs'))[1]
     for index, song in enumerate(songList):
         print(f"{index + 1}: {song}")
+        lines += 1
     try:
         num = int(input("Enter corresponding number to make a song selection: "))
+        lines += 1
     except:
         print("Please enter a number")
-        quit()
+        lines += 1
+        returnNlinesUp(lines)
+        return None
     if(num < 1 or num > len(songList)):
         print("Invalid song choice")
-        quit()
+        lines += 1
+        returnNlinesUp(lines)
+        return None
     checkFolder(f"./Songs/{songList[num - 1]}")
+    returnNlinesUp(lines)
     return f"./Songs/{songList[num - 1]}"
 
 def sortDifficulty(file):
@@ -210,7 +236,7 @@ def sortDifficulty(file):
         return 2
     if("Expert" in file):
         return 3
-    if("ExpertPlus" in file):
+    if("ExpertPlus" in file or "Expert+" in file):
         return 4
     
 def chooseDifficulty(songFolder):
@@ -233,32 +259,48 @@ def chooseDifficulty(songFolder):
             difficultyFileList.append(file)
     difficultyList.sort(key=sortDifficulty)
     difficultyFileList.sort(key=sortDifficulty)
+    lines = 0
     for index, difficulty in enumerate(difficultyList):
         print(f"{index + 1}: {difficulty}")
+        lines += 1
 
     try:
         num = int(input("Enter corresponding number to make a difficulty selection: "))
+        lines += 1
     except:
         print("Please enter a number")
-        quit()
+        lines += 1
+        returnNlinesUp(lines)
+        return None
     if (num < 1 or num > len(difficultyList)):
         print("Invalid song choice")
-        quit()
+        lines += 1
+        returnNlinesUp(lines)
+        return None
+    returnNlinesUp(lines)
     return f"{songFolder}/{difficultyFileList[num-1]}"
 
 def choosePort():
     print("Available Ports:")
+    lines = 1
     comports = listports.comports()
     for index, port in enumerate(comports):
         print(f"{index}: {port.name} - {port.manufacturer}")
+        lines += 1
     try:
         num = int(input("Enter corresponding number to make a port selection or leave blank for debug: "))
+        lines += 1
     except:
         print("Port not specified, entering debug mode")
+        lines += 1
+        returnNlinesUp(lines)
         return None
     if num < 0 or num >= len(comports):
-        print("Invalid port choice")
-        quit()
+        print("Invalid port choice, entering debug mode")
+        lines += 1
+        returnNlinesUp(lines)
+        return None
+    returnNlinesUp(lines)
     return serial.Serial(comports[num].device, 115200)
 
 
@@ -377,6 +419,9 @@ def playGame(songFile, bpm, notesList, port):
         while(len(rightNotes) > 0):
             screen.pushTwoNotes(None, rightNotes[0])
             rightNotes.pop(0)
+def returnNlinesUp(n):
+    print(f"\033[{n}F\033[J", end="\r")
+
 """
 def updatePygame
 """
