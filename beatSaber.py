@@ -160,7 +160,6 @@ class Arrow(pygame.sprite.Sprite):
 """
 def main():
     returnNlinesUp(2)
-    print("\n" * 5)
     try:
         if(input("Do you want to load a new song? ")[0].lower() == "y"):
             loadNewSong()
@@ -276,10 +275,10 @@ def sortDifficulty(file):
         return 1
     if("Hard" in file):
         return 2
-    if("Expert" in file):
-        return 3
     if("ExpertPlus" in file or "Expert+" in file):
         return 4
+    if("Expert" in file):
+        return 3
     
 def chooseDifficulty(songFolder):
     difficultyFileList = []
@@ -305,7 +304,6 @@ def chooseDifficulty(songFolder):
     for index, difficulty in enumerate(difficultyList):
         print(f"{index + 1}: {difficulty}")
         lines += 1
-
     try:
         lines += 1
         num = int(input("Enter corresponding number to make a difficulty selection: "))
