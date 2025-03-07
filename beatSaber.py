@@ -9,8 +9,9 @@ import requests
 import zipfile
 """
 pygame.init()
-res = (720,720) 
-screen = pygame.display.set_mode(res) 
+screenWidth = 720
+screenHeight = 720
+screen = pygame.display.set_mode([screenWidth, screenHeight]) 
 color = (255,255,255) 
 color_light = (170,170,170) 
 color_dark = (100,100,100) 
@@ -113,12 +114,49 @@ class Arrow(pygame.sprite.Sprite):
         self.note = note
         self.side = note.getColor()
         self.direction = note.getDirection()
+        self.y = -193 ## height of image --> 193px
+        self.x = 320 ## arbitrary num
 """
     def loadArrow(self):
         if self.side == 0:
-            arrSprite = pg.image.load('./Images/')
+            arrSprite = pg.image.load('./Images/fallingLeftArr')
+            self.x = 320
         else:
-            arr
+            arrSprite = pg.image.load('./Images/fallingRightArr')
+            self.x = 470 
+         
+        if self.direction == Directions.any:
+            arrSprite = pg.image.load('./Images/fallingDot')
+        elif self.direction == Directions.down:
+            arrSprite = pygame.transform.rotate(arrSprite, 180)
+        elif self.direction == Directions.left:
+            arrSprite = pygame.transform.rotate(arrSprite, 90)
+        elif self.direction == Directions.right:
+            arrSprite = pygame.transform.rotate(arrSprite, 270)
+        elif self.direction == Directions.upleft:
+            arrSprite = pygame.transform.rotate(arrSprite, 45)
+        elif self.direction == Directions.downleft:
+            arrSprite = pygame.transform.rotate(arrSprite, 135)
+        elif self.direction == Directions.downright:
+            arrSprite = pygame.transform.rotate(arrSprite, 225)
+        elif self.direction == Directions.upright:
+            arrSprite = pygame.transform.rotate(arrSprite, 315)
+
+    ## in main game func --> create list of notes and iterate through all to update all
+    ## delete notes when hit/off screen in that list
+    def updatePos(moveBy):
+        self.y += moveBy
+        surface.bilt(arrSprite, (self.x, self.y)
+    
+    def detectHit(add accelerations here):
+
+    def offScreen()
+        if self.y >= (screenHeight + 193):
+            return True
+        else:
+            return False
+        
+        
 """
 def main():
     returnNlinesUp(2)
