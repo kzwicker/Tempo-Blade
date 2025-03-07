@@ -71,11 +71,23 @@ class ScreenState:
         self.notesListLeft = [None] * 16
         self.notesListRight = [None] * 16
 
-    def pushTwoNotes(self, Lnote, Rnote):
+    def pushTwoNotes(self, Lnote, Rnote, port):
         self.notesListLeft.insert(0, Lnote)
         self.notesListRight.insert(0, Rnote)
-        self.notesListLeft.pop()
-        self.notesListRight.pop()
+        playedL = self.notesListLeft.pop()
+        playedR = self.notesListRight.pop()
+        if(port == None):
+            return
+        if(playedL == None):
+            ch1 = ' '
+        else:
+            ch1 = chr(playedL.getDirection())
+        if(playedR == None):
+            ch2 = ' '
+        else:
+            ch2 = chr(playedR.getDirection())
+        port.write(bytes(f"h{ch1}{ch2}", "utf-8"))
+        
 
     def getScreen(self):
         outString = ""
@@ -406,6 +418,15 @@ def getNotes(fileName):
 
 def playGame(songFile, bpm, notesList, port):
     global gameType
+    if port != None:
+        print("calibrating controllers.", end='\r')
+        time.sleep(5)
+        print("calibrating controllers..", end= '\r')
+        time.sleep(5)
+        print("calibrating controllers...")
+        time.sleep(5)
+        
+        
     print(f"BPM: {bpm}")
     screen = ScreenState()
     noteIndex = 0
@@ -435,7 +456,7 @@ def playGame(songFile, bpm, notesList, port):
         while((time.time() - startTime) * bpm/60 <= (beat-15.25)/4):
             continue
         if(noteIndex >= len(notesList) or noteIndex < 0):
-            screen.pushTwoNotes(None, None)
+            screen.pushTwoNotes(None, None, port)
             continue
         while(notesList[noteIndex].getTime() <= beat/4):
             if(notesList[noteIndex].getColor() == 0):
@@ -446,16 +467,16 @@ def playGame(songFile, bpm, notesList, port):
             if(noteIndex >= len(notesList)):
                 break
         if(len(leftNotes) + len(rightNotes) == 0):
-            screen.pushTwoNotes(None, None)
+            screen.pushTwoNotes(None, None, port)
         while(len(leftNotes) > 0 and len(rightNotes) > 0):
-            screen.pushTwoNotes(leftNotes[0], rightNotes[0])
+            screen.pushTwoNotes(leftNotes[0], rightNotes[0], port)
             leftNotes.pop(0)
             rightNotes.pop(0)
         while(len(leftNotes) > 0):
-            screen.pushTwoNotes(leftNotes[0], None)
+            screen.pushTwoNotes(leftNotes[0], None, port)
             leftNotes.pop(0)
         while(len(rightNotes) > 0):
-            screen.pushTwoNotes(None, rightNotes[0])
+            screen.pushTwoNotes(None, rightNotes[0], port)
             rightNotes.pop(0)
 def returnNlinesUp(n):
     print(f"\033[{n}F\033[J", end="\r")
