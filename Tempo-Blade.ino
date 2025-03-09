@@ -234,30 +234,71 @@ void loop() {
 
           while(Serial.available() == 0);
           //TODO: DIRECTION CHECKING
-          switch(Serial.read()) {
+          c = Serial.read();
+          if(c != ' ' && !isSwinging) {
+            buzz();
+            continue;
+          }
+          switch(c) {
             case UPD:
+              if(controllerDirections[i] > M_PI/4 && controllerDirections[i] < 3*M_PI/4) {
+                //score
+              } else {
+                buzz();
+              }
               break;
             case DOWND:
+              if(controllerDirections[i] < -M_PI/4 && controllerDirections[i] > -3*M_PI/4) {
+                //score
+              } else {
+                buzz();
+              }
               break;
             case LEFTD:
+              if(controllerDirections[i] > 3*M_PI/4 || controllerDirections[i] < -3*M_PI/4) {
+                //score
+              } else {
+                buzz();
+              }
               break;
             case RIGHTD:
+              if(controllerDirections[i] < M_PI/4 && controllerDirections[i] > -M_PI/4) {
+                //score
+              } else {
+                buzz();
+              }
               break;
             case UPLEFTD:
+              if(controllerDirections[i] > M_PI/2 && controllerDirections[i] < M_PI) {
+                //score
+              } else {
+                buzz();
+              }
               break;
             case UPRIGHTD:
+              if(controllerDirections[i] > 0 && controllerDirections[i] < M_PI/2) {
+                //score
+              } else {
+                buzz();
+              }
               break;
             case DOWNLEFTD:
+              if(controllerDirections[i] < -M_PI/2 && controllerDirections[i] > -M_PI) {
+                //score
+              } else {
+                buzz();
+              }
               break;
             case DOWNRIGHTD:
-              break;
-            case ANYD:
-              if(!isSwinging) {
+              if(controllerDirections[i] < 0 && controllerDirections[i] > -M_PI/2) {
+                //score
+              } else {
                 buzz();
               }
               break;
           }
         }
+        break;
       case '\n':
         lcd.setCursor(0,1);
         break;
