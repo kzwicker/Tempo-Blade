@@ -171,15 +171,12 @@ def main():
                 case "1":
                     returnNlinesUp(4)
                     loadNewSong()
-                    break
                 case "2":
                     returnNlinesUp(4)
                     editSongs()
-                    break
                 case _:
-                    print("\n\n\nn\\nn\n\n\n\n\n\n\n\n\n\nn\n\n\n")
+                    returnNlinesUp(3)
                     stayInMenu = False
-            returnNlinesUp(3)
         except KeyboardInterrupt:
             quit()
     returnNlinesUp(1)
@@ -226,7 +223,6 @@ def editSongs():
             continue
         else:
             returnNlinesUp(lines)
-            print(f"./Songs/{songList[num]}")
             shutil.rmtree(f"./Songs/{songList[num-1]}")
 
 def loadNewSong():
@@ -244,7 +240,10 @@ def loadNewSong():
         lines += 4
     try:
         choice = int(input("Enter song choice (anything outside will default to 1): "))
-        
+    except KeyboardInterrupt:
+        quit()
+    except:
+        choice = 1
     lines += 2
     if(choice > len(songs["docs"]) or choice < 1):
         choice = 0
