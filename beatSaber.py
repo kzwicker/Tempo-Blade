@@ -161,22 +161,33 @@ class Arrow(pygame.sprite.Sprite):
 """
 def main():
     returnNlinesUp(2)
-    try:
-        if(input("Do you want to load a new song? ")[0].lower() == "y"):
-            loadNewSong()
-    except KeyboardInterrupt:
-        quit()
-    except:
-        ()
+    stayInMenu = True
+    while(stayInMenu):
+        print("1: Search for and add a new song")
+        print("2: Edit saved songs")
+        print("Anything else: Begin song selection and play game")
+        try:
+            match(input()):
+                case "1":
+                    returnNlinesUp(4)
+                    loadNewSong()
+                    break
+                case "2":
+                    returnNlinesUp(4)
+                    editSongs()
+                    break
+                case _:
+                    print("\n\n\nn\\nn\n\n\n\n\n\n\n\n\n\nn\n\n\n")
+                    stayInMenu = False
+            returnNlinesUp(3)
+        except KeyboardInterrupt:
+            quit()
     returnNlinesUp(1)
     global gameType
     gameType, songFolder, difficultyName, port, infoName, songName = [None] * 6
-    while(gameType == None):
-        gameType = chooseGameType()
-    while(songFolder == None):
-        songFolder = chooseSong()
-    while(difficultyName == None):
-        difficultyName = chooseDifficulty(songFolder)
+    gameType = chooseGameType()
+    songFolder = chooseSong()
+    difficultyName = chooseDifficulty(songFolder)
     port = choosePort()
     infoName, songName = getFilenames(songFolder)
     try:
@@ -188,6 +199,35 @@ class gameTypes:
     terminal = 1
     serial = 2
     pygame = 3
+
+def editSongs():
+    if not os.path.isdir("./Songs"):
+        print("No song files found!")
+        quit()
+    print("Available Songs:")
+    prompt = "Enter corresponding number to delete, anything else to return to menu: "
+    while(True):
+        lines = 0
+        songList = next(os.walk('./Songs'))[1]
+        for index, song in enumerate(songList):
+            print(f"{index + 1}: {song}")
+            lines += 1
+        try:
+            lines += 1
+            num = int(input(prompt))
+        except KeyboardInterrupt:
+            quit()
+        except:
+            returnNlinesUp(lines + 1)
+            return
+        if(num < 1 or num > len(songList)):
+            returnNlinesUp(1)
+            prompt = "Please enter a valid number: "
+            continue
+        else:
+            returnNlinesUp(lines)
+            print(f"./Songs/{songList[num]}")
+            shutil.rmtree(f"./Songs/{songList[num-1]}")
 
 def loadNewSong():
     song = input("Enter song: ")
@@ -202,7 +242,9 @@ def loadNewSong():
         print(songs["docs"][x]["name"])
         print(f"Uploaded by {songs["docs"][x]["uploader"]["name"]}\n")
         lines += 4
-    choice = int(input("Enter song choice (anything outside will default to 1): "))
+    try:
+        choice = int(input("Enter song choice (anything outside will default to 1): "))
+        
     lines += 2
     if(choice > len(songs["docs"]) or choice < 1):
         choice = 0
@@ -230,23 +272,24 @@ def chooseGameType():
     print("1: terminal")
     print("2: serial")
     print("3: pygame")
-    lines = 4
-    try:
-        lines += 1
-        num = int(input("Enter corresponding number to make a game selection: "))
-    except KeyboardInterrupt:
-        quit()
-    except:
-        print("Please enter a number")
-        lines += 1
-        returnNlinesUp(lines)
-        return None
-    if num < 1 or num > 3:
-        print("Invalid game choice")
-        lines += 1
-        returnNlinesUp(lines)
-        return None
-    returnNlinesUp(lines)
+    lines = 0
+    invalidChoice = True
+    prompt = "Enter corresponding number to make a game selection: "
+    while(invalidChoice):
+        try:
+            num = int(input(prompt))
+        except KeyboardInterrupt:
+            quit()
+        except:
+            returnNlinesUp(1)
+            prompt = "Please enter a number: "
+            continue
+        if num < 1 or num > 3:
+            returnNlinesUp(1)
+            prompt = "Please enter a valid game choice: "
+        else:
+            invalidChoice = False
+    returnNlinesUp(lines + 1)
     return num
 
 def chooseSong():
@@ -259,23 +302,24 @@ def chooseSong():
     for index, song in enumerate(songList):
         print(f"{index + 1}: {song}")
         lines += 1
-    try:
-        lines += 1
-        num = int(input("Enter corresponding number to make a song selection: "))
-    except KeyboardInterrupt:
-        quit()
-    except:
-        print("Please enter a number")
-        lines += 1
-        returnNlinesUp(lines)
-        return None
-    if(num < 1 or num > len(songList)):
-        print("Invalid song choice")
-        lines += 1
-        returnNlinesUp(lines)
-        return None
+    invalidChoice = True
+    prompt = "Enter corresponding number to make a song selection: "
+    while(invalidChoice):
+        try:
+            num = int(input(prompt))
+        except KeyboardInterrupt:
+            quit()
+        except:
+            returnNlinesUp(1)
+            prompt = "Please enter a number: "
+            continue
+        if(num < 1 or num > len(songList)):
+            returnNlinesUp(1)
+            prompt = "Invalid song choice. Please try again: "
+        else:
+            invalidChoice = False
     checkFolder(f"./Songs/{songList[num - 1]}")
-    returnNlinesUp(lines)
+    returnNlinesUp(lines + 1)
     return f"./Songs/{songList[num - 1]}"
 
 def sortDifficulty(file):
@@ -314,22 +358,23 @@ def chooseDifficulty(songFolder):
     for index, difficulty in enumerate(difficultyList):
         print(f"{index + 1}: {difficulty}")
         lines += 1
-    try:
-        lines += 1
-        num = int(input("Enter corresponding number to make a difficulty selection: "))
-    except KeyboardInterrupt:
-        quit()
-    except:
-        print("Please enter a number")
-        lines += 1
-        returnNlinesUp(lines)
-        return None
-    if (num < 1 or num > len(difficultyList)):
-        print("Invalid song choice")
-        lines += 1
-        returnNlinesUp(lines)
-        return None
-    returnNlinesUp(lines)
+    invalidChoice = True
+    prompt = "Enter corresponding number to make a difficulty selection: "
+    while(invalidChoice):
+        try:
+            num = int(input(prompt))
+        except KeyboardInterrupt:
+            quit()
+        except:
+            prompt = "Please enter a number: "
+            returnNlinesUp(1)
+            continue
+        if (num < 1 or num > len(difficultyList)):
+            prompt = "Invalid song choice. Please try again: "
+            returnNlinesUp(1)
+        else:
+            invalidChoice = False
+    returnNlinesUp(lines + 1)
     return f"{songFolder}/{difficultyFileList[num-1]}"
 
 def choosePort():
