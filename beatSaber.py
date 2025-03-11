@@ -7,6 +7,7 @@ import serial.tools.list_ports as listports
 import requests
 import zipfile
 import shutil
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 import pygame
 """
 pygame.init()
@@ -88,7 +89,6 @@ class ScreenState:
         else:
             ch2 = chr(playedR.getDirection())
         port.write(bytes(f"h{ch1}{ch2}", "utf-8"))
-        
 
     def getScreen(self):
         outString = ""
@@ -123,56 +123,62 @@ class ScreenState:
 # for use with the pygame version
 class Arrow(pygame.sprite.Sprite):
     def __init__(self, note):
-        super().__init__()
+        pygame.sprite.Sprite.__init__(self)
         self.note = note
         self.side = note.getColor()
         self.direction = note.getDirection()
         self.y = -193 ## height of image --> 193px
         self.x = 320 ## arbitrary num
-"""
+        self.moveBy = 700/16
+        self.loadArrow()
+
     def loadArrow(self):
         if self.side == 0:
-            arrSprite = pg.image.load('./Images/fallingLeftArr')
+            self.image = pygame.image.load(f"./Images/fallingLeftArr.png").convert()
             self.x = 320
         else:
-            arrSprite = pg.image.load('./Images/fallingRightArr')
+            self.image = pygame.image.load(f"./Images/fallingRightArr.png").convert()
             self.x = 470 
-         
-        if self.direction == Directions.any:
-            arrSprite = pg.image.load('./Images/fallingDot')
-        elif self.direction == Directions.down:
-            arrSprite = pygame.transform.rotate(arrSprite, 180)
+        self.rect = self.image.get_rect()
+        self.rect.center = (360, 360)
+
+
+        if self.direction == Directions.down:
+            self.image = pygame.transform.rotate(self.image, 180)
         elif self.direction == Directions.left:
-            arrSprite = pygame.transform.rotate(arrSprite, 90)
+            self.image = pygame.transform.rotate(self.image, 90)
         elif self.direction == Directions.right:
-            arrSprite = pygame.transform.rotate(arrSprite, 270)
+            self.image = pygame.transform.rotate(self.image, 270)
         elif self.direction == Directions.upleft:
-            arrSprite = pygame.transform.rotate(arrSprite, 45)
+            self.image = pygame.transform.rotate(self.image, 45)
         elif self.direction == Directions.downleft:
-            arrSprite = pygame.transform.rotate(arrSprite, 135)
+            self.image = pygame.transform.rotate(self.image, 135)
         elif self.direction == Directions.downright:
-            arrSprite = pygame.transform.rotate(arrSprite, 225)
+            self.image = pygame.transform.rotate(self.image, 225)
         elif self.direction == Directions.upright:
-            arrSprite = pygame.transform.rotate(arrSprite, 315)
+            self.image = pygame.transform.rotate(self.image, 315)
 
     ## in main game func --> create list of notes and iterate through all to update all
     ## delete notes when hit/off screen in that list
-    def updatePos(moveBy):
-        self.y += moveBy
-        surface.bilt(arrSprite, (self.x, self.y)
-    
-    def detectHit(add accelerations here):
+    def updatePos(self):
+        self.y += self.moveBy
+        self.rect.center = (self.x, self.y)
 
-    def offScreen()
-        if self.y >= (screenHeight + 193):
+    def getX(self):
+        return self.x
+
+    def getY(self):
+        return self.y
+
+    def offScreen(self):
+        if self.y >= (720 + 193):
             return True
         else:
-            return False
-        
-        
-"""
+            return False 
+
 def main():
-    returnNlinesUp(2)
+    pygame.mixer.init() ## this could be leading to slow down! move this down to the loop if so
+    returnNlinesUp(1)
     stayInMenu = True
     while(stayInMenu):
         print("1: Search for and add a new song")
@@ -487,8 +493,9 @@ def playGame(songFile, bpm, notesList, port):
         time.sleep(5)
         print("calibrating controllers...")
         time.sleep(5)
+        port.write(bytes(gameType))
         
-        
+    score = 0;
     print(f"BPM: {bpm}")
     screen = ScreenState()
     noteIndex = 0
@@ -498,23 +505,39 @@ def playGame(songFile, bpm, notesList, port):
     if gameType == gameTypes.terminal:
         print("\n" * 15)
     elif gameType == gameTypes.pygame:
-        display = pygame.display.set_mode((800, 600))
-        pygame.display.set_caption('Tempo Blade')
-        display.fill((0, 0, 0))
+        pygame.init()
+        screenHeight = 720
+        screenWidth = 720
+        gameScreen = pygame.display.set_mode([screenWidth, screenHeight])
+        bgColor = (53, 47, 47)
+        gameColor = (0, 0, 0)
+        gameScreen.fill(bgColor)
+        pygame.draw.rect(gameScreen, gameColor, (100, 0, (screenWidth - 200), screenHeight))
         pygame.display.flip()
-    pygame.mixer.pre_init(44100, -16, 1, 512)
-    pygame.mixer.init()
-    pygame.mixer.music.load(songFile)
-    pygame.mixer.music.play()
+        arrList = pygame.sprite.Group()
+        pygame.mixer.pre_init(44100, -16, 1, 512)
+        pygame.mixer.music.load(songFile)
+        pygame.mixer.music.play()
     startTime = time.time()
     for beat in range(int(notesList[len(notesList) - 1].getTime() + 18) * 4):
         # print screen to serial port or terminal
-        if gameType == gameTypes.serial:
+        if port != None:
             port.write(bytes(screen.getScreen() + '\f', "utf-8"))
         if gameType == gameTypes.terminal:
             print(f"\033[16F{screen.getDebug()}", end="")
         if gameType == gameTypes.pygame:
             running = True
+            for arrow in arrList:
+                arrow.updatePos()
+                if (arrow.offScreen() == True):
+                    arrList.remove(arrow)
+            arrList.update()
+            arrList.draw(gameScreen)
+            for event in pygame.event.get():
+                if event.type == QUIT:
+                    pygame.quit()
+
+
         while((time.time() - startTime) * bpm/60 <= (beat-15.25)/4):
             continue
         if(noteIndex >= len(notesList) or noteIndex < 0):
@@ -540,14 +563,20 @@ def playGame(songFile, bpm, notesList, port):
         while(len(rightNotes) > 0):
             screen.pushTwoNotes(None, rightNotes[0], port)
             rightNotes.pop(0)
+        if (gameType == gameTypes.pygame):
+            if (screen.notesListLeft[0] != None):
+                print(f"did a left")
+                arrList.add(Arrow(screen.notesListLeft[0]))
+            if (screen.notesListRight[0] != None):
+                print(f"did a right")
+                arrList.add(Arrow(screen.notesListRight[0]))
+    pygame.quit()
+
 def returnNlinesUp(n):
     #while(n >= 16):
     #    print(f"\033[15F", end="\r")
     #    n -= 15
     print(f"\033[{n}F\033[J", end="\r")
 
-"""
-def updatePygame
-"""
 if __name__ == "__main__":
     main()

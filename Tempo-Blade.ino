@@ -94,6 +94,8 @@ void buzz() {
   tone(6, 125, 125);
 }
 
+int gameType = 2;
+
 void setup() {
   // put your setup code here, to run once:
   for(int i = 0; i < 8; i++) {
@@ -123,8 +125,11 @@ void setup() {
     mpu.CalibrateAccel(6);
     mpu.CalibrateGyro(6);
     mpu.PrintActiveOffsets();
-
     mpu.setDMPEnabled(true);
+
+    if (Serial.available() > 0) {
+      gameType = Serial.read();
+    }
   }
 
   ready = true;
@@ -228,6 +233,7 @@ void loop() {
       case 'h':
         for(int i = 0; i < 2; i++){
           bool isSwinging = true;
+          bool hit = false;
           if(states[i] == NOSWING) {
             isSwinging = false;
           }
@@ -242,64 +248,68 @@ void loop() {
           switch(c) {
             case UPD:
               if(controllerDirections[i] > M_PI/4 && controllerDirections[i] < 3*M_PI/4) {
-                //score
+                hit = true;
               } else {
                 buzz();
               }
               break;
             case DOWND:
               if(controllerDirections[i] < -M_PI/4 && controllerDirections[i] > -3*M_PI/4) {
-                //score
+                hit = true;
               } else {
                 buzz();
               }
               break;
             case LEFTD:
               if(controllerDirections[i] > 3*M_PI/4 || controllerDirections[i] < -3*M_PI/4) {
-                //score
+                hit = true;
               } else {
                 buzz();
               }
               break;
             case RIGHTD:
               if(controllerDirections[i] < M_PI/4 && controllerDirections[i] > -M_PI/4) {
-                //score
+                hit = true;
               } else {
                 buzz();
               }
               break;
             case UPLEFTD:
               if(controllerDirections[i] > M_PI/2 && controllerDirections[i] < M_PI) {
-                //score
+                hit = true;
               } else {
                 buzz();
               }
               break;
             case UPRIGHTD:
               if(controllerDirections[i] > 0 && controllerDirections[i] < M_PI/2) {
-                //score
+                hit = true;
               } else {
                 buzz();
               }
               break;
             case DOWNLEFTD:
               if(controllerDirections[i] < -M_PI/2 && controllerDirections[i] > -M_PI) {
-                //score
+                hit = true;
               } else {
                 buzz();
               }
               break;
             case DOWNRIGHTD:
               if(controllerDirections[i] < 0 && controllerDirections[i] > -M_PI/2) {
-                //score
+                hit = true;
               } else {
                 buzz();
               }
               break;
           }
+          if(hit) {
+            Serial.write(100);
+          }
         }
         break;
-      case '\n':
+      if (gameType == 2) {
+        case '\n':
         lcd.setCursor(0,1);
         break;
       case '\f':
@@ -313,15 +323,9 @@ void loop() {
         break;
       default:
         lcd.write((char)c);
+      }
     }
   }
-
-  
-
-
-
-  
-
 
 
 /*
