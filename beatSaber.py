@@ -129,7 +129,7 @@ class Arrow(pygame.sprite.Sprite):
         self.direction = note.getDirection()
         self.y = -193 ## height of image --> 193px
         self.x = 0 ## arbitrary num
-        self.moveBy = 636/16
+        self.moveBy = 656/16
         self.loadArrow()
 
     def loadArrow(self):
