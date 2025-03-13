@@ -129,7 +129,7 @@ class Arrow(pygame.sprite.Sprite):
         self.direction = note.getDirection()
         self.y = -193 ## height of image --> 193px
         self.x = 0 ## arbitrary num
-        self.moveBy = 656/16
+        self.moveBy = 790/16
         self.loadArrow()
 
     def loadArrow(self):
@@ -495,9 +495,8 @@ def playGame(songFile, bpm, notesList, port):
         time.sleep(5)
         print("calibrating controllers...")
         time.sleep(5)
-        port.write(bytes(gameType))
         
-    score = 0;
+    score = 0
     print(f"BPM: {bpm}")
     screen = ScreenState()
     noteIndex = 0

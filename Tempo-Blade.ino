@@ -247,7 +247,6 @@ void loop() {
           }
 
           while(Serial.available() == 0);
-          //TODO: DIRECTION CHECKING
           c = Serial.read();
           if(c != ' ' && !isSwinging) {
             buzz();
@@ -316,8 +315,7 @@ void loop() {
           }
         }
         break;
-      if (gameType == 2) {
-        case '\n':
+      case '\n':
         lcd.setCursor(0,1);
         break;
       case '\f':
@@ -331,7 +329,6 @@ void loop() {
         break;
       default:
         lcd.write((char)c);
-      }
     }
   }
 
