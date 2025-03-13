@@ -122,41 +122,43 @@ class ScreenState:
 
 # for use with the pygame version
 class Arrow(pygame.sprite.Sprite):
-    def __init__(self, note):
+    def __init__(self, note, gameScreen):
         pygame.sprite.Sprite.__init__(self)
         self.note = note
         self.side = note.getColor()
         self.direction = note.getDirection()
         self.y = -193 ## height of image --> 193px
-        self.x = 320 ## arbitrary num
-        self.moveBy = 700/16
+        self.x = 0 ## arbitrary num
+        self.moveBy = 636/16
         self.loadArrow()
 
     def loadArrow(self):
         if self.side == 0:
-            self.image = pygame.image.load(f"./Images/fallingLeftArr.png").convert()
-            self.x = 320
+            self.imageName = "./Images/fallingLeftArr"
+            self.x = 260
         else:
-            self.image = pygame.image.load(f"./Images/fallingRightArr.png").convert()
-            self.x = 470 
-        self.rect = self.image.get_rect()
-        self.rect.center = (360, 360)
-
+            self.imageName = "./Images/fallingRightArr"
+            self.x = 470
 
         if self.direction == Directions.down:
-            self.image = pygame.transform.rotate(self.image, 180)
+            self.imageName += "180.png"
         elif self.direction == Directions.left:
-            self.image = pygame.transform.rotate(self.image, 90)
+            self.imageName += "90.png"
         elif self.direction == Directions.right:
-            self.image = pygame.transform.rotate(self.image, 270)
+            self.imageName += "270.png"
         elif self.direction == Directions.upleft:
-            self.image = pygame.transform.rotate(self.image, 45)
+            self.imageName += "45.png"
         elif self.direction == Directions.downleft:
-            self.image = pygame.transform.rotate(self.image, 135)
+            self.imageName += "135.png"
         elif self.direction == Directions.downright:
-            self.image = pygame.transform.rotate(self.image, 225)
+            self.imageName += "225.png"
         elif self.direction == Directions.upright:
-            self.image = pygame.transform.rotate(self.image, 315)
+            self.imageName += "315.png"
+        else:
+            self.imageName += "0.png"
+        
+        self.image = pygame.image.load(self.imageName).convert_alpha()
+        self.rect = self.image.get_rect(center = (self.x, self.y))
 
     ## in main game func --> create list of notes and iterate through all to update all
     ## delete notes when hit/off screen in that list
@@ -171,7 +173,7 @@ class Arrow(pygame.sprite.Sprite):
         return self.y
 
     def offScreen(self):
-        if self.y >= (720 + 193):
+        if self.y >= 800:
             return True
         else:
             return False 
@@ -532,11 +534,16 @@ def playGame(songFile, bpm, notesList, port):
                 if (arrow.offScreen() == True):
                     arrList.remove(arrow)
             arrList.update()
+            gameScreen.fill(bgColor)
+            pygame.draw.rect(gameScreen, gameColor, (100, 0, (screenWidth - 200), screenHeight))
             arrList.draw(gameScreen)
+            hitBoxL = pygame.draw.rect(gameScreen, bgColor, (179.5, 443.5, 161, 193), 2)
+            hitBoxR = pygame.draw.rect(gameScreen, bgColor, (389.5, 443.5, 161, 193), 2)
+            pygame.display.flip()
             for event in pygame.event.get():
-                if event.type == QUIT:
+                if event.type == pygame.QUIT:
                     pygame.quit()
-
+                    quit()
 
         while((time.time() - startTime) * bpm/60 <= (beat-15.25)/4):
             continue
@@ -565,11 +572,9 @@ def playGame(songFile, bpm, notesList, port):
             rightNotes.pop(0)
         if (gameType == gameTypes.pygame):
             if (screen.notesListLeft[0] != None):
-                print(f"did a left")
-                arrList.add(Arrow(screen.notesListLeft[0]))
+                arrList.add(Arrow(screen.notesListLeft[0], gameScreen))
             if (screen.notesListRight[0] != None):
-                print(f"did a right")
-                arrList.add(Arrow(screen.notesListRight[0]))
+                arrList.add(Arrow(screen.notesListRight[0], gameScreen))
     pygame.quit()
 
 def returnNlinesUp(n):
