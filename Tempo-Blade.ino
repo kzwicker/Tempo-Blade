@@ -122,6 +122,12 @@ void setup() {
       dip;
     }
 
+    lcd.clear();
+    lcd.print("Calibrating");
+    lcd.setCursor(0,1);
+    lcd.print("MPU");
+    lcd.write('1' + i);
+
     mpu.CalibrateAccel(6);
     mpu.CalibrateGyro(6);
     mpu.PrintActiveOffsets();
@@ -132,6 +138,8 @@ void setup() {
     }
   }
 
+  lcd.clear();
+  lcd.print("Ready.");
   ready = true;
 }
 
