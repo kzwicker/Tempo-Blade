@@ -503,6 +503,9 @@ def playGame(songFile, bpm, notesList, port):
     leftNotes = []
     rightNotes = []
     running = False
+    pygame.mixer.pre_init(44100, -16, 1, 512)
+    pygame.mixer.music.load(songFile)
+    pygame.mixer.music.play()
     if gameType == gameTypes.terminal:
         print("\n" * 15)
     elif gameType == gameTypes.pygame:
@@ -516,9 +519,6 @@ def playGame(songFile, bpm, notesList, port):
         pygame.draw.rect(gameScreen, gameColor, (100, 0, (screenWidth - 200), screenHeight))
         pygame.display.flip()
         arrList = pygame.sprite.Group()
-        pygame.mixer.pre_init(44100, -16, 1, 512)
-        pygame.mixer.music.load(songFile)
-        pygame.mixer.music.play()
     startTime = time.time()
     for beat in range(int(notesList[len(notesList) - 1].getTime() + 18) * 4):
         # print screen to serial port or terminal
